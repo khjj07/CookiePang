@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
+[ExecuteAlways]
 public class Block : MonoBehaviour
 {
-    [Range(1, 1000)]
+    [Range(1, 10000)]
     public int hp;
+    public BlockType type;
 
     private TextMeshPro _textMeshPro;
 
@@ -25,7 +29,16 @@ public class Block : MonoBehaviour
         hp -= collision.collider.GetComponent<Ball>().damage;
         if(hp<=0)
         {
-            Destroy(gameObject);
+            GameManager.instance.DeleteBlock(this);
         }
+    }
+
+    public BlockData ToData()
+    {
+        BlockData data = new BlockData();
+        data.position = transform.position;
+        data.hp = this.hp;
+        data.type = this.type;
+        return data;
     }
 }

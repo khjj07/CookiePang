@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-
-public class StageAsset : ScriptableObject
+public abstract class StageAsset : ScriptableObject
 {
-    public int[] starDeadLine = new int[3];
+    [ReadOnlyAttribute]
+    public StageMode mode;
+    [ReadOnlyAttribute]
+    public List<BlockData> blocks;
 
-   [MenuItem("Stage Tool/Create New Stage Asset")]
-    static void CreateStageAsset()
+    public int initailBallCount;
+
+    public virtual void Initialize()
     {
-        var stageAsset = CreateInstance<StageAsset>();
-
-        AssetDatabase.CreateAsset(stageAsset, "Assets/Editor/Stage.asset");
-        AssetDatabase.Refresh();
+        foreach (var block in blocks)
+        {
+            var instance = GameManager.instance.CreateBlock(block.type);
+            instance.transform.position = block.position;
+            instance.hp = block.hp;
+        }
+        GameManager.instance.ballCount = initailBallCount;
     }
-
-    [MenuItem("Stage Tool/Load Stage Asset")]
-    static void LoadStageAsset()
-    {
-        var exampleAsset =
-        AssetDatabase.LoadAssetAtPath<StageAsset>("Assets/Editor/ExampleAsset.asset");
-    }
+    public abstract bool IsClear();
+    public abstract int GetStars();
 }
