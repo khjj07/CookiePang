@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool isPlay;
     public float shootPower;
     public float minHeight=-15.0f;
 
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField, Range(5.0f,10.0f)]
     private float reflectDotLength;
+
     public void Start()
     {
         _dotLine = GetComponent<DotLine>();

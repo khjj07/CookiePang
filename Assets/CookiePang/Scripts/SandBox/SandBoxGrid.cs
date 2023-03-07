@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public enum BlockType
+public class SandBoxGrid : MonoBehaviour, IPointerEnterHandler
 {
-    None,
+    public BlockType targetType=BlockType.NONE;
+    public Block target = null;
 
-}
-
-public class SandBoxGrid : MonoBehaviour
-{
-    Block target;
-    private void OnMouseOver()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        SandBoxUI.current = this;
+        SandBoxUI.instance.current = this;
     }
 }
