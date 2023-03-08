@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+  - Ball
+  - BombBlock
   layers:
   - Default
   - TransparentFX

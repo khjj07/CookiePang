@@ -21,18 +21,34 @@ public class Block : MonoBehaviour
 
     protected void Update()
     {
+        if (type == BlockType.TELEPORT || type == BlockType.BOMB)
+            return;
         _textMeshPro.SetText(hp.ToString());
     }
 
     protected void OnCollisionEnter(Collision collision)
     {
-        hp -= collision.collider.GetComponent<Ball>().damage;
-        if(hp<=0)
+        if (collision.gameObject.CompareTag("Ball"))
         {
-            GameManager.instance.DeleteBlock(this);
+            hp -= collision.collider.GetComponent<Ball>().damage;
+            if (hp <= 0)
+            {
+                GameManager.instance.DeleteBlock(this);
+            }
+        }
+       
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("BombBlock"))
+        {
+            hp -= other.gameObject.GetComponent<BombBlock>().damage;
+            if (hp <= 0)
+            {
+                GameManager.instance.DeleteBlock(this);
+            }
         }
     }
-
     public BlockData ToData()
     {
         BlockData data = new BlockData();

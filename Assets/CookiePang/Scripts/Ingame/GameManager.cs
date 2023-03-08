@@ -6,7 +6,10 @@ using UnityEngine;
 public enum BlockType
 {
     NONE,
-    DEFAULT
+    DEFAULT,
+    TELEPORT,
+    BOMB
+    
 }
 
 public class GameManager : Singleton<GameManager>
@@ -17,7 +20,7 @@ public class GameManager : Singleton<GameManager>
     public int ballCount;
 
     [SerializeField]
-    private Ball ball;
+    public Ball ball;
     [SerializeField]
     private Block[] blockPrefabs;
     [SerializeField, Range(5.0f, 10.0f)]
@@ -26,6 +29,7 @@ public class GameManager : Singleton<GameManager>
     public List<Block> blocks = new List<Block>();
 
     private DotLine _dotLine;
+
     public void Start()
     {
         _dotLine = GetComponent<DotLine>();
@@ -72,6 +76,7 @@ public class GameManager : Singleton<GameManager>
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
             });
+  
     }
 
     public void DeleteBlock(Block x)
