@@ -22,6 +22,6 @@ public class BombBlock : Block
         this.gameObject.GetComponent<BoxCollider>().size = new Vector3(5, 5, 1);
         yield return new WaitForSeconds(0.1f);
         this.gameObject.GetComponent<BoxCollider>().size = currentSize;
-        Destroy(gameObject);
+        GameManager.instance.DeleteBlock(this);
     }
 }

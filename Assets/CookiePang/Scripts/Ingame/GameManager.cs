@@ -84,6 +84,7 @@ public class GameManager : Singleton<GameManager>
         blocks.Remove(x);
         Destroy(x.gameObject);
     }
+
     public Block CreateBlock(BlockType x)
     {
         var instance = Instantiate(blockPrefabs[(int)x - 1].gameObject);

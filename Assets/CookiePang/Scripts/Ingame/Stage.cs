@@ -9,7 +9,12 @@ public class Stage : MonoBehaviour
 
     public void Start()
     {
-        asset.Initialize();
+        asset = StageManager.instance.GetCurrentStage();
+        if (asset)
+            asset.Initialize();
+        else
+            Destroy(gameObject);
+        
         GameManager.instance.isPlay = true;
     }    
 

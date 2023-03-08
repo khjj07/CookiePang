@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/CookiePang/Scenes/Title.unity
+    guid: a0b44090d49ef6c48b2e2e3b83f5731a
+  - enabled: 1
+    path: Assets/CookiePang/Scenes/StageSelect.unity
+    guid: 58b84e892eddf3f4d816003cc425cf43
+  - enabled: 1
+    path: Assets/CookiePang/Scenes/Stage.unity
+    guid: d39de1e6ddecaa64dbf4710ff270b505
   m_configObjects: {}

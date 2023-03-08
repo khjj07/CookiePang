@@ -14,6 +14,7 @@ public class TeleportationBlock : Block
             StartCoroutine(BoxOFF());
         }
     }
+
     IEnumerator BoxOFF()
     {
         targetPos.GetComponent<BoxCollider>().enabled = false;
