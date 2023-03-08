@@ -10,6 +10,7 @@ using System.IO;
 using SimpleFileBrowser;
 
 using static UnityEditorInternal.ReorderableList;
+using System.Linq;
 
 enum SandBoxMode
 {
@@ -35,6 +36,7 @@ public class SandBoxUI : Singleton<SandBoxUI>
     #region UI
     public int blockDefaultHP;
 
+    public TextMeshProUGUI gameMode;
     public Slider blockDefaultHPSlider;
     public Slider ballDeadline1Slider;
     public Slider ballDeadline2Slider;
@@ -46,12 +48,13 @@ public class SandBoxUI : Singleton<SandBoxUI>
     public TextMeshProUGUI ballDeadLine2Number;
     public TextMeshProUGUI ballDeadLine3Number;
     public TextMeshProUGUI initialBallNumber;
+
+    public VerticalLayoutGroup[] scoreModeGroup;
     #endregion
 
     [Header("Output Data")]
     #region OutputData
     public int initialBall;
-    public StageMode mode;
     public int[] ballDeadLine = new int[3];
     #endregion
 
@@ -111,12 +114,28 @@ public class SandBoxUI : Singleton<SandBoxUI>
            {
                if (current.target)
                {
-                   current.target.hp--;
+                   if(current.target.hp>0)
+                   {
+                        current.target.hp--;
+                   }
                }
            });
     }
     public void Update()
     {
+
+        foreach (var group in scoreModeGroup)
+        {
+            group.gameObject.SetActive(false);
+        }
+        if (currentStageAsset)
+        {
+            gameMode.SetText(currentStageAsset.gameMode.ToString());
+            if (scoreModeGroup.Length > (int)(currentStageAsset.scoreMode))
+            {
+                scoreModeGroup[(int)currentStageAsset.scoreMode].gameObject.SetActive(true);
+            }
+        }
         SetInitialBall((int)initialBallSlider.value);
         SetBlockDefaultHP((int)blockDefaultHPSlider.value);
         SetballDeadLine1((int)ballDeadline1Slider.value);
@@ -148,10 +167,9 @@ public class SandBoxUI : Singleton<SandBoxUI>
         {
             List<BlockData> blockData = SaveBlockToData();
             currentStageAsset.blocks = blockData;
-            currentStageAsset.mode = mode;
-            switch (mode)
+            switch (currentStageAsset.gameMode)
             {
-                case StageMode.Default :
+                case GameMode.Default :
                     DefaultStageAsset asset =  (DefaultStageAsset)currentStageAsset;
                     asset.ballDeadLine[0] = ballDeadLine[0];
                     asset.ballDeadLine[1] = ballDeadLine[1];
@@ -180,12 +198,13 @@ public class SandBoxUI : Singleton<SandBoxUI>
                 _sandBoxGrids[block.row, block.col].target = instance;
             }
 
+           
            initialBall = currentStageAsset.initailBallCount;
            initialBallSlider.value = initialBall;
 
-            switch (mode)
+            switch (currentStageAsset.gameMode)
             {
-                case StageMode.Default:
+                case GameMode.Default:
                     DefaultStageAsset asset = (DefaultStageAsset)currentStageAsset;
                     ballDeadLine[0]= asset.ballDeadLine[0];
                     ballDeadLine[1]= asset.ballDeadLine[1];

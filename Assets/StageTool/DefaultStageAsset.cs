@@ -9,6 +9,12 @@ public class DefaultStageAsset : StageAsset
 {
     public int[] ballDeadLine = new int[3];
 
+    public DefaultStageAsset()
+    {
+        scoreMode = ScoreMode.Default;
+        gameMode = GameMode.Default;
+    }
+
     static public void CreateAsset(int initialBall, int[] ballDeadLine, List<BlockData> blockData)
     {
         var stageAsset = CreateInstance<DefaultStageAsset>();
@@ -27,14 +33,17 @@ public class DefaultStageAsset : StageAsset
         var exampleAsset =
         AssetDatabase.LoadAssetAtPath<StageAsset>("Assets/CookiePang/Stage/NewStage.asset");
     }
+
     public override void Initialize()
     {
         base.Initialize();
     }
+
     public override bool IsClear()
     {
         return GameManager.instance.blocks.Count == 0;
     }
+
     public override int GetStars()
     {
         int stars = 0;

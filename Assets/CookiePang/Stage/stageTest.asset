@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b87a1308b641544b7e3b359328bc11, type: 3}
   m_Name: stageTest
   m_EditorClassIdentifier: 
-  mode: 0
+  scoreMode: 0
+  gameMode: 0
   blocks:
   - position: {x: -4.375, y: 10.833334, z: 0}
     type: 1

@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum StageMode
-{ 
-    Default,
-    Special
-}
+
 public class Stage : MonoBehaviour
 {
     public StageAsset asset;
@@ -17,9 +13,13 @@ public class Stage : MonoBehaviour
         GameManager.instance.isPlay = true;
     }    
 
-    public bool IsClear()
+    public void Update()
     {
-       return asset.IsClear();
+       if(asset.IsClear())
+        {
+
+            //Å¬¸®¾î
+        }
     }
 
     public int GetStars()
