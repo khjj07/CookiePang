@@ -36,7 +36,7 @@ public abstract class StageAsset : ScriptableObject
     {
         foreach (var block in blocks)
         {
-            var instance = GameManager.instance.CreateBlock(block.type);
+            var instance = GameManager.instance.CreateBlock(block.type, block.row, block.col);
             instance.transform.position = block.position;
             instance.hp = block.hp;
         }

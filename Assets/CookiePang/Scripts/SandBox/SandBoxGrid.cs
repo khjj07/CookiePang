@@ -5,9 +5,9 @@ using UnityEngine.EventSystems;
 
 public class SandBoxGrid : MonoBehaviour, IPointerEnterHandler , IPointerExitHandler
 {
-    public BlockType targetType=BlockType.NONE;
     public Block target = null;
-
+    public int row;
+    public int column;
     public void OnPointerEnter(PointerEventData eventData)
     {
         SandBoxUI.instance.current = this;

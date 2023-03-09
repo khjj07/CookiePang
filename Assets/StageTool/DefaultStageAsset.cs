@@ -41,7 +41,14 @@ public class DefaultStageAsset : StageAsset
 
     public override bool IsClear()
     {
-        return GameManager.instance.blocks.Count == 0;
+        foreach (var b in GameManager.instance.blocks)
+        {
+            if(b)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public override int GetStars()

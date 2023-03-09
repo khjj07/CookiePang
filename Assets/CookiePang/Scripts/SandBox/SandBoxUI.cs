@@ -25,17 +25,17 @@ public class SandBoxUI : Singleton<SandBoxUI>
     [SerializeField]
     private SandBoxGrid sandBoxGridPrefab;
     [SerializeField]
-    private float offset = 1;
+    private BlockType currentBlockType = BlockType.DEFAULT;
 
     private SandBoxGrid[,] _sandBoxGrids;
 
     private int _column = 9;
     private int _row = 9;
-
     [Header("UI")]
     #region UI
     public int blockDefaultHP;
 
+    public TMP_Dropdown dropdown;
     public TextMeshProUGUI gameMode;
     public Slider blockDefaultHPSlider;
     public Slider ballDeadline1Slider;
@@ -69,6 +69,8 @@ public class SandBoxUI : Singleton<SandBoxUI>
     // Start is called before the first frame update
     void Start()
     {
+        _row = GameManager.instance._row;
+        _column = GameManager.instance._column;
         _sandBoxGrids = new SandBoxGrid[_row, _column];
         for (int i = 0; i < _row; i++)
         {
@@ -76,7 +78,9 @@ public class SandBoxUI : Singleton<SandBoxUI>
             {
                 var instance = Instantiate(sandBoxGridPrefab.gameObject);
                 instance.transform.SetParent(transform, false);
-                instance.GetComponent<RectTransform>().localPosition = new Vector3((i + 1) * offset - Screen.width / 2, Screen.height / 2 - (j + 1) * offset, 0);
+                instance.GetComponent<SandBoxGrid>().row = i;
+                instance.GetComponent<SandBoxGrid>().column = j;
+                instance.GetComponent<RectTransform>().localPosition = GameManager.instance.gridPosition[i, j];
                 _sandBoxGrids[i, j] = instance.GetComponent<SandBoxGrid>();
             }
         }
@@ -88,12 +92,10 @@ public class SandBoxUI : Singleton<SandBoxUI>
                 {
                     GameManager.instance.DeleteBlock(current.target);
                     current.target = null;
-
                 }
-                current.targetType = (BlockType)((int)++current.targetType % (int)(BlockType.DEFAULT + 1));
-                if (current.targetType != BlockType.NONE)
+                else
                 {
-                    var block = GameManager.instance.CreateBlock(current.targetType);
+                    var block = GameManager.instance.CreateBlock(currentBlockType, current.row,current.column);
                     var blockPos = current.GetComponent<RectTransform>().position;
                     blockPos.z = 0;
                     block.transform.position = blockPos;
@@ -123,7 +125,7 @@ public class SandBoxUI : Singleton<SandBoxUI>
     }
     public void Update()
     {
-
+        currentBlockType = (BlockType)dropdown.value;
         foreach (var group in scoreModeGroup)
         {
             group.gameObject.SetActive(false);
@@ -177,7 +179,6 @@ public class SandBoxUI : Singleton<SandBoxUI>
                     asset.initailBallCount = initialBall;
                     break;
             }
-            
         }
     }
 
@@ -185,14 +186,11 @@ public class SandBoxUI : Singleton<SandBoxUI>
     {
         if (currentStageAsset)
         {
-            foreach(var block in GameManager.instance.blocks)
-            {
-                Destroy(block.gameObject);
-            }
-            GameManager.instance.blocks.Clear();
+          
+            GameManager.instance.ClearBlocks();
             foreach (var block in currentStageAsset.blocks)
             {
-               var instance= GameManager.instance.CreateBlock(block.type);
+               var instance= GameManager.instance.CreateBlock(block.type,block.row,block.col);
                 instance.transform.position = block.position;
                 instance.hp = block.hp;
                 _sandBoxGrids[block.row, block.col].target = instance;

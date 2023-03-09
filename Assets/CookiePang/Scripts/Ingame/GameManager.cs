@@ -5,11 +5,9 @@ using UniRx.Triggers;
 using UnityEngine;
 public enum BlockType
 {
-    NONE,
     DEFAULT,
     TELEPORT,
     BOMB
-    
 }
 
 public class GameManager : Singleton<GameManager>
@@ -19,6 +17,14 @@ public class GameManager : Singleton<GameManager>
     public float minHeight = -15.0f;
     public int ballCount;
 
+    public Transform screenCordinate;
+    public Vector3[,] gridPosition;
+    private Vector3 margin = new Vector3(40, 10);
+    public Block[,] blocks;
+    public int _column = 9;
+    public int _row = 9;
+    private float offset = 100;
+
     [SerializeField]
     public Ball ball;
     [SerializeField]
@@ -26,13 +32,24 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, Range(5.0f, 10.0f)]
     private float reflectDotLength;
 
-    public List<Block> blocks = new List<Block>();
-
+   
     private DotLine _dotLine;
 
     public void Start()
     {
         _dotLine = GetComponent<DotLine>();
+        
+        blocks = new Block[_row, _column];
+        
+        gridPosition = new Vector3[_row, _column];
+        for (int i = 0; i < _row; i++)
+        {
+            for (int j = 0; j < _column; j++)
+            {
+                gridPosition[i,j] = margin + new Vector3((j + 1) * offset - Screen.width / 2, Screen.height / 2 - (i + 1) * offset, 0);
+            }
+        }
+
         this.UpdateAsObservable()
             .Where(_ => isPlay)
              .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > minHeight)
@@ -81,14 +98,33 @@ public class GameManager : Singleton<GameManager>
 
     public void DeleteBlock(Block x)
     {
-        blocks.Remove(x);
-        Destroy(x.gameObject);
+        for (int i = 0; i < _row; i++)
+        {
+            for (int j = 0; j < _column; j++)
+            {
+                if(blocks[i,j]==x)
+                {
+                    blocks[i, j] = null;
+                    Destroy(x.gameObject);
+                }
+            }
+        }
     }
 
-    public Block CreateBlock(BlockType x)
+    public void ClearBlocks()
     {
-        var instance = Instantiate(blockPrefabs[(int)x - 1].gameObject);
-        blocks.Add(instance.GetComponent<Block>());
+        foreach (var block in blocks)
+        {
+            if(block != null)
+                Destroy(block.gameObject);
+        }
+        blocks = new Block[_row, _column];
+    }
+
+    public Block CreateBlock(BlockType x,int r,int c)
+    {
+        var instance = Instantiate(blockPrefabs[(int)x].gameObject);
+        blocks[r,c]=instance.GetComponent<Block>();
         return instance.GetComponent<Block>();
     }
 }
