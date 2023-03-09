@@ -96,9 +96,6 @@ public class SandBoxUI : Singleton<SandBoxUI>
                 else
                 {
                     var block = GameManager.instance.CreateBlock(currentBlockType, current.row,current.column);
-                    var blockPos = current.GetComponent<RectTransform>().position;
-                    blockPos.z = 0;
-                    block.transform.position = blockPos;
                     block.hp = blockDefaultHP;
                     current.target = block;
                 }
@@ -190,8 +187,7 @@ public class SandBoxUI : Singleton<SandBoxUI>
             GameManager.instance.ClearBlocks();
             foreach (var block in currentStageAsset.blocks)
             {
-               var instance= GameManager.instance.CreateBlock(block.type,block.row,block.col);
-                instance.transform.position = block.position;
+               var instance= GameManager.instance.CreateBlock(block.type,block.row,block.col);           
                 instance.hp = block.hp;
                 _sandBoxGrids[block.row, block.col].target = instance;
             }

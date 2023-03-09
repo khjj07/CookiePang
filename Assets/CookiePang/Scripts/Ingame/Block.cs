@@ -5,7 +5,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[ExecuteAlways]
 public class Block : MonoBehaviour
 {
     [Range(1, 10000)]
@@ -22,12 +21,11 @@ public class Block : MonoBehaviour
     {
         _textMeshPro.SetText(hp.ToString());
     }
-
-    protected virtual void OnTriggerEnter(Collider collider)
+    public virtual void OnCollsionEnter(Collision collision)
     {
-        if (collider.gameObject.CompareTag("Ball"))
+        if (collision.gameObject.CompareTag("Ball"))
         {
-            hp -= collider.GetComponent<Ball>().damage;
+            hp -= collision.collider.GetComponent<Ball>().damage;
             if (hp <= 0)
             {
                 GameManager.instance.DeleteBlock(this);
@@ -37,7 +35,7 @@ public class Block : MonoBehaviour
     public virtual BlockData ToData()
     {
         BlockData data = new BlockData();
-        data.position = transform.position;
+        //data.position = transform.position;
         data.hp = this.hp;
         data.type = BlockType.DEFAULT;
         return data;

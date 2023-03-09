@@ -7,23 +7,30 @@ public class TeleportationBlock : Block
     public TeleportationBlock destination;
     private bool _ballEntered = false;
 
-    protected override void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-        if (other.CompareTag("Ball") && !_ballEntered)
-        {
-            destination._ballEntered = true;
-            other.transform.position = destination.transform.position;
-        }
-    }
 
-    protected void OnTriggerExit(Collider other)
+    protected override void Update()
     {
-        if (other.CompareTag("Ball") && _ballEntered)
-        {
-            _ballEntered = false;
-        }
+
     }
+//     private void OnTriggerEnter(Collider other)
+//     {
+//         if (other.CompareTag("Ball") && !_ballEntered)
+//         {
+//             if(destination)
+//             {
+//                 destination._ballEntered = true;
+//                 other.transform.position = destination.transform.position;
+//             }
+//         }
+//     }
+// 
+//     private void OnTriggerExit(Collider other)
+//     {
+//         if (other.CompareTag("Ball") && _ballEntered)
+//         {
+//             _ballEntered = false;
+//         }
+//     }
 
     public override BlockData ToData()
     {

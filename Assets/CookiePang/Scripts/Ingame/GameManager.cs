@@ -124,6 +124,8 @@ public class GameManager : Singleton<GameManager>
     public Block CreateBlock(BlockType x,int r,int c)
     {
         var instance = Instantiate(blockPrefabs[(int)x].gameObject);
+        instance.transform.parent = screenCordinate;
+        instance.transform.localPosition = gridPosition[r,c];
         blocks[r,c]=instance.GetComponent<Block>();
         return instance.GetComponent<Block>();
     }
