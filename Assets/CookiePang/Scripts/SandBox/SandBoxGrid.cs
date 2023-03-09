@@ -7,6 +7,8 @@ public class SandBoxGrid : MonoBehaviour, IPointerEnterHandler , IPointerExitHan
 {
     public BlockType targetType=BlockType.NONE;
     public Block target = null;
+    public int row;
+    public int column;
 
     public void OnPointerEnter(PointerEventData eventData)
     {

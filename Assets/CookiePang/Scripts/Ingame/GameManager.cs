@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
-public enum BlockType
-{
-    NONE,
-    DEFAULT,
-    TELEPORT,
-    BOMB
-    
-}
+using System.Linq;
 
 public class GameManager : Singleton<GameManager>
 {
+
+    public Block[,] blocks;
+    public Vector3[,] blocksPosition;
+    public int _column = 9;
+    public int _row = 9;
+
     public bool isPlay;
     public float shootPower;
     public float minHeight = -15.0f;
@@ -25,13 +24,23 @@ public class GameManager : Singleton<GameManager>
     private Block[] blockPrefabs;
     [SerializeField, Range(5.0f, 10.0f)]
     private float reflectDotLength;
-
-    public List<Block> blocks = new List<Block>();
-
     private DotLine _dotLine;
+
+    [SerializeField]
+    private float offset = 110;
 
     public void Start()
     {
+        blocks = new Block[_row, _column];
+        blocksPosition = new Vector3[_row, _column];
+        for (int i = 0; i < _row; i++)
+        {
+            for (int j = 0; j < _column; j++)
+            {
+                blocksPosition[i,j] = Camera.main.ScreenToWorldPoint(new Vector3((i + 1) * offset - Screen.width / 2, Screen.height / 2 - (j + 1) * offset, 0));
+                blocksPosition[i, j].z=0;
+            }
+        }
         _dotLine = GetComponent<DotLine>();
         this.UpdateAsObservable()
             .Where(_ => isPlay)
@@ -76,19 +85,40 @@ public class GameManager : Singleton<GameManager>
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
             });
-  
+
     }
 
     public void DeleteBlock(Block x)
     {
-        blocks.Remove(x);
-        Destroy(x.gameObject);
+
+        for (int i = 0; i < _row; i++)
+        {
+            for (int j = 0; j < _column; j++)
+            {
+                if (blocks[i, j] == x)
+                {
+                    blocks[i, j] = null;
+                    Destroy(x.gameObject);
+                    return;
+                }
+            }
+        }
     }
 
-    public Block CreateBlock(BlockType x)
+    public void ClearBlock()
+    {
+        foreach (var block in blocks)
+        {
+            Destroy(block.gameObject);
+        }
+        blocks = new Block[_row, _column];
+    }
+
+    public Block CreateBlock(BlockType x, int row, int column)
     {
         var instance = Instantiate(blockPrefabs[(int)x - 1].gameObject);
-        blocks.Add(instance.GetComponent<Block>());
+        blocks[row, column] = instance.GetComponent<Block>();
+        instance.transform.position = blocksPosition[row,column];
         return instance.GetComponent<Block>();
     }
 }

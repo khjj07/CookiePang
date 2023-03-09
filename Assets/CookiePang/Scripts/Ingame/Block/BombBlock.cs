@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class BombBlock : Block
 {
+    //재구현 필요
     public int damage = 99;
     Vector3 currentSize;
+    
     void Awake()
     {
         currentSize = this.gameObject.GetComponent<BoxCollider>().size;
     }
-    void OnTriggerEnter(Collider other)
+
+    public virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
         {
             StartCoroutine(Bomb());
         }
     }
+
     IEnumerator Bomb()
     {
         this.gameObject.GetComponent<BoxCollider>().size = new Vector3(5, 5, 1);
