@@ -42,3 +42,12 @@ public class TeleportationBlockData : BlockData
         destinationCol = destc;
     }
 }
+
+[Serializable]
+public class BombBlockData : BlockData
+{
+    public BombBlockData(int h, int r, int c) : base(h, r, c)
+    {
+        type = BlockType.BOMB;
+    }
+}

@@ -680,7 +680,7 @@ MonoBehaviour:
   blockPrefabs:
   - {fileID: 3022753129872882506, guid: 18497c1c07025e246a9060c7fa1477e2, type: 3}
   - {fileID: -4672851573033685177, guid: 39febc0de5e483b4ebce71a323c0d92d, type: 3}
-  - {fileID: 3022753129872882506, guid: 18497c1c07025e246a9060c7fa1477e2, type: 3}
+  - {fileID: -8934176636264706175, guid: e3ed0011802c00e489ee85ced83a7d01, type: 3}
   reflectDotLength: 5
 --- !u!114 &8273944591444230212
 MonoBehaviour:

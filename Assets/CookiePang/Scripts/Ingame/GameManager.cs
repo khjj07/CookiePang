@@ -32,21 +32,21 @@ public class GameManager : Singleton<GameManager>
     [SerializeField, Range(5.0f, 10.0f)]
     private float reflectDotLength;
 
-   
+
     private DotLine _dotLine;
 
     public void Start()
     {
         _dotLine = GetComponent<DotLine>();
-        
+
         blocks = new Block[_row, _column];
-        
+
         gridPosition = new Vector3[_row, _column];
         for (int i = 0; i < _row; i++)
         {
             for (int j = 0; j < _column; j++)
             {
-                gridPosition[i,j] = margin + new Vector3((j + 1) * offset - Screen.width / 2, Screen.height / 2 - (i + 1) * offset, 0);
+                gridPosition[i, j] = margin + new Vector3((j + 1) * offset - Screen.width / 2, Screen.height / 2 - (i + 1) * offset, 0);
             }
         }
 
@@ -93,7 +93,7 @@ public class GameManager : Singleton<GameManager>
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
             });
-  
+
     }
 
     public void DeleteBlock(Block x)
@@ -102,7 +102,7 @@ public class GameManager : Singleton<GameManager>
         {
             for (int j = 0; j < _column; j++)
             {
-                if(blocks[i,j]==x)
+                if (blocks[i, j] == x)
                 {
                     blocks[i, j] = null;
                     Destroy(x.gameObject);
@@ -115,21 +115,21 @@ public class GameManager : Singleton<GameManager>
     {
         foreach (var block in blocks)
         {
-            if(block != null)
+            if (block != null)
                 Destroy(block.gameObject);
         }
         blocks = new Block[_row, _column];
     }
 
-    public Block CreateBlock(BlockType x,int r,int c)
+    public Block CreateBlock(BlockType x, int r, int c)
     {
         var instance = Instantiate(blockPrefabs[(int)x].gameObject);
         instance.transform.parent = screenCordinate;
-        instance.transform.localPosition = gridPosition[r,c];
-        blocks[r,c]=instance.GetComponent<Block>();
+        instance.transform.localPosition = gridPosition[r, c];
+        blocks[r, c] = instance.GetComponent<Block>();
         return instance.GetComponent<Block>();
     }
-    
+
 
     public Vector2Int GetBlockIndex(Block x)
     {
@@ -144,5 +144,38 @@ public class GameManager : Singleton<GameManager>
             }
         }
         return new Vector2Int(-1, -1); ;
+    }
+
+    public void Explode(Block x)
+    {
+        int explosionX = -10;
+        int explosionY = -10;
+        for (int i = 0; i < _row; i++)
+        {
+            for (int j = 0; j < _column; j++)
+            {
+                if (blocks[i, j] == x)
+                {
+                    explosionX = j;
+                    explosionY = i;
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < _row; i++)
+        {
+            for (int j = 0; j < _column; j++)
+            {
+                if (i >= explosionY - 1 && i <= explosionY + 1 && j >= explosionX - 1 && j <= explosionX + 1)
+                {
+                    if (blocks[i, j])
+                    {
+                        Destroy(blocks[i, j].gameObject);
+                        blocks[i, j] = null;
+                    }
+                }
+            }
+        }
+
     }
 }
