@@ -21,23 +21,24 @@ public class Block : MonoBehaviour
     {
         _textMeshPro.SetText(hp.ToString());
     }
-    public virtual void OnCollsionEnter(Collision collision)
+    public virtual void Hit(int damage)
     {
-        if (collision.gameObject.CompareTag("Ball"))
+        hp -= damage;
+        if (hp <= 0)
         {
-            hp -= collision.collider.GetComponent<Ball>().damage;
-            if (hp <= 0)
-            {
-                GameManager.instance.DeleteBlock(this);
-            }
+            GameManager.instance.DeleteBlock(this);
         }
     }
-    public virtual BlockData ToData()
+
+    public virtual BlockData ToData(int row, int column)
     {
-        BlockData data = new BlockData();
+        DefaultBlockData data = new DefaultBlockData(hp, row, column);
         //data.position = transform.position;
-        data.hp = this.hp;
-        data.type = BlockType.DEFAULT;
         return data;
+    }
+
+    public virtual void GetData(BlockData data)
+    {
+        hp = data.hp;
     }
 }

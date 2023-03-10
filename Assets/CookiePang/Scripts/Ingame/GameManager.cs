@@ -129,4 +129,20 @@ public class GameManager : Singleton<GameManager>
         blocks[r,c]=instance.GetComponent<Block>();
         return instance.GetComponent<Block>();
     }
+    
+
+    public Vector2Int GetBlockIndex(Block x)
+    {
+        for (int i = 0; i < _row; i++)
+        {
+            for (int j = 0; j < _column; j++)
+            {
+                if (blocks[i, j] == x)
+                {
+                    return new Vector2Int(i, j);
+                }
+            }
+        }
+        return new Vector2Int(-1, -1); ;
+    }
 }

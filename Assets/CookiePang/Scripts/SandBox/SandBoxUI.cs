@@ -85,6 +85,25 @@ public class SandBoxUI : Singleton<SandBoxUI>
             }
         }
 
+        var stream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(1) && current)
+            .Select(x => current.target)
+            .Where(x => x.GetType() == typeof(TeleportationBlock))
+            .SelectMany(x => this.UpdateAsObservable().Select(_ => x))
+            .Where(x => Input.GetMouseButtonDown(1) && current)
+            .Take(1)
+            .Subscribe(x =>
+            {
+                if (x.GetType() == typeof(TeleportationBlock))
+                {
+                    var _x = (TeleportationBlock)x;
+                    var _y = (TeleportationBlock)current.target;
+                    _x.destination = _y;
+                    _y.destination = _x;
+                    Debug.Log("teleportation registered");
+                }
+            });
+
+
         this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0) && current)
             .Subscribe(_ =>
             {
@@ -95,7 +114,7 @@ public class SandBoxUI : Singleton<SandBoxUI>
                 }
                 else
                 {
-                    var block = GameManager.instance.CreateBlock(currentBlockType, current.row,current.column);
+                    var block = GameManager.instance.CreateBlock(currentBlockType, current.row, current.column);
                     block.hp = blockDefaultHP;
                     current.target = block;
                 }
@@ -105,7 +124,7 @@ public class SandBoxUI : Singleton<SandBoxUI>
             {
                 if (current.target)
                 {
-                   current.target.hp++;
+                    current.target.hp++;
                 }
             });
         this.UpdateAsObservable().Where(_ => Input.GetMouseButton(1) && Input.GetKeyDown(KeyCode.Alpha2) && current)
@@ -113,9 +132,9 @@ public class SandBoxUI : Singleton<SandBoxUI>
            {
                if (current.target)
                {
-                   if(current.target.hp>0)
+                   if (current.target.hp > 0)
                    {
-                        current.target.hp--;
+                       current.target.hp--;
                    }
                }
            });
@@ -148,11 +167,9 @@ public class SandBoxUI : Singleton<SandBoxUI>
         {
             for (int j = 0; j < _column; j++)
             {
-                if(_sandBoxGrids[i, j].target)
+                if (_sandBoxGrids[i, j].target)
                 {
-                    var block = _sandBoxGrids[i, j].target.ToData();
-                    block.row = i;
-                    block.col = j;
+                    var block = _sandBoxGrids[i, j].target.ToData(i, j);
                     data.Add(block);
                 }
             }
@@ -162,14 +179,14 @@ public class SandBoxUI : Singleton<SandBoxUI>
 
     public void SaveStage()
     {
-        if(currentStageAsset)
+        if (currentStageAsset)
         {
             List<BlockData> blockData = SaveBlockToData();
             currentStageAsset.blocks = blockData;
             switch (currentStageAsset.gameMode)
             {
-                case GameMode.Default :
-                    DefaultStageAsset asset =  (DefaultStageAsset)currentStageAsset;
+                case GameMode.Default:
+                    DefaultStageAsset asset = (DefaultStageAsset)currentStageAsset;
                     asset.ballDeadLine[0] = ballDeadLine[0];
                     asset.ballDeadLine[1] = ballDeadLine[1];
                     asset.ballDeadLine[2] = ballDeadLine[2];
@@ -183,26 +200,27 @@ public class SandBoxUI : Singleton<SandBoxUI>
     {
         if (currentStageAsset)
         {
-          
+
             GameManager.instance.ClearBlocks();
             foreach (var block in currentStageAsset.blocks)
             {
-               var instance= GameManager.instance.CreateBlock(block.type,block.row,block.col);           
-                instance.hp = block.hp;
+
+                var instance = GameManager.instance.CreateBlock(block.type, block.row, block.col);
+                instance.GetData(block);
                 _sandBoxGrids[block.row, block.col].target = instance;
             }
 
-           
-           initialBall = currentStageAsset.initailBallCount;
-           initialBallSlider.value = initialBall;
+
+            initialBall = currentStageAsset.initailBallCount;
+            initialBallSlider.value = initialBall;
 
             switch (currentStageAsset.gameMode)
             {
                 case GameMode.Default:
                     DefaultStageAsset asset = (DefaultStageAsset)currentStageAsset;
-                    ballDeadLine[0]= asset.ballDeadLine[0];
-                    ballDeadLine[1]= asset.ballDeadLine[1];
-                    ballDeadLine[2]= asset.ballDeadLine[2];
+                    ballDeadLine[0] = asset.ballDeadLine[0];
+                    ballDeadLine[1] = asset.ballDeadLine[1];
+                    ballDeadLine[2] = asset.ballDeadLine[2];
                     ballDeadline1Slider.value = ballDeadLine[0];
                     ballDeadline2Slider.value = ballDeadLine[1];
                     ballDeadline3Slider.value = ballDeadLine[2];

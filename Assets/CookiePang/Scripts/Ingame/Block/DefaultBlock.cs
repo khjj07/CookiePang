@@ -5,8 +5,5 @@ using UnityEngine;
 
 public class DefaultBlock : Block
 {
-    protected override void Start()
-    { 
-        base.Start();
-    }
+
 }

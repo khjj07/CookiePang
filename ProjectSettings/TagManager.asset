@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Ball
   - BombBlock
+  - Block
   layers:
   - Default
   - TransparentFX

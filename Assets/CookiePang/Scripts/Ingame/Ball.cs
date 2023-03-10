@@ -9,11 +9,15 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-       if(collision.collider.CompareTag("Floor"))
+        if (collision.collider.CompareTag("Floor"))
        {
             isFloor = true;
             GetComponent<Rigidbody>().velocity = Vector3.zero; 
        }
+        if(collision.collider.CompareTag("Block"))
+        {
+            collision.collider.GetComponent<Block>().Hit(damage);
+        }
     }
 
     public void Shoot(Vector3 shootForce)
