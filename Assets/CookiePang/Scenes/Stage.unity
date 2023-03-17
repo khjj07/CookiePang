@@ -611,6 +611,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 6359345366481425365, guid: 3e0e325381d0c3047a35cab3ab881a83, type: 3}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 131055598940841538, guid: 69eb4486e7dff8d438ec99e7991019a0, type: 3}
     - target: {fileID: 8273944591645553317, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: m_RootOrder
       value: 3

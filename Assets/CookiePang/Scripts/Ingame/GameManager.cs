@@ -7,7 +7,10 @@ public enum BlockType
 {
     DEFAULT,
     TELEPORT,
-    BOMB
+    BOMB,
+    POWER,
+    JELLY
+
 }
 
 public class GameManager : Singleton<GameManager>
