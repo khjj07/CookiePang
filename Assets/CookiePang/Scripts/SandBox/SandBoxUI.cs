@@ -158,7 +158,10 @@ public class SandBoxUI : Singleton<SandBoxUI>
         }
         return data;
     }
-
+    public void ClearStage()
+    {
+        GameManager.instance.ClearBlocks();
+    }
     public void SaveStage()
     {
         if (currentStageAsset)
