@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PowerBlock : Block
 {
+    protected virtual void Update()
+    {
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Ball"))
