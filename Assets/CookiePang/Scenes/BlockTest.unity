@@ -178,8 +178,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Essential
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8249889093844455506, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
 --- !u!1 &1068843231
 GameObject:
@@ -256,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207a1cd3d84bdfe42bec2462dc2dd61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 11400000, guid: 4c6d1b2c5eaea01469dfa2439703fc59, type: 2}
+  asset: {fileID: 0}
 --- !u!4 &2102785623
 Transform:
   m_ObjectHideFlags: 0

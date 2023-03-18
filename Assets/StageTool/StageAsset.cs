@@ -32,6 +32,11 @@ public abstract class StageAsset : ScriptableObject
         gameMode = GameMode.Default;
     }
 
+    private void OnEnable()
+    {
+        EditorUtility.SetDirty(this);
+    }
+
     public virtual void Initialize()
     {
         foreach (var block in blocks)

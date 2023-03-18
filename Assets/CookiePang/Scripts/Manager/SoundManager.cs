@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class SoundManager_2 : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
-    public static SoundManager_2 instance;
+
     AudioSource audioSource;
 
     public AudioClip buttonClickSound;
@@ -15,18 +15,10 @@ public class SoundManager_2 : MonoBehaviour
     public AudioClip bombSound;
     public AudioClip teleportionSound;
 
-    void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
-
 
     public void ButtonClickSound()
     {

@@ -26,7 +26,7 @@ public class Block : MonoBehaviour
         hp -= damage;
         if (hp <= 0)
         {
-            SoundManager_2.instance.BlockDieSound();
+            //SoundManager.instance.BlockDieSound();
             GameManager.instance.DeleteBlock(this);
         }
     }
