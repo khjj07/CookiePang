@@ -785,7 +785,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 186684593}
   m_HandleRect: {fileID: 963327309}
   m_Direction: 0
-  m_MinValue: 1
+  m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 1
@@ -1733,7 +1733,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5411507273782017500, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6163511724956743445, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: m_RootOrder

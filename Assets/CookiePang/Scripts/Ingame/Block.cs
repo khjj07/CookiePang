@@ -10,7 +10,7 @@ public class Block : MonoBehaviour
     [Range(1, 10000)]
     public int hp;
 
-    private TextMeshPro _textMeshPro;
+    protected TextMeshPro _textMeshPro;
 
     protected virtual void Start()
     {
@@ -26,7 +26,7 @@ public class Block : MonoBehaviour
         hp -= damage;
         if (hp <= 0)
         {
-            //SoundManager.instance.BlockDieSound();
+            SoundManager.instance.PlaySound(1, "CookieBreak1Sound");
             GameManager.instance.DeleteBlock(this);
         }
     }

@@ -165,19 +165,24 @@ public class GameManager : Singleton<GameManager>
                 }
             }
         }
+
         for (int i = 0; i < _row; i++)
         {
             for (int j = 0; j < _column; j++)
             {
-                if (i >= explosionY - 1 && i <= explosionY + 1 && j >= explosionX - 1 && j <= explosionX + 1)
+                if (explosionY >= 0 && explosionX >= 0 && explosionY < _row && explosionX < _column)
                 {
-                    if (blocks[i, j])
+                    if (i >= explosionY - 1 && i <= explosionY + 1 && j >= explosionX - 1 && j <= explosionX + 1)
                     {
-                        blocks[i, j].Hit(1);
+                        if (blocks[i, j] && blocks[i, j] != x)
+                        {
+                            blocks[i, j].Hit(1);
+                        }
                     }
                 }
+
             }
         }
-
+        DeleteBlock(x);
     }
 }
