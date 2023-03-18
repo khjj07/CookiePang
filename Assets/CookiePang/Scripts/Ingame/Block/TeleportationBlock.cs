@@ -31,6 +31,7 @@ public class TeleportationBlock : Block
             {
                 destination._ballEntered = true;
                 other.transform.position = destination.transform.position;
+                SoundManager.instance.PlaySound(1, "TeleportSound");
             }
         }
     }
