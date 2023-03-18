@@ -51,3 +51,18 @@ public class BombBlockData : BlockData
         type = BlockType.BOMB;
     }
 }
+
+public class PowerBlockData : BlockData
+{
+    public PowerBlockData(int h, int r, int c) : base(h, r, c)
+    {
+        type = BlockType.POWER;
+    }
+}
+public class JellyBlockData : BlockData
+{
+    public JellyBlockData(int h, int r, int c) : base(h, r, c)
+    {
+        type = BlockType.JELLY;
+    }
+}
