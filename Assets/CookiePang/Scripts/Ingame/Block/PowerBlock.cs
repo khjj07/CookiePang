@@ -9,7 +9,7 @@ public class PowerBlock : Block
         if (collision.collider.CompareTag("Ball"))
         {
             collision.gameObject.GetComponent<Ball>().damage += 1;
-            SoundManager_2.instance.BlockDieSound();
+            //SoundManager_2.instance.BlockDieSound();
         }
         
     }

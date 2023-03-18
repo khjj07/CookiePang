@@ -16,36 +16,24 @@ MonoBehaviour:
   gameMode: 0
   blocks:
   - type: 0
-    hp: 1
-    row: 3
-    col: 4
+    hp: 2
+    row: 0
+    col: 0
   - type: 0
-    hp: 1
+    hp: 2
+    row: 2
+    col: 8
+  - type: 0
+    hp: 2
     row: 4
-    col: 3
+    col: 0
   - type: 0
-    hp: 1
-    row: 4
-    col: 5
-  - type: 0
-    hp: 1
-    row: 5
-    col: 1
-  - type: 0
-    hp: 1
+    hp: 2
     row: 6
     col: 4
   - type: 0
-    hp: 1
+    hp: 2
     row: 6
-    col: 7
-  - type: 0
-    hp: 1
-    row: 7
-    col: 2
-  - type: 0
-    hp: 1
-    row: 8
-    col: 3
-  initailBallCount: 1
-  ballDeadLine: 010000000100000001000000
+    col: 8
+  initailBallCount: 8
+  ballDeadLine: 010000000200000004000000
