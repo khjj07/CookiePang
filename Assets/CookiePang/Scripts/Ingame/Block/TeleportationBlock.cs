@@ -1,17 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TeleportationBlock : Block
 {
     public TeleportationBlock destination;
     private bool _ballEntered = false;
 
-
-    protected override void Update()
+    protected override void Start()
     {
-
+        base.Start();
+        foreach(var block in GameManager.instance.blocks)
+        {
+            if( block != this && block as TeleportationBlock && hp == block.hp)
+            {
+                destination = (TeleportationBlock)block;
+                break;
+            }
+        }
+        if(!SceneManager.GetActiveScene().name.Equals("SandBox"))
+            _textMeshPro.gameObject.SetActive(false);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball") && !_ballEntered)

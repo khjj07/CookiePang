@@ -85,24 +85,6 @@ public class SandBoxUI : Singleton<SandBoxUI>
             }
         }
 
-        var stream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(1) && current)
-            .Select(x => current.target)
-            .Where(x => x.GetType() == typeof(TeleportationBlock))
-            .SelectMany(x => this.UpdateAsObservable().Select(_ => x))
-            .Where(x => Input.GetMouseButtonDown(1) && current)
-            .Take(1)
-            .Subscribe(x =>
-            {
-                if (x.GetType() == typeof(TeleportationBlock))
-                {
-                    var _x = (TeleportationBlock)x;
-                    var _y = (TeleportationBlock)current.target;
-                    _x.destination = _y;
-                    _y.destination = _x;
-                    Debug.Log("teleportation registered");
-                }
-            });
-
 
         this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0) && current)
             .Subscribe(_ =>

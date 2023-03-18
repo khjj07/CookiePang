@@ -10,7 +10,7 @@ public class Block : MonoBehaviour
     [Range(1, 10000)]
     public int hp;
 
-    private TextMeshPro _textMeshPro;
+    protected TextMeshPro _textMeshPro;
 
     protected virtual void Start()
     {
