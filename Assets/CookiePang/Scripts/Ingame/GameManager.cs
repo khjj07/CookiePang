@@ -50,7 +50,7 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
-        this.UpdateAsObservable()
+        this.UpdateAsObservable() //조준점 생성
             .Where(_ => isPlay)
              .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > minHeight)
              .Where(_ =>
@@ -170,8 +170,7 @@ public class GameManager : Singleton<GameManager>
                 {
                     if (blocks[i, j])
                     {
-                        Destroy(blocks[i, j].gameObject);
-                        blocks[i, j] = null;
+                        blocks[i, j].Hit(1);
                     }
                 }
             }

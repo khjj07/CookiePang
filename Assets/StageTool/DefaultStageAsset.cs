@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
+using static UnityEngine.GraphicsBuffer;
 
 [CreateAssetMenu(menuName = "Stage Tool/Create New Default Stage")]
 public class DefaultStageAsset : StageAsset

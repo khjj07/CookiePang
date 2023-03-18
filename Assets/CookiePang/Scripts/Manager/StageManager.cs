@@ -11,7 +11,11 @@ public class StageManager : Singleton<StageManager>
     {
         stageAssets = new List<StageAsset>();
         DontDestroyOnLoad(this);
-        foreach(var stage in Resources.LoadAll("Stage"))
+    }
+
+    private void Start()
+    {
+        foreach (var stage in Resources.LoadAll("Stage"))
         {
             stageAssets.Add((StageAsset)stage);
         }

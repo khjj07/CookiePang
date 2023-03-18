@@ -15,60 +15,37 @@ MonoBehaviour:
   scoreMode: 0
   gameMode: 0
   blocks:
-  - position: {x: -4.375, y: 10.833334, z: 0}
-    type: 1
+  - type: 0
     hp: 1
-    row: 2
+    row: 3
+    col: 4
+  - type: 0
+    hp: 1
+    row: 4
     col: 3
-  - position: {x: -4.375, y: 6.25, z: 0}
-    type: 1
-    hp: 1
-    row: 2
-    col: 5
-  - position: {x: 0.20833334, y: 6.25, z: 0}
-    type: 1
+  - type: 0
     hp: 1
     row: 4
     col: 5
-  - position: {x: 2.5, y: 1.6666667, z: 0}
-    type: 1
+  - type: 0
     hp: 1
     row: 5
-    col: 7
-  - position: {x: 4.791667, y: 8.541667, z: 0}
-    type: 1
+    col: 1
+  - type: 0
     hp: 1
     row: 6
     col: 4
-  - position: {x: 4.791667, y: 6.25, z: 0}
-    type: 1
-    hp: 1
-    row: 6
-    col: 5
-  - position: {x: 4.791667, y: 3.9583335, z: 0}
-    type: 1
-    hp: 1
-    row: 6
-    col: 6
-  - position: {x: 4.791667, y: 1.6666667, z: 0}
-    type: 1
+  - type: 0
     hp: 1
     row: 6
     col: 7
-  - position: {x: 7.0833335, y: 8.541667, z: 0}
-    type: 1
+  - type: 0
     hp: 1
     row: 7
-    col: 4
-  - position: {x: 7.0833335, y: 6.25, z: 0}
-    type: 1
+    col: 2
+  - type: 0
     hp: 1
-    row: 7
-    col: 5
-  - position: {x: 7.0833335, y: 3.9583335, z: 0}
-    type: 1
-    hp: 1
-    row: 7
-    col: 6
-  initailBallCount: 0
+    row: 8
+    col: 3
+  initailBallCount: 1
   ballDeadLine: 010000000100000001000000
