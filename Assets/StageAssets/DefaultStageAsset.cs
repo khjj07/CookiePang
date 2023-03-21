@@ -38,6 +38,13 @@ public class DefaultStageAsset : StageAsset
     public override void Initialize()
     {
         base.Initialize();
+        int count = 0;
+        foreach (var deadline in ballDeadLine)
+        {
+            GameManager.instance.deadline[count] = deadline;
+            count++;
+        }
+
     }
 
     public override bool IsClear()

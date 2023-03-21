@@ -44,7 +44,6 @@ public abstract class StageAsset : ScriptableObject
             var instance = GameManager.instance.CreateBlock(block.type, block.row, block.col);
             instance.GetData(block);
         }
-        GameManager.instance.ballCount = initailBallCount;
     }
     public abstract bool IsClear();
     public abstract int GetStars();

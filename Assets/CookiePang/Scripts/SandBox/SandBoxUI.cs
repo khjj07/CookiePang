@@ -163,7 +163,7 @@ public class SandBoxUI : Singleton<SandBoxUI>
         GameManager.instance.ClearBlocks();
     }
     public void SaveStage()
-    {
+    {   
         if (currentStageAsset)
         {
             List<BlockData> blockData = SaveBlockToData();

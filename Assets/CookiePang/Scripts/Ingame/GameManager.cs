@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.UI;
+
 public enum BlockType
 {
     DEFAULT,
@@ -19,6 +21,7 @@ public class GameManager : Singleton<GameManager>
     public float shootPower;
     public float minHeight = -15.0f;
     public int ballCount;
+    public int[] deadline = new int[3];
 
     public Transform screenCordinate;
     public Vector3[,] gridPosition;
@@ -34,6 +37,9 @@ public class GameManager : Singleton<GameManager>
     private Block[] blockPrefabs;
     [SerializeField, Range(5.0f, 10.0f)]
     private float reflectDotLength;
+
+    [SerializeField]
+    public StarSlider starSlider;
 
 
     private DotLine _dotLine;
@@ -52,6 +58,15 @@ public class GameManager : Singleton<GameManager>
                 gridPosition[i, j] = margin + new Vector3((j + 1) * offset - Screen.width / 2, Screen.height / 2 - (i + 1) * offset, 0);
             }
         }
+
+        this.UpdateAsObservable().
+            Subscribe(_ =>
+            {
+                for(int i = 0; i < 3; i++)
+                { 
+                    starSlider.SetStar(i, deadline[i]);
+                }
+            });
 
         this.UpdateAsObservable() //조준점 생성
             .Where(_ => isPlay)
@@ -97,6 +112,7 @@ public class GameManager : Singleton<GameManager>
                 ball.Shoot(direction * shootPower);//Shoot
             });
 
+        
     }
 
     public void DeleteBlock(Block x)
