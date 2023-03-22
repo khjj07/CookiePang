@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneFlowManager : MonoBehaviour
 {
-    public GameObject settingPanel;
+    public GameObject panel;
+    public GameObject[] checkPanel;
     // Start is called before the first frame update
     public static void ChangeScene(string name)
     {
@@ -16,15 +17,29 @@ public class SceneFlowManager : MonoBehaviour
     {
         Application.Quit();
     }
-    public void OnSettingPanel()
+    public void OpenPanel()
     {
-        if (settingPanel.activeSelf)
+        if (panel.activeSelf)
         {
-            settingPanel.SetActive(false);
+            panel.SetActive(false);
         }
         else
         {
-            settingPanel.SetActive(true);
+            panel.SetActive(true);
         }
+    }
+
+    //다시체크
+    public void ReCheckPanel(int index) 
+    {
+        if (checkPanel[index].activeSelf)
+        {
+            checkPanel[index].SetActive(false);
+        }
+        else
+        {
+            checkPanel[index].SetActive(true);
+        }
+        
     }
 }
