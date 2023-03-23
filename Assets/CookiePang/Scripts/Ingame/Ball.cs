@@ -13,7 +13,17 @@ public class Ball : MonoBehaviour
             SoundManager.instance.PlaySound(1, "BallCrushSound");
             isFloor = true;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
-                 
+
+            if (GameManager.instance.isClear) 
+            { 
+                SoundManager.instance.PlaySound(1, "StageClearSound");
+                GameManager.instance.StageClear();
+            }
+            else if (GameManager.instance.ballCount <= 0) 
+            {
+                SoundManager.instance.PlaySound(1, "StageFailSound");
+                GameManager.instance.GameOver();
+            }
         }
         if(collision.collider.CompareTag("Block"))
         {

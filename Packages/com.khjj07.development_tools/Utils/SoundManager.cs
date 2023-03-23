@@ -61,6 +61,8 @@ public class SoundManager : Singleton<SoundManager>
 
     private void Awake()
     {
+        PlaySound(0, "MainSound");
+       
         if (DontDestroy)
             DontDestroyOnLoad(this.gameObject);
     }

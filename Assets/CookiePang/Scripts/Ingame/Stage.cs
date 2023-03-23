@@ -6,7 +6,12 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     public StageAsset asset;
-   
+
+    void Awake()
+    {
+       SoundManager.instance.PlaySound(0, "IngameSound");
+
+    }
     public void Start()
     {
         asset = StageManager.instance.GetCurrentStage();

@@ -132,18 +132,18 @@ public class GameManager : Singleton<GameManager>
                 ballCount--;
             });
 
-        this.UpdateAsObservable()
-          .Where(_ => ballCount <= 0)
-          .Subscribe(_ =>
-          {
-              GameOver();
-          });
-        this.UpdateAsObservable()
-          .Where(_ => isClear) 
-          .Subscribe(_ =>
-          {
-              StageClear();
-          });
+        //this.UpdateAsObservable()
+        //  .Where(_ => ballCount <= 0)
+        //  .Subscribe(_ =>
+        //  {
+        //      GameOver();
+        //  });
+        //this.UpdateAsObservable()
+        //  .Where(_ => isClear) 
+        //  .Subscribe(_ =>
+        //  {
+        //      StageClear();
+        //  });
     }
 
     public void StageClear()
