@@ -6,14 +6,14 @@ public class Ball : MonoBehaviour
 {
     public int damage=1;
     public bool isFloor=true;
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Floor"))
         {
             SoundManager.instance.PlaySound(1, "BallCrushSound");
             isFloor = true;
-            GetComponent<Rigidbody>().velocity = Vector3.zero; 
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+                 
         }
         if(collision.collider.CompareTag("Block"))
         {

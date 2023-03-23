@@ -39,6 +39,8 @@ public abstract class StageAsset : ScriptableObject
 
     public virtual void Initialize()
     {
+        GameManager.instance.initialBallCount = initailBallCount;
+        GameManager.instance.ballCount = initailBallCount;
         foreach (var block in blocks)
         {
             var instance = GameManager.instance.CreateBlock(block.type, block.row, block.col);

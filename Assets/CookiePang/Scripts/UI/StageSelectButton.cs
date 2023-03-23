@@ -9,11 +9,12 @@ using UnityEngine.UIElements;
 public class StageSelectButton : Button
 {
     public int myIndex;
+
     public override void OnPointerClick(PointerEventData pointerEventData)
     {
-      
-       base.OnPointerClick(pointerEventData);
-       StageManager.instance.SetIndex(myIndex);
+        base.OnPointerClick(pointerEventData);
+        StageManager.instance.SetCurrentByName("stage" + myIndex);
+
     }
 
 }

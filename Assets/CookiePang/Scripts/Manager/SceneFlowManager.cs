@@ -11,6 +11,7 @@ public class SceneFlowManager : MonoBehaviour
     public static void ChangeScene(string name)
     {
         SceneManager.LoadSceneAsync(name,LoadSceneMode.Single);
+        GameManager.instance.isClear = false;
     }
 
     public void GameQuitButton() 
@@ -42,4 +43,7 @@ public class SceneFlowManager : MonoBehaviour
         }
         
     }
+   
+
+
 }

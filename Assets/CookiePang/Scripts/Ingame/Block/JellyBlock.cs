@@ -10,7 +10,7 @@ public class JellyBlock : Block
     }
     public override void Hit(int damage)
     {
-        
+         
     }
     public override BlockData ToData(int row, int column)
     {

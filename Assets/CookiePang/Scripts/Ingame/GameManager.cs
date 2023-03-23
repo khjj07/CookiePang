@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum BlockType
@@ -20,16 +21,18 @@ public class GameManager : Singleton<GameManager>
     public bool isPlay;
     public float shootPower;
     public float minHeight = -15.0f;
+    public int initialBallCount;
     public int ballCount;
     public int[] deadline = new int[3];
 
     public Transform screenCordinate;
     public Vector3[,] gridPosition;
-    private Vector3 margin = new Vector3(40, 10);
+    private float marginLeft = -30;
+    private float marginTop= 110;
     public Block[,] blocks;
     public int _column = 9;
     public int _row = 9;
-    private float offset = 100;
+    private float offset = 115;
 
     [SerializeField]
     public Ball ball;
@@ -43,7 +46,14 @@ public class GameManager : Singleton<GameManager>
 
 
     private DotLine _dotLine;
-
+    [Header("추가")]
+    [SerializeField]
+    private GameObject successPanel;
+    [SerializeField]
+    private GameObject failPanel;
+    [SerializeField]
+    private Text ballCntTxt;
+    public bool isClear = false;
     public void Start()
     {
         _dotLine = GetComponent<DotLine>();
@@ -55,9 +65,16 @@ public class GameManager : Singleton<GameManager>
         {
             for (int j = 0; j < _column; j++)
             {
-                gridPosition[i, j] = margin + new Vector3((j + 1) * offset - Screen.width / 2, Screen.height / 2 - (i + 1) * offset, 0);
+                gridPosition[i, j] = new Vector3(marginLeft+(j + 1) * offset - Screen.width / 2, -marginTop+Screen.height / 2 - (i + 1) * offset, 0);
             }
         }
+
+        this.UpdateAsObservable().Subscribe(_ =>
+        {
+            starSlider.SetFillArea(ballCount);
+        });
+
+
 
         this.UpdateAsObservable().
             Subscribe(_ =>
@@ -102,18 +119,43 @@ public class GameManager : Singleton<GameManager>
 
         this.UpdateAsObservable()
             .Where(_ => isPlay)
+            .Where(_ => ballCount>0)
             .Where(_ => Input.GetMouseButtonUp(0) && ball.isFloor) //마우스 업 && ball이 땅에 있다면
             .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > minHeight)
+            .Where(_ => EventSystem.current.IsPointerOverGameObject() == false) //ui위에 있으면 슈팅못하게
             .Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition)) //마우스 위치를 필터링
             .Subscribe(mousePos =>
             {
                 mousePos.z = 0;
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
+                ballCount--;
             });
 
-        
+        this.UpdateAsObservable()
+          .Where(_ => ballCount <= 0)
+          .Subscribe(_ =>
+          {
+              GameOver();
+          });
+        this.UpdateAsObservable()
+          .Where(_ => isClear) 
+          .Subscribe(_ =>
+          {
+              StageClear();
+          });
     }
+
+    public void StageClear()
+    {
+        successPanel.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        failPanel.SetActive(true);
+    }
+
 
     public void DeleteBlock(Block x)
     {
@@ -200,5 +242,9 @@ public class GameManager : Singleton<GameManager>
             }
         }
         DeleteBlock(x);
+    }
+    private void LateUpdate()
+    {
+        ballCntTxt.text = "남은 공 : " + (ballCount - 1);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     public StageAsset asset;
-
+   
     public void Start()
     {
         asset = StageManager.instance.GetCurrentStage();
@@ -22,8 +22,7 @@ public class Stage : MonoBehaviour
     {
        if(asset.IsClear())
         {
-
-            //Å¬¸®¾î
+            GameManager.instance.isClear = true;
         }
     }
 
