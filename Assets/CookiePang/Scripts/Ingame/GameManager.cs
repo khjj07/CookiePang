@@ -27,7 +27,8 @@ public class GameManager : Singleton<GameManager>
 
     public Transform screenCordinate;
     public Vector3[,] gridPosition;
-    private Vector3 margin = new Vector3(40, 10);
+    private float marginLeft = -30;
+    private float marginTop= 110;
     public Block[,] blocks;
     public int _column = 9;
     public int _row = 9;
@@ -57,7 +58,7 @@ public class GameManager : Singleton<GameManager>
         {
             for (int j = 0; j < _column; j++)
             {
-                gridPosition[i, j] = margin + new Vector3((j + 1) * offset - Screen.width / 2, Screen.height / 2 - (i + 1) * offset, 0);
+                gridPosition[i, j] = new Vector3(marginLeft+(j + 1) * offset - Screen.width / 2, -marginTop+Screen.height / 2 - (i + 1) * offset, 0);
             }
         }
 

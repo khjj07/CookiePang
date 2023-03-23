@@ -1866,10 +1866,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5411507273782017500, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6163511724956743445, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1914,30 +1910,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
-      propertyPath: reflectDotLength
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
-      propertyPath: blockPrefabs.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
-      propertyPath: blockPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: -4672851573033685177, guid: 39febc0de5e483b4ebce71a323c0d92d, type: 3}
-    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
-      propertyPath: blockPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: -8934176636264706175, guid: e3ed0011802c00e489ee85ced83a7d01, type: 3}
-    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
-      propertyPath: blockPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 6359345366481425365, guid: 3e0e325381d0c3047a35cab3ab881a83, type: 3}
-    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
-      propertyPath: blockPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 131055598940841538, guid: 69eb4486e7dff8d438ec99e7991019a0, type: 3}
     - target: {fileID: 9189633971154522043, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: m_Name
       value: Essential
