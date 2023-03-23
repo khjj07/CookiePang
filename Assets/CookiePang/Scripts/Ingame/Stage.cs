@@ -22,8 +22,7 @@ public class Stage : MonoBehaviour
     {
        if(asset.IsClear())
         {
-
-            //Å¬¸®¾î
+            GameManager.instance.StageClear();
         }
     }
 

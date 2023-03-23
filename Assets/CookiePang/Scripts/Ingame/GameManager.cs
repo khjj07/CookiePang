@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
     public bool isPlay;
     public float shootPower;
     public float minHeight = -15.0f;
+    public int initialBallCount;
     public int ballCount;
     public int[] deadline = new int[3];
 
@@ -58,6 +59,13 @@ public class GameManager : Singleton<GameManager>
                 gridPosition[i, j] = margin + new Vector3((j + 1) * offset - Screen.width / 2, Screen.height / 2 - (i + 1) * offset, 0);
             }
         }
+
+        this.UpdateAsObservable().Subscribe(_ =>
+        {
+            starSlider.SetFillArea(ballCount);
+        });
+
+
 
         this.UpdateAsObservable().
             Subscribe(_ =>
@@ -102,6 +110,7 @@ public class GameManager : Singleton<GameManager>
 
         this.UpdateAsObservable()
             .Where(_ => isPlay)
+            .Where(_ => ballCount>0)
             .Where(_ => Input.GetMouseButtonUp(0) && ball.isFloor) //마우스 업 && ball이 땅에 있다면
             .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > minHeight)
             .Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition)) //마우스 위치를 필터링
@@ -110,10 +119,27 @@ public class GameManager : Singleton<GameManager>
                 mousePos.z = 0;
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
+                ballCount--;
             });
 
-        
+        this.UpdateAsObservable()
+          .Where(_ => ballCount <= 0)
+          .Subscribe(_ =>
+          {
+              GameOver();
+          });
     }
+
+    public void StageClear()
+    {
+
+    }
+
+    public void GameOver()
+    {
+
+    }
+
 
     public void DeleteBlock(Block x)
     {
