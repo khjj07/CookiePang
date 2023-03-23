@@ -111,5 +111,5 @@ MonoBehaviour:
     hp: 1
     row: 6
     col: 8
-  initailBallCount: 1
-  ballDeadLine: 000000000100000001000000
+  initailBallCount: 8
+  ballDeadLine: 000000000200000004000000
