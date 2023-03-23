@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum BlockType
@@ -113,6 +114,7 @@ public class GameManager : Singleton<GameManager>
             .Where(_ => ballCount>0)
             .Where(_ => Input.GetMouseButtonUp(0) && ball.isFloor) //마우스 업 && ball이 땅에 있다면
             .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > minHeight)
+            .Where(_ => EventSystem.current.IsPointerOverGameObject() == false) //ui위에 있으면 슈팅못하게
             .Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition)) //마우스 위치를 필터링
             .Subscribe(mousePos =>
             {

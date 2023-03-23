@@ -6,7 +6,7 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     public StageAsset asset;
-
+    public GameObject clearPanel;
     public void Start()
     {
         asset = StageManager.instance.GetCurrentStage();
@@ -22,7 +22,8 @@ public class Stage : MonoBehaviour
     {
        if(asset.IsClear())
         {
-            GameManager.instance.StageClear();
+            clearPanel.SetActive(true);
+            //Å¬¸®¾î
         }
     }
 
