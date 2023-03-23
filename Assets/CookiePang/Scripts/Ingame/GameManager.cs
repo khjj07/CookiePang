@@ -31,7 +31,7 @@ public class GameManager : Singleton<GameManager>
     public Block[,] blocks;
     public int _column = 9;
     public int _row = 9;
-    private float offset = 100;
+    private float offset = 115;
 
     [SerializeField]
     public Ball ball;

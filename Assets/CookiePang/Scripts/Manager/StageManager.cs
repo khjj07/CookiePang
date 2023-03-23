@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StageManager : Singleton<StageManager>
 {
     public List<StageAsset> stageAssets;
-    public int index = 0;
+    public StageAsset current;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -23,14 +26,19 @@ public class StageManager : Singleton<StageManager>
 
     public StageAsset GetCurrentStage()
     {
-        if(stageAssets.Count>index)
-            return stageAssets[index];
-        else
-            return null;
+        return current;
     }
 
-    public void SetIndex(int val)
+    public void SetCurrentByName(string name)
     {
-        index = val;
+      var c = from stage in stageAssets
+              where stage.name.Equals(name)
+              select stage;
+
+        foreach (var stage in c)
+        {
+           current= stage;
+           break;
+        }
     }
 }

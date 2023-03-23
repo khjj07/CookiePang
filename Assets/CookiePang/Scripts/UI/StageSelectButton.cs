@@ -13,7 +13,7 @@ public class StageSelectButton : Button
     {
       
        base.OnPointerClick(pointerEventData);
-       StageManager.instance.SetIndex(myIndex);
+       StageManager.instance.SetCurrentByName("stage"+myIndex);
     }
 
 }
