@@ -46,7 +46,14 @@ public class GameManager : Singleton<GameManager>
 
 
     private DotLine _dotLine;
-
+    [Header("추가")]
+    [SerializeField]
+    private GameObject successPanel;
+    [SerializeField]
+    private GameObject failPanel;
+    [SerializeField]
+    private Text ballCntTxt;
+    public bool isClear = false;
     public void Start()
     {
         _dotLine = GetComponent<DotLine>();
@@ -131,16 +138,22 @@ public class GameManager : Singleton<GameManager>
           {
               GameOver();
           });
+        this.UpdateAsObservable()
+          .Where(_ => isClear) 
+          .Subscribe(_ =>
+          {
+              StageClear();
+          });
     }
 
     public void StageClear()
     {
-
+        successPanel.SetActive(true);
     }
 
     public void GameOver()
     {
-
+        failPanel.SetActive(true);
     }
 
 
@@ -229,5 +242,9 @@ public class GameManager : Singleton<GameManager>
             }
         }
         DeleteBlock(x);
+    }
+    private void LateUpdate()
+    {
+        ballCntTxt.text = "남은 공 : " + (ballCount - 1);
     }
 }
