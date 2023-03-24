@@ -15,10 +15,6 @@ MonoBehaviour:
   scoreMode: 0
   gameMode: 0
   blocks:
-  - type: 1
-    hp: 1
-    row: 0
-    col: 6
   - type: 0
     hp: 1
     row: 2
@@ -47,10 +43,6 @@ MonoBehaviour:
     hp: 1
     row: 4
     col: 3
-  - type: 1
-    hp: 1
-    row: 4
-    col: 4
   - type: 0
     hp: 1
     row: 4
@@ -103,5 +95,5 @@ MonoBehaviour:
     hp: 1
     row: 8
     col: 6
-  initailBallCount: 11
-  ballDeadLine: 000000000400000007000000
+  initailBallCount: 1
+  ballDeadLine: 000000000100000001000000
