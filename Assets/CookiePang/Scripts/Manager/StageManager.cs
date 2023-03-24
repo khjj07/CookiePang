@@ -9,7 +9,6 @@ public class StageManager : Singleton<StageManager>
 {
     public List<StageAsset> stageAssets;
     public StageAsset current;
-    
     // Start is called before the first frame update
     private void Awake()
     {

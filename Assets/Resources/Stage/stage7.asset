@@ -35,6 +35,14 @@ MonoBehaviour:
     hp: 1
     row: 4
     col: 3
+  - type: 2
+    hp: 1
+    row: 4
+    col: 4
+  - type: 2
+    hp: 1
+    row: 4
+    col: 5
   - type: 0
     hp: 1
     row: 4
@@ -55,5 +63,5 @@ MonoBehaviour:
     hp: 1
     row: 8
     col: 6
-  initailBallCount: 1
-  ballDeadLine: 000000000100000001000000
+  initailBallCount: 10
+  ballDeadLine: 000000000300000006000000
