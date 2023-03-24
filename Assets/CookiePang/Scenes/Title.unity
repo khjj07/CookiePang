@@ -791,6 +791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1100811004}
   checkPanel: []
+  selectButton: {fileID: 0}
 --- !u!1 &779656349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,7 +1006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[1].ClipList.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[2].ClipList.Array.size
@@ -1050,6 +1051,14 @@ PrefabInstance:
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[1].ClipList.Array.data[7].Name
       value: StageFailSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[8].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: fa71d6d3e2ebfe647ad7d3aa911e3686, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[8].Name
+      value: JellyBlockSound
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[2].ClipList.Array.data[0].Clip

@@ -7,11 +7,6 @@ public class Stage : MonoBehaviour
 {
     public StageAsset asset;
 
-    void Awake()
-    {
-       SoundManager.instance.PlaySound(0, "IngameSound");
-
-    }
     public void Start()
     {
         asset = StageManager.instance.GetCurrentStage();
@@ -21,6 +16,7 @@ public class Stage : MonoBehaviour
             Destroy(gameObject);
         
         GameManager.instance.isPlay = true;
+        SoundManager.instance.PlaySound(0, "IngameSound");
     }    
 
     public void Update()

@@ -5,15 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneFlowManager : MonoBehaviour
 {
-    public GameObject panel;
-    public GameObject[] checkPanel;
+
+    [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject[] checkPanel;
     // Start is called before the first frame update
     public static void ChangeScene(string name)
     {
         SceneManager.LoadSceneAsync(name,LoadSceneMode.Single);
         GameManager.instance.isClear = false;
     }
-
     public void GameQuitButton() 
     {
         Application.Quit();
@@ -27,6 +27,7 @@ public class SceneFlowManager : MonoBehaviour
         else
         {
             panel.SetActive(true);
+            SoundManager.instance.PlaySound(1, "ButtonSound");
         }
     }
 
@@ -40,6 +41,7 @@ public class SceneFlowManager : MonoBehaviour
         else
         {
             checkPanel[index].SetActive(true);
+            SoundManager.instance.PlaySound(1, "ButtonSound");
         }
         
     }
