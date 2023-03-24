@@ -16,5 +16,5 @@ public class StageSelectButton : Button
         StageManager.instance.SetCurrentByName("stage" + myIndex);
 
     }
-
+    
 }
