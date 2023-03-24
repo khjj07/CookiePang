@@ -14,14 +14,14 @@ public class Ball : MonoBehaviour
             isFloor = true;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
 
+            //클리어,게임오버 코드추가
+            IsClear(); 
             if (GameManager.instance.isClear) 
-            { 
-                SoundManager.instance.PlaySound(1, "StageClearSound");
-                GameManager.instance.StageClear();
+            {
+                GameManager.instance.StageClear(); 
             }
             else if (GameManager.instance.ballCount <= 0) 
             {
-                SoundManager.instance.PlaySound(1, "StageFailSound");
                 GameManager.instance.GameOver();
             }
         }
@@ -40,5 +40,16 @@ public class Ball : MonoBehaviour
     {
         GetComponent<Rigidbody>().AddForce(shootForce, ForceMode.Impulse);
         isFloor = false;
+    }
+    //임시코드
+    private void IsClear()
+    {
+        DefaultBlock defaultBlock = FindObjectOfType<DefaultBlock>();
+        
+        if (defaultBlock == null)
+        {
+            GameManager.instance.isClear = true;
+        }
+        
     }
 }

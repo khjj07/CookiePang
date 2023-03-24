@@ -149,11 +149,13 @@ public class GameManager : Singleton<GameManager>
     public void StageClear()
     {
         successPanel.SetActive(true);
+        SoundManager.instance.PlaySound(1, "StageClearSound");
     }
 
     public void GameOver()
     {
         failPanel.SetActive(true);
+        SoundManager.instance.PlaySound(1, "StageFailSound");
     }
 
 

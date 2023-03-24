@@ -3303,12 +3303,12 @@ GameObject:
   - component: {fileID: 1941825866}
   - component: {fileID: 1941825865}
   m_Layer: 5
-  m_Name: SeletStageButton
+  m_Name: BackSceneButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1941825864
 RectTransform:
   m_ObjectHideFlags: 0
