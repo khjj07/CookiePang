@@ -9,7 +9,6 @@ public class PoisonBlock : Block
         if (collision.collider.CompareTag("Ball"))
         {
             GameManager.instance.GameOver();
-            //SoundManager_2.instance.BlockDieSound();
         }
 
     }
