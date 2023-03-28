@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     public int damage=1;
     public bool isFloor=true;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Floor"))
@@ -41,6 +42,7 @@ public class Ball : MonoBehaviour
 
     public void Shoot(Vector3 shootForce)
     {
+        
         GetComponent<Rigidbody>().AddForce(shootForce, ForceMode.Impulse);
         isFloor = false;
     }
@@ -55,4 +57,5 @@ public class Ball : MonoBehaviour
         }
         
     }
+
 }
