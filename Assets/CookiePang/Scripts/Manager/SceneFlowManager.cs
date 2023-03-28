@@ -45,13 +45,13 @@ public class SceneFlowManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance == null)
+        if (GameManager.instance == null) //홈, 스테이지 선택화면
         {
             Time.timeScale = 1;
         }
         else
         {
-            if (panel.active)
+            if (panel.active) //판넬만 
             {
                 GameManager.instance.isPlay = false;
                 Time.timeScale = 0;
@@ -59,10 +59,18 @@ public class SceneFlowManager : MonoBehaviour
             else
             {
                 GameManager.instance.isPlay = true;
-                Time.timeScale = 1;
+                if (GameManager.instance.ball.isTimeScale)
+                {
+                    Time.timeScale = 3;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                }
+                
             }
 
-            if(GameManager.instance.successPanel.activeSelf || GameManager.instance.failPanel.activeSelf)
+            if(GameManager.instance.successPanel.activeSelf || GameManager.instance.failPanel.activeSelf) //클리어, 게임오버만
             {
                 GameManager.instance.isPlay = false;
             }
