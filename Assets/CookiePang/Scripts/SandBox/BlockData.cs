@@ -66,3 +66,10 @@ public class JellyBlockData : BlockData
         type = BlockType.JELLY;
     }
 }
+public class PoisonBlockData : BlockData
+{
+    public PoisonBlockData(int h, int r, int c) : base(h, r, c)
+    {
+        type = BlockType.POISON;
+    }
+}

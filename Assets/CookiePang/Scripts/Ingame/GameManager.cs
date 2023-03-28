@@ -12,8 +12,8 @@ public enum BlockType
     TELEPORT,
     BOMB,
     POWER,
-    JELLY
-
+    JELLY,
+    POISON
 }
 
 public class GameManager : Singleton<GameManager>
@@ -43,17 +43,17 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField]
     public StarSlider starSlider;
-
-
     private DotLine _dotLine;
     [Header("추가")]
-    [SerializeField]
-    private GameObject successPanel;
-    [SerializeField]
-    private GameObject failPanel;
+    public GameObject successPanel;
+    public GameObject failPanel;
     [SerializeField]
     private Text ballCntTxt;
     public bool isClear = false;
+
+    float objectTimeScale;
+
+
     public void Start()
     {
         _dotLine = GetComponent<DotLine>();
@@ -131,19 +131,14 @@ public class GameManager : Singleton<GameManager>
                 ball.Shoot(direction * shootPower);//Shoot
                 ballCount--;
             });
-
+       
         //this.UpdateAsObservable()
         //  .Where(_ => ballCount <= 0)
         //  .Subscribe(_ =>
         //  {
         //      GameOver();
         //  });
-        //this.UpdateAsObservable()
-        //  .Where(_ => isClear) 
-        //  .Subscribe(_ =>
-        //  {
-        //      StageClear();
-        //  });
+       
     }
 
     public void StageClear()
@@ -247,6 +242,6 @@ public class GameManager : Singleton<GameManager>
     }
     private void LateUpdate()
     {
-        ballCntTxt.text = "남은 공 : " + (ballCount - 1);
+        ballCntTxt.text = "남은 공 : " + ballCount;
     }
 }
