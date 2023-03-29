@@ -44,7 +44,7 @@ public class SceneFlowManager : MonoBehaviour
     }
     public void BallRecoveryButton()
     {
-        GameManager.instance.ball.transform.position = GameManager.instance.ball.currentBallPos;
+        //GameManager.instance.ball.transform.position = GameManager.instance.ball.currentBallPos;
         GameManager.instance.ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
         GameManager.instance.ball.isFloor = true;
     }
