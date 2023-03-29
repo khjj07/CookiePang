@@ -44,6 +44,10 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     public StarSlider starSlider;
     private DotLine _dotLine;
+    private float _ballRadius;
+    [SerializeField]
+    private GameObject _dummyBall;
+
     [Header("추가")]
     public GameObject successPanel;
     public GameObject failPanel;
@@ -57,7 +61,8 @@ public class GameManager : Singleton<GameManager>
     public void Start()
     {
         _dotLine = GetComponent<DotLine>();
-
+        _ballRadius = ball.GetComponent<CircleCollider2D>().radius;
+        _dummyBall.SetActive(false);
         blocks = new Block[_row, _column];
 
         gridPosition = new Vector3[_row, _column];
@@ -94,27 +99,26 @@ public class GameManager : Singleton<GameManager>
                  mousePos.z = 0;
                  var ballPos = ball.transform.position;
                  var direction = Vector3.Normalize(mousePos - ballPos);
-                 return Input.GetMouseButton(0) && ball.isFloor && Physics.Raycast(ballPos, direction);
+                 return Input.GetMouseButton(0) && ball.isFloor && Physics2D.CircleCast(ballPos, _ballRadius, direction);
              }).Select(_ =>
              {
                  var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                  mousePos.z = 0;
                  var ballPos = ball.transform.position;
                  var direction = Vector3.Normalize(mousePos - ballPos);
-                 RaycastHit hit;
-                 Physics.Raycast(ballPos, direction, out hit);
-                 return hit;
+                 return Physics2D.CircleCast(ballPos, _ballRadius, direction);
              }).Subscribe(hit =>
              {
                  _dotLine.points.Clear();
                  _dotLine.points.Add(ball.transform.position);
-                 _dotLine.points.Add(hit.point);
-
-                 var direction = Vector3.Normalize(hit.point - ball.transform.position);
+                 _dotLine.points.Add(hit.centroid);
+                 var direction = Vector3.Normalize(new Vector3(hit.centroid.x,hit.centroid.y,0) - ball.transform.position);
                  var endPos = Vector3.Reflect(direction, hit.normal) * reflectDotLength;
-                 _dotLine.points.Add(hit.point + endPos);
-
+                 _dotLine.points.Add(new Vector3(hit.centroid.x, hit.centroid.y, 0) + endPos);
                  _dotLine.DrawDotLine();
+                 //투명하게 공표시
+                 _dummyBall.SetActive(true);
+                 _dummyBall.transform.position = hit.centroid;
              });
 
         this.UpdateAsObservable()
@@ -129,6 +133,7 @@ public class GameManager : Singleton<GameManager>
                 mousePos.z = 0;
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
+                _dummyBall.SetActive(false);
                 ballCount--;
             });
        

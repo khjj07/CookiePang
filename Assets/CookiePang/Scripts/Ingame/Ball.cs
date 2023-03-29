@@ -9,13 +9,13 @@ public class Ball : MonoBehaviour
     private float ballTimeScale = 10f; //TimeScale 감소할 변수
     private float currentBallTimeScale = 10f; //TimeScale 초기화 변수
     public bool isTimeScale = false; //TimeScale 확인변수
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Floor"))
         {
             SoundManager.instance.PlaySound(1, "BallCrushSound");
             isFloor = true;
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 
             //클리어,게임오버 코드추가
             IsClear(); 
@@ -45,7 +45,7 @@ public class Ball : MonoBehaviour
     public void Shoot(Vector3 shootForce)
     {
         
-        GetComponent<Rigidbody>().AddForce(shootForce, ForceMode.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(shootForce, ForceMode2D.Impulse);
         isFloor = false;
     }
     //임시코드
