@@ -9,10 +9,18 @@ public class Ball : MonoBehaviour
     private float ballTimeScale = 10f; //TimeScale 감소할 변수
     private float currentBallTimeScale = 10f; //TimeScale 초기화 변수
     public bool isTimeScale = false; //TimeScale 확인변수
+    public Vector3 defaultBallPos; //처음 공위치
+    public Vector3 currentBallPos; //마지막으로 던진 공위치
+    private void Start()
+    {
+        defaultBallPos = transform.position;
+        currentBallPos = transform.position;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Floor"))
         {
+            currentBallPos = transform.position; //공위치 업데이트
             SoundManager.instance.PlaySound(1, "BallCrushSound");
             isFloor = true;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
