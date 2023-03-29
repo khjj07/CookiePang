@@ -9,6 +9,9 @@ public class PoisonBlock : Block
         if (collision.collider.CompareTag("Ball"))
         {
             GameManager.instance.GameOver();
+            GameManager.instance.ball.transform.position = GameManager.instance.ball.defaultBallPos;
+            GameManager.instance.ball.isFloor = false;
+            GameManager.instance.ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 
     }
