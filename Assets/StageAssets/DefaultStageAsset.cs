@@ -49,12 +49,9 @@ public class DefaultStageAsset : StageAsset
 
     public override bool IsClear()
     {
-        foreach (var b in GameManager.instance.blocks)
+        if (GameManager.instance._breakableBlocks.Count > 0)
         {
-            if(b)
-            {
-                return false;
-            }
+            return false;
         }
         return true;
     }
@@ -62,9 +59,9 @@ public class DefaultStageAsset : StageAsset
     public override int GetStars()
     {
         int stars = 0;
-        foreach(var deadline in ballDeadLine)
+        foreach (var deadline in ballDeadLine)
         {
-            if(deadline<GameManager.instance.ballCount)
+            if (deadline < GameManager.instance.ballCount)
             {
                 stars++;
             }

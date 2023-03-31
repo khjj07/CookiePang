@@ -6,7 +6,9 @@ public class PowerBlock : Block
 {
     protected virtual void Update()
     {
+
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ball"))
@@ -16,6 +18,7 @@ public class PowerBlock : Block
         }
         
     }
+
     public override BlockData ToData(int row, int column)
     {
         PowerBlockData data = new PowerBlockData(hp, row, column);

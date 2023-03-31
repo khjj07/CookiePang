@@ -1,18 +1,16 @@
-using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements.Experimental;
-using UnityEngine.UIElements;
 
-public class StageSelectButton : Button
+public class NextStageButton : Button
 {
-    public int myIndex;
+    // Start is called before the first frame update
     public override void OnPointerClick(PointerEventData pointerEventData)
     {
         base.OnPointerClick(pointerEventData);
-         StageManager.instance.SetCurrent(myIndex);
+        StageManager.instance.SetCurrent(++StageManager.instance.currentIndex);
         SceneFlowManager.ChangeScene("Stage");
     }
 }

@@ -15,7 +15,7 @@ public class Stage : MonoBehaviour
         else
             Destroy(gameObject);
         
-        GameManager.instance.isPlay = true;
+        GameManager.instance.PlayGame();
         SoundManager.instance.PlaySound(0, "IngameSound");
     }    
 
@@ -23,7 +23,7 @@ public class Stage : MonoBehaviour
     {
        if(asset.IsClear())
         {
-            
+            GameManager.instance.isClear = true;
         }
     }
 
