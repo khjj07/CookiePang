@@ -32,7 +32,7 @@ public class StageManager : Singleton<StageManager>
 
     public void SetCurrent(int num)
     {
-        currentIndex = num;
+      currentIndex = num;
       var c = from stage in stageAssets
               where stage.name.Equals("stage"+ currentIndex)
               select stage;
