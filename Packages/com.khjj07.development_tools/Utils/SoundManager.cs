@@ -28,14 +28,15 @@ public class PlayerStruct
     }
     public void PlaySound(string name, float volume = 1f)
     {
-        if (Loop)
-        {
             Instance.volume = Volume * volume;
             Instance.clip = ClipList.Find(x => x.Name.Equals(name)).Clip;
-            Instance.Play();
-        }
-        else
+            Instance.loop = Loop;
             Instance.PlayOneShot(ClipList.Find(x => x.Name.Equals(name)).Clip, Volume * volume);
+    }
+
+    public void SetVolume(float volume)
+    {
+        Volume = volume;
     }
 }
 
@@ -67,9 +68,14 @@ public class SoundManager : Singleton<SoundManager>
         
     }
 
-    public void PlaySound(int index, string name, float volume = 1f)
+    public void PlaySound(int channel, string name, float volume = 1f)
     {
-        PlayerStruct player = Player[index];
+        PlayerStruct player = Player[channel];
         player.PlaySound(name,volume);
+    }
+    public void SetVolume(int channel,float volume)
+    {
+        PlayerStruct player = Player[channel];
+        player.SetVolume(volume);
     }
 }

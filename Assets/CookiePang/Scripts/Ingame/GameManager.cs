@@ -35,6 +35,8 @@ public class GameManager : Singleton<GameManager>
     public Block[,] blocks;
     public int _column = 9;
     public int _row = 9;
+
+    public bool isTimeScaleUp = false;
     private float offset = 115;
 
     [SerializeField]
@@ -64,6 +66,18 @@ public class GameManager : Singleton<GameManager>
 
     private float _currentTimeScale=1.0f;
 
+
+    public void TimeScaleUp()
+    {
+        if(isTimeScaleUp)
+        {
+            Time.timeScale = 1.0f;
+        }
+        else
+        {
+            Time.timeScale = 3.0f;
+        }
+    }
     public void PlayGame()
     {
         isPlay = true;
@@ -92,13 +106,14 @@ public class GameManager : Singleton<GameManager>
         SceneFlowManager.ChangeScene("Stage");
     }
 
-    private IEnumerator TimeScaleUp()
+/*    private IEnumerator TimeScaleUp()
     {
         yield return new WaitForSeconds(timeScaleUpDelay);
         Time.timeScale = 3.0f;
         Debug.Log("speedup");
         yield return null;
     }
+*/
     public void Awake()
     {
         blocks = new Block[_row, _column];
@@ -179,8 +194,8 @@ public class GameManager : Singleton<GameManager>
                 ball.Shoot(direction * shootPower);//Shoot
                 _dummyBall.SetActive(false);
                 ballCount--;
-                _timeScaleUpRoutine = TimeScaleUp();
-                StartCoroutine(_timeScaleUpRoutine);
+                //_timeScaleUpRoutine = TimeScaleUp();
+                //StartCoroutine(_timeScaleUpRoutine);
             });//°ø ¹ß»ç
 
         
@@ -191,7 +206,7 @@ public class GameManager : Singleton<GameManager>
                  Time.timeScale = 1;
                  if(_timeScaleUpRoutine != null)
                  {
-                     StopCoroutine(_timeScaleUpRoutine);
+                     //StopCoroutine(_timeScaleUpRoutine);
                  }
              });
 
