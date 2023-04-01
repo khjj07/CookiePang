@@ -1817,6 +1817,7 @@ MonoBehaviour:
   stageAssets: []
   current: {fileID: 0}
   currentIndex: 0
+  selectButtonPrefab: {fileID: 6119127042071375622, guid: b7c3b6c7b7598dd4baa711db80a38dc5, type: 3}
 --- !u!1 &1725493472
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,36 +13,33 @@ public class TeleportationBlock : Block
     protected override void Start()
     {
         base.Start();
-        foreach(var block in GameManager.instance.blocks)
+        foreach (var block in GameManager.instance.blocks)
         {
-            if( block != this && block as TeleportationBlock && hp == block.hp)
+            if (block != this && block as TeleportationBlock && hp == block.hp)
             {
                 destination = (TeleportationBlock)block;
                 break;
             }
         }
-        if(!SceneManager.GetActiveScene().name.Equals("SandBox"))
+        if (!SceneManager.GetActiveScene().name.Equals("SandBox"))
             _textMeshPro.gameObject.SetActive(false);
+
+        this.UpdateAsObservable()
+            .Where(_ => GameManager.instance.ball.isFloor)
+            .Subscribe(_ => { _ballEntered = false; });
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Ball") && !_ballEntered)
         {
             if(destination)
             {
+                _ballEntered=true;
                 destination._ballEntered = true;
                 other.transform.position = destination.transform.position;
                 SoundManager.instance.PlaySound(1, "TeleportSound");
             }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Ball") && _ballEntered)
-        {
-            _ballEntered = false;
         }
     }
 

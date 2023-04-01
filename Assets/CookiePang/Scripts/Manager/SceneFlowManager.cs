@@ -10,6 +10,7 @@ public class SceneFlowManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(name,LoadSceneMode.Single);
     }
+
     public void QuitGame() 
     {
         Application.Quit();

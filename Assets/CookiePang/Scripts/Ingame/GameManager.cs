@@ -196,6 +196,7 @@ public class GameManager : Singleton<GameManager>
              });
 
         this.UpdateAsObservable()
+            .Where(_ => isPlay)
             .Where(_ => ball.isFloor)
             .Where(_ => isClear)
             .Subscribe(_ =>
@@ -204,6 +205,7 @@ public class GameManager : Singleton<GameManager>
             });//스테이지 클리어
 
         this.UpdateAsObservable()
+            .Where(_ => isPlay)
             .Where(_ => ball.isFloor)
             .Where(_ => ballCount <= 0)
             .Subscribe(_ =>
@@ -299,6 +301,8 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
+        DeleteBlock(x);
+
         for (int i = 0; i < _row; i++)
         {
             for (int j = 0; j < _column; j++)
@@ -307,7 +311,7 @@ public class GameManager : Singleton<GameManager>
                 {
                     if (i >= explosionY - 1 && i <= explosionY + 1 && j >= explosionX - 1 && j <= explosionX + 1)
                     {
-                        if (blocks[i, j] && blocks[i, j] != x)
+                        if (blocks[i, j])
                         {
                             blocks[i, j].Hit(1);
                         }
@@ -316,7 +320,7 @@ public class GameManager : Singleton<GameManager>
 
             }
         }
-        DeleteBlock(x);
+        
     }
     private void LateUpdate()
     {
