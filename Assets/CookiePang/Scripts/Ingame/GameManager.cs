@@ -64,6 +64,22 @@ public class GameManager : Singleton<GameManager>
 
     private float _currentTimeScale=1.0f;
 
+
+    //스피드 업 버튼추가
+    public bool isTimeScaleUp = false;
+    public void TimeScaleUp2()
+    {
+        if (!isTimeScaleUp)
+        {
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Time.timeScale = 3f;
+        }
+       
+    }
+       
     public void PlayGame()
     {
         isPlay = true;
@@ -179,21 +195,21 @@ public class GameManager : Singleton<GameManager>
                 ball.Shoot(direction * shootPower);//Shoot
                 _dummyBall.SetActive(false);
                 ballCount--;
-                _timeScaleUpRoutine = TimeScaleUp();
-                StartCoroutine(_timeScaleUpRoutine);
+                //_timeScaleUpRoutine = TimeScaleUp();
+                //StartCoroutine(_timeScaleUpRoutine);
             });//공 발사
 
         
-        this.UpdateAsObservable()
-             .Where(_ => ball.isFloor)
-             .Subscribe(_ =>
-             {
-                 Time.timeScale = 1;
-                 if(_timeScaleUpRoutine != null)
-                 {
-                     StopCoroutine(_timeScaleUpRoutine);
-                 }
-             });
+        //this.UpdateAsObservable()
+        //     .Where(_ => ball.isFloor)
+        //     .Subscribe(_ =>
+        //     {
+        //         Time.timeScale = 1;
+        //         if(_timeScaleUpRoutine != null)
+        //         {
+        //             StopCoroutine(_timeScaleUpRoutine);
+        //         }
+        //     });
 
         this.UpdateAsObservable()
             .Where(_ => ball.isFloor)
@@ -211,6 +227,7 @@ public class GameManager : Singleton<GameManager>
                 GameOver();
             });//게임오버
 
+        
     }
 
     public void StageClear()
