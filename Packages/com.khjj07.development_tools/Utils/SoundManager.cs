@@ -28,10 +28,18 @@ public class PlayerStruct
     }
     public void PlaySound(string name, float volume = 1f)
     {
-            Instance.volume = Volume * volume;
-            Instance.clip = ClipList.Find(x => x.Name.Equals(name)).Clip;
-            Instance.loop = Loop;
+        Instance.volume = Volume * volume;
+        Instance.clip = ClipList.Find(x => x.Name.Equals(name)).Clip;
+        Instance.loop = Loop;
+        if (Loop)
+        {
+            Instance.Play();
+        }
+        else
+        {
             Instance.PlayOneShot(ClipList.Find(x => x.Name.Equals(name)).Clip, Volume * volume);
+        }
+            
     }
 
     public void SetVolume(float volume)
@@ -61,7 +69,7 @@ public class SoundManager : Singleton<SoundManager>
 
     private void Awake()
     {
-        PlaySound(0, "MainSound");
+        
        
         if (DontDestroy)
             DontDestroyOnLoad(this.gameObject);
