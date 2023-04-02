@@ -65,12 +65,10 @@ public class SoundManager : Singleton<SoundManager>
 {
     private bool DontDestroy = true;
     [SerializeField]
-    private List<PlayerStruct> Player;
+    public List<PlayerStruct> Player;
 
     private void Awake()
     {
-        
-       
         if (DontDestroy)
             DontDestroyOnLoad(this.gameObject);
         

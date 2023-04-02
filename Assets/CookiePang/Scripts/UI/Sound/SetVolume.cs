@@ -5,18 +5,17 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 public class SetVolume : MonoBehaviour
 {
-    public AudioMixer mixer;
-    public Slider slider;
-    void Start()
-    {
-        slider.value = SoundManager.instance.GetComponent<AudioSource>().volume;
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private Slider slider;
+    public void BgmSlider()
     {
         SoundManager.instance.SetVolume(0, slider.value);
         SoundManager.instance.GetComponent<AudioSource>().volume = slider.value;
+    }
+    public void SfxSlider()
+    {
+        SoundManager.instance.SetVolume(1, slider.value);
+    }
+    private void Update()
+    {
     }
 }

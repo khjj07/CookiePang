@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.collider.CompareTag("Floor"))
         {
-            SoundManager.instance.PlaySound(1, "BallCrushSound");
+            SoundManager.instance.PlaySound(1, "BallCrushSound"); //, SoundManager.instance.Player[1].Volume
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             isFloor = true;
         }
@@ -19,14 +19,14 @@ public class Ball : MonoBehaviour
         {
             if(collision.collider.gameObject.name != "JellyBlock(Clone)")
             {
-                SoundManager.instance.PlaySound(1, "BallCrushSound");
+                SoundManager.instance.PlaySound(1, "BallCrushSound"); //, SoundManager.instance.Player[1].Volume
             }
             collision.collider.GetComponent<Block>().Hit(damage);
         }
 
         if (collision.collider.CompareTag("Wall"))
         {
-            SoundManager.instance.PlaySound(1, "BallCrushSound");
+            SoundManager.instance.PlaySound(1, "BallCrushSound"); //, SoundManager.instance.Player[1].Volume   
         }
     }
 

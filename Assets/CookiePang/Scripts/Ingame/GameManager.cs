@@ -99,6 +99,8 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 1;
         SceneFlowManager.ChangeScene("StageSelect");
+        SoundManager.instance.PlaySound(0, "MainSound");
+
     }
     public void ResetGame()
     {
