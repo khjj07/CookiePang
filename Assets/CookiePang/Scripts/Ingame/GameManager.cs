@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager>
     public int initialBallCount;
     public int ballCount;
     public int[] deadline = new int[3];
-    public float timeScaleUpDelay = 10.0f;
+    //public float timeScaleUpDelay = 10.0f;
 
     public Transform screenCordinate;
     public Vector3[,] gridPosition;
@@ -69,7 +69,7 @@ public class GameManager : Singleton<GameManager>
 
     public void TimeScaleUp()
     {
-        if(isTimeScaleUp)
+        if(!isTimeScaleUp)
         {
             Time.timeScale = 1.0f;
         }
@@ -201,16 +201,16 @@ public class GameManager : Singleton<GameManager>
             });//°ø ¹ß»ç
 
         
-        this.UpdateAsObservable()
-             .Where(_ => ball.isFloor)
-             .Subscribe(_ =>
-             {
-                 Time.timeScale = 1;
-                 if(_timeScaleUpRoutine != null)
-                 {
-                     //StopCoroutine(_timeScaleUpRoutine);
-                 }
-             });
+        //this.UpdateAsObservable()
+        //     .Where(_ => ball.isFloor)
+        //     .Subscribe(_ =>
+        //     {
+        //         Time.timeScale = 1;
+        //         if(_timeScaleUpRoutine != null)
+        //         {
+        //             //StopCoroutine(_timeScaleUpRoutine);
+        //         }
+        //     });
 
         this.UpdateAsObservable()
             .Where(_ => isPlay)
