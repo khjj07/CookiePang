@@ -26,18 +26,18 @@ public class GameManager : Singleton<GameManager>
     public int initialBallCount;
     public int ballCount;
     public int[] deadline = new int[3];
-    //public float timeScaleUpDelay = 10.0f;
+    public float timeScaleUpDelay = 10.0f;
 
     public Transform screenCordinate;
     public Vector3[,] gridPosition;
-    private float marginLeft = -30;
-    private float marginTop = 110;
+    private float marginLeft = 90;
+    private float marginTop = 360;
     public Block[,] blocks;
     public int _column = 9;
     public int _row = 9;
 
     public bool isTimeScaleUp = false;
-    private float offset = 115;
+    private float offset = 90;
 
     [SerializeField]
     public Ball ball;
@@ -69,7 +69,7 @@ public class GameManager : Singleton<GameManager>
 
     public void TimeScaleUp()
     {
-        if(!isTimeScaleUp)
+        if(isTimeScaleUp)
         {
             Time.timeScale = 1.0f;
         }
@@ -99,8 +99,6 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 1;
         SceneFlowManager.ChangeScene("StageSelect");
-        SoundManager.instance.PlaySound(0, "MainSound");
-
     }
     public void ResetGame()
     {
@@ -175,18 +173,10 @@ public class GameManager : Singleton<GameManager>
                  var direction = Vector3.Normalize(new Vector3(hit.centroid.x, hit.centroid.y, 0) - ball.transform.position);
                  var endPos = Vector3.Reflect(direction, hit.normal) * reflectDotLength;
                  _dotLine.points.Add(new Vector3(hit.centroid.x, hit.centroid.y, 0) + endPos);
-                 
+                 _dotLine.DrawDotLine();
                  //투명하게 공표시
-                 if(EventSystem.current.IsPointerOverGameObject() == false) //ui가 위에 있으면 도트라인&dummyBall 안나오게
-                 {
-                     _dotLine.DrawDotLine();
-                     _dummyBall.SetActive(true);
-                     _dummyBall.transform.position = hit.centroid;
-                 }
-                 else
-                 {
-                     _dummyBall.SetActive(false);
-                 }
+                 _dummyBall.SetActive(true);
+                 _dummyBall.transform.position = hit.centroid;
              });//조준점 생성
 
         var ballShootStream = this.UpdateAsObservable()
@@ -209,16 +199,16 @@ public class GameManager : Singleton<GameManager>
             });//공 발사
 
         
-        //this.UpdateAsObservable()
-        //     .Where(_ => ball.isFloor)
-        //     .Subscribe(_ =>
-        //     {
-        //         Time.timeScale = 1;
-        //         if(_timeScaleUpRoutine != null)
-        //         {
-        //             //StopCoroutine(_timeScaleUpRoutine);
-        //         }
-        //     });
+        this.UpdateAsObservable()
+             .Where(_ => ball.isFloor)
+             .Subscribe(_ =>
+             {
+                 Time.timeScale = 1;
+                 if(_timeScaleUpRoutine != null)
+                 {
+                     //StopCoroutine(_timeScaleUpRoutine);
+                 }
+             });
 
         this.UpdateAsObservable()
             .Where(_ => isPlay)
