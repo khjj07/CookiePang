@@ -63,6 +63,7 @@ public class SoundStruct
 
 public class SoundManager : Singleton<SoundManager>
 {
+    public bool isStartSound = true;
     private bool DontDestroy = true;
     [SerializeField]
     public List<PlayerStruct> Player;

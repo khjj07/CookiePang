@@ -1027,17 +1027,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Essential
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1294725342193386088, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
 --- !u!224 &1525734475 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 540932547, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
-  m_PrefabInstance: {fileID: 1525734474}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1525734476 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 156933163436251373, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
   m_PrefabInstance: {fileID: 1525734474}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1525734477 stripped
@@ -1067,41 +1061,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1632074610, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
   m_PrefabInstance: {fileID: 1525734474}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1525734480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525734476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319694d53e4f11245b2e30ba2528209a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Scaled: {x: 1, y: 1, z: 1}
-  Easing: 0
-  OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1525734477}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: BackToMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  OnExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2087753593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3952780209467163207, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}

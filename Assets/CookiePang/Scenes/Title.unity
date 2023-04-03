@@ -979,6 +979,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: isStartSound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.size
       value: 2
       objectReference: {fileID: 0}
