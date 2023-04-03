@@ -939,6 +939,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7474848988284887644, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474848988284887644, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1525734477}
+    - target: {fileID: 7474848988284887644, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474848988284887644, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7907387700456408438, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1012,7 +1028,6 @@ PrefabInstance:
       value: Essential
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7474848988284887644, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
     - {fileID: 1294725342193386088, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
 --- !u!224 &1525734475 stripped
