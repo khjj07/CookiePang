@@ -175,10 +175,18 @@ public class GameManager : Singleton<GameManager>
                  var direction = Vector3.Normalize(new Vector3(hit.centroid.x, hit.centroid.y, 0) - ball.transform.position);
                  var endPos = Vector3.Reflect(direction, hit.normal) * reflectDotLength;
                  _dotLine.points.Add(new Vector3(hit.centroid.x, hit.centroid.y, 0) + endPos);
-                 _dotLine.DrawDotLine();
+                 
                  //투명하게 공표시
-                 _dummyBall.SetActive(true);
-                 _dummyBall.transform.position = hit.centroid;
+                 if(EventSystem.current.IsPointerOverGameObject() == false) //ui가 위에 있으면 도트라인&dummyBall 안나오게
+                 {
+                     _dotLine.DrawDotLine();
+                     _dummyBall.SetActive(true);
+                     _dummyBall.transform.position = hit.centroid;
+                 }
+                 else
+                 {
+                     _dummyBall.SetActive(false);
+                 }
              });//조준점 생성
 
         var ballShootStream = this.UpdateAsObservable()
