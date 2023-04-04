@@ -10,66 +10,78 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7b87a1308b641544b7e3b359328bc11, type: 3}
-  m_Name: stage10
+  m_Name: stage16
   m_EditorClassIdentifier: 
   scoreMode: 0
   gameMode: 0
   blocks:
   - type: 0
     hp: 1
-    row: 0
-    col: 3
-  - type: 0
-    hp: 1
-    row: 0
-    col: 5
+    row: 1
+    col: 1
   - type: 0
     hp: 1
     row: 1
-    col: 2
+    col: 4
+  - type: 0
+    hp: 1
+    row: 1
+    col: 5
   - type: 0
     hp: 1
     row: 1
     col: 6
   - type: 0
     hp: 1
-    row: 2
-    col: 1
-  - type: 0
-    hp: 1
-    row: 2
+    row: 1
     col: 7
+  - type: 1
+    hp: 1
+    row: 3
+    col: 1
+  - type: 1
+    hp: 1
+    row: 3
+    col: 4
+  - type: 7
+    hp: 0
+    row: 3
+    col: 5
   - type: 4
     hp: 1
-    row: 6
+    row: 4
     col: 0
-  - type: 4
+  - type: 2
     hp: 1
-    row: 6
+    row: 4
     col: 1
-  - type: 4
-    hp: 1
-    row: 6
-    col: 2
-  - type: 4
-    hp: 1
-    row: 6
+  - type: 6
+    hp: 0
+    row: 4
     col: 3
+  - type: 2
+    hp: 1
+    row: 4
+    col: 4
   - type: 4
     hp: 1
-    row: 6
+    row: 4
     col: 5
-  - type: 4
+  - type: 2
     hp: 1
-    row: 6
-    col: 6
-  - type: 4
-    hp: 1
-    row: 6
+    row: 4
     col: 7
   - type: 4
     hp: 1
-    row: 6
+    row: 4
     col: 8
-  initailBallCount: 4
-  stars: 000000000100000002000000
+  - type: 7
+    hp: 0
+    row: 5
+    col: 0
+  - type: 8
+    hp: 0
+    row: 5
+    col: 5
+  initailBallCount: 5
+  stars: 000000000100000001000000
