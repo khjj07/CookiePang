@@ -9,14 +9,10 @@ public class PowerBlock : Block
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public override void Hit(int damage)
     {
-        if (collision.collider.CompareTag("Ball"))
-        {
-            collision.gameObject.GetComponent<Ball>().damage += 1;
-            //SoundManager_2.instance.BlockDieSound();
-        }
-        
+        GameManager.instance.DeleteBlock(this);
+        GameManager.instance.ball.damage += 1;
     }
 
     public override BlockData ToData(int row, int column)

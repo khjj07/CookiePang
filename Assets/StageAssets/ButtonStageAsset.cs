@@ -5,24 +5,24 @@ using UnityEditor;
 using Unity.VisualScripting;
 using static UnityEngine.GraphicsBuffer;
 
-[CreateAssetMenu(menuName = "Stage / Create New Default Stage")]
-public class DefaultStageAsset : StageAsset
+[CreateAssetMenu(menuName = "Stage / Create New Button Stage")]
+public class ButtonStageAsset : StageAsset
 {
-    public DefaultStageAsset()
+    public ButtonStageAsset()
     {
         scoreMode = ScoreMode.BallCount;
-        gameMode = GameMode.Default;
+        gameMode = GameMode.HoleIn;
     }
 
     static public void CreateAsset(int initialBall, int[] stars, List<BlockData> blockData)
     {
-        var stageAsset = CreateInstance<DefaultStageAsset>();
+        var stageAsset = CreateInstance<ButtonStageAsset>();
         stageAsset.blocks = blockData;
         stageAsset.initailBallCount = initialBall;
         stageAsset.stars[0] = stars[0];
         stageAsset.stars[1] = stars[1];
         stageAsset.stars[2] = stars[2];
-        AssetDatabase.CreateAsset(stageAsset, "Assets/CookiePang/Stage/NewDefaultStage.asset");
+        AssetDatabase.CreateAsset(stageAsset, "Assets/CookiePang/Stage/NewButtonStage.asset");
         AssetDatabase.Refresh();
     }
 
@@ -40,9 +40,12 @@ public class DefaultStageAsset : StageAsset
 
     public override bool IsClear()
     {
-        if (GameManager.instance._breakableBlocks.Count > 0)
+        foreach (var button in GameManager.instance._buttons)
         {
-            return false;
+            if(!button.pressed)
+            {
+                return false; 
+            }
         }
         return true;
     }

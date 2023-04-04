@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UniRx;
+using UniRx.Triggers;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class CandyBlock : Block
+{
+    public bool holeIn = false;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Ball") && !holeIn)
+        {
+            GameManager.instance.DeleteBlock(this);
+        }
+    }
+
+    public override BlockData ToData(int row, int column)
+    {
+        CandyBlockData data = new CandyBlockData(row, column);
+        //data.position = transform.position;
+        return data;
+    }
+}

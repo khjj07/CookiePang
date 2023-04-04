@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 47774920}
   - component: {fileID: 47774919}
   m_Layer: 5
-  m_Name: BallDeadline1Header
+  m_Name: Star1Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -847,7 +847,7 @@ GameObject:
   - component: {fileID: 231898332}
   - component: {fileID: 231898333}
   m_Layer: 5
-  m_Name: BallDeadline1Slider
+  m_Name: Star1Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -939,7 +939,7 @@ GameObject:
   - component: {fileID: 250526273}
   - component: {fileID: 250526274}
   m_Layer: 5
-  m_Name: BallDeadLineNumber2
+  m_Name: StarNumber2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 329885210}
   - component: {fileID: 329885211}
   m_Layer: 5
-  m_Name: BallDeadline3Slider
+  m_Name: Star3Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 330237910}
   - component: {fileID: 330237911}
   m_Layer: 5
-  m_Name: BallDeadline2Slider
+  m_Name: Star2Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2020,6 +2020,14 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Poison
       m_Image: {fileID: 0}
+    - m_Text: Hole
+      m_Image: {fileID: 0}
+    - m_Text: Candy
+      m_Image: {fileID: 0}
+    - m_Text: Button
+      m_Image: {fileID: 0}
+    - m_Text: Macaroon
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2300,7 +2308,7 @@ GameObject:
   - component: {fileID: 755128191}
   - component: {fileID: 755128190}
   m_Layer: 5
-  m_Name: BallDeadline3Header
+  m_Name: Star3Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2609,7 +2617,7 @@ GameObject:
   - component: {fileID: 796234932}
   - component: {fileID: 796234933}
   m_Layer: 5
-  m_Name: BallDeadLineNumber3
+  m_Name: StarNumber3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4781,19 +4789,19 @@ MonoBehaviour:
   dropdown: {fileID: 683242270}
   gameMode: {fileID: 786322815}
   blockDefaultHPSlider: {fileID: 812931602}
-  ballDeadline1Slider: {fileID: 231898333}
-  ballDeadline2Slider: {fileID: 330237911}
-  ballDeadline3Slider: {fileID: 329885211}
+  star1Slider: {fileID: 231898333}
+  star2Slider: {fileID: 330237911}
+  star3Slider: {fileID: 329885211}
   initialBallSlider: {fileID: 1068856063}
   blockDefaultHPNumber: {fileID: 1858148127}
-  ballDeadLine1Number: {fileID: 1911351737}
-  ballDeadLine2Number: {fileID: 250526274}
-  ballDeadLine3Number: {fileID: 796234933}
+  star1Number: {fileID: 1911351737}
+  star2Number: {fileID: 250526274}
+  star3Number: {fileID: 796234933}
   initialBallNumber: {fileID: 570392688}
   scoreModeGroup:
   - {fileID: 334582632}
   initialBall: 0
-  ballDeadLine: 000000000000000000000000
+  stars: 000000000000000000000000
   currentStageAsset: {fileID: 11400000, guid: 3c8f2629cc595f14291208a8052e74ad, type: 2}
 --- !u!1 &1564913635
 GameObject:
@@ -5061,34 +5069,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656343516}
   m_CullTransparentMesh: 1
---- !u!1 &1728706963 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4238795278314738893, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
-  m_PrefabInstance: {fileID: 641266884}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1728706966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728706963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 1
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!1 &1751061909
 GameObject:
   m_ObjectHideFlags: 0
@@ -5312,7 +5292,7 @@ GameObject:
   - component: {fileID: 1844501313}
   - component: {fileID: 1844501312}
   m_Layer: 5
-  m_Name: BallDeadline2Header
+  m_Name: Star2Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5584,7 +5564,7 @@ GameObject:
   - component: {fileID: 1911351736}
   - component: {fileID: 1911351737}
   m_Layer: 5
-  m_Name: BallDeadLineNumber1
+  m_Name: StarNumber1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

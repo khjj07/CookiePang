@@ -28,16 +28,15 @@ public class TeleportationBlock : Block
             .Where(_ => GameManager.instance.ball.isFloor)
             .Subscribe(_ => { _ballEntered = false; });
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public override void Hit(int damage)
     {
-        if (other.CompareTag("Ball") && !_ballEntered)
+        if (!_ballEntered)
         {
-            if(destination)
+            if (destination)
             {
-                _ballEntered=true;
+                _ballEntered = true;
                 destination._ballEntered = true;
-                other.transform.position = destination.transform.position;
+                GameManager.instance.ball.transform.position = destination.transform.position;
                 SoundManager.instance.PlaySound(1, "TeleportSound");
             }
         }

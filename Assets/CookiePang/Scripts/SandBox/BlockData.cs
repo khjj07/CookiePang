@@ -73,3 +73,40 @@ public class PoisonBlockData : BlockData
         type = BlockType.POISON;
     }
 }
+
+[Serializable]
+public class HoleBlockData : BlockData
+{
+    public HoleBlockData(int r, int c) : base(0, r, c)
+    {
+        type = BlockType.HOLE;
+    }
+}
+
+[Serializable]
+public class CandyBlockData : BlockData
+{
+    public CandyBlockData(int r, int c) : base(0, r, c)
+    {
+        type = BlockType.CANDY;
+    }
+}
+
+[Serializable]
+public class ButtonBlockData : BlockData
+{
+    public ButtonBlockData(int r, int c) : base(0, r, c)
+    {
+        type = BlockType.BUTTON;
+    }
+}
+
+
+[Serializable]
+public class MacaroonBlockData : BlockData
+{
+    public MacaroonBlockData(int h, int r, int c) : base(h, r, c)
+    {
+        type = BlockType.MACAROON;
+    }
+}

@@ -5,13 +5,13 @@ using UnityEditor;
 using Unity.VisualScripting;
 using static UnityEngine.GraphicsBuffer;
 
-[CreateAssetMenu(menuName = "Stage / Create New Default Stage")]
-public class DefaultStageAsset : StageAsset
+[CreateAssetMenu(menuName = "Stage / Create New Macaroon Stage")]
+public class MacaroonStageAsset : StageAsset
 {
-    public DefaultStageAsset()
+    public MacaroonStageAsset()
     {
         scoreMode = ScoreMode.BallCount;
-        gameMode = GameMode.Default;
+        gameMode = GameMode.Macaroon;
     }
 
     static public void CreateAsset(int initialBall, int[] stars, List<BlockData> blockData)
@@ -22,7 +22,7 @@ public class DefaultStageAsset : StageAsset
         stageAsset.stars[0] = stars[0];
         stageAsset.stars[1] = stars[1];
         stageAsset.stars[2] = stars[2];
-        AssetDatabase.CreateAsset(stageAsset, "Assets/CookiePang/Stage/NewDefaultStage.asset");
+        AssetDatabase.CreateAsset(stageAsset, "Assets/CookiePang/Stage/NewMacaroonStage.asset");
         AssetDatabase.Refresh();
     }
 
@@ -40,7 +40,7 @@ public class DefaultStageAsset : StageAsset
 
     public override bool IsClear()
     {
-        if (GameManager.instance._breakableBlocks.Count > 0)
+        if (GameManager.instance._macaroon.Count > 0)
         {
             return false;
         }

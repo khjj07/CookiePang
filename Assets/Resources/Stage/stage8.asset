@@ -104,4 +104,4 @@ MonoBehaviour:
     row: 8
     col: 6
   initailBallCount: 11
-  ballDeadLine: 000000000400000007000000
+  stars: 020000000400000008000000

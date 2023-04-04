@@ -6,13 +6,16 @@ using static UnityEngine.UI.CanvasScaler;
 
 public enum ScoreMode
 {
-    Default,
+    BallCount,
     Score
 }
 
 public enum GameMode
 {
-    Default
+    Default,
+    HoleIn,
+    Candy,
+    Macaroon
 }
 
 public abstract class StageAsset : ScriptableObject
@@ -24,11 +27,11 @@ public abstract class StageAsset : ScriptableObject
     public List<BlockData> blocks;
 
     public int initailBallCount;
-
+    public int[] stars = new int[3];
 
     public StageAsset()
     {
-        scoreMode = ScoreMode.Default;
+        scoreMode = ScoreMode.BallCount;
         gameMode = GameMode.Default;
     }
 
@@ -47,6 +50,22 @@ public abstract class StageAsset : ScriptableObject
             instance.GetData(block);
         }
     }
+
+    public virtual void Update()
+    {
+
+    }
     public abstract bool IsClear();
-    public abstract int GetStars();
+    public virtual int GetStars()
+    {
+        int starCount = 0;
+        foreach (var deadline in stars)
+        {
+            if (deadline < GameManager.instance.ballCount)
+            {
+                starCount++;
+            }
+        }
+        return starCount;
+    }
 }

@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class PoisonBlock : Block
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    public override void Hit(int damage)
     {
-        if (collision.collider.CompareTag("Ball"))
-        {
-            GameManager.instance.GameOver();
-            GameManager.instance.ball.isFloor = false;
-            GameManager.instance.ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }
-
+        GameManager.instance.DeleteBlock(this);
+        GameManager.instance.GameOver();
+        GameManager.instance.ball.isFloor = false;
+        GameManager.instance.ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
+
     public override BlockData ToData(int row, int column)
     {
         PoisonBlockData data = new PoisonBlockData(hp, row, column);

@@ -15,7 +15,11 @@ public enum BlockType
     BOMB,
     POWER,
     JELLY,
-    POISON
+    POISON,
+    HOLE,
+    CANDY,
+    BUTTON,
+    MACAROON
 }
 
 public class GameManager : Singleton<GameManager>
@@ -25,7 +29,7 @@ public class GameManager : Singleton<GameManager>
     public float minHeight = -15.0f;
     public int initialBallCount;
     public int ballCount;
-    public int[] deadline = new int[3];
+    public int[] stars = new int[3];
     public float timeScaleUpDelay = 10.0f;
 
     public Transform screenCordinate;
@@ -62,6 +66,12 @@ public class GameManager : Singleton<GameManager>
 
 
     public List<Block> _breakableBlocks;
+    public List<HoleBlock> _holes;
+    public List<CandyBlock> _candies;
+    public List<ButtonBlock> _buttons;
+    public List<MacaroonBlock> _macaroon;
+    public string _letters;
+
     private IEnumerator _timeScaleUpRoutine = null;
 
     private float _currentTimeScale=1.0f;
@@ -144,7 +154,7 @@ public class GameManager : Singleton<GameManager>
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    starSlider.SetStar(i, deadline[i]);
+                    starSlider.SetStar(i, stars[i]);
                 }
             });//º° Ç¥½Ã
 
@@ -245,15 +255,31 @@ public class GameManager : Singleton<GameManager>
     }
     public Block CreateBlock(BlockType x, int r, int c)
     {
-        var instance = Instantiate(blockPrefabs[(int)x].gameObject);
+        var instance = Instantiate(blockPrefabs[(int)x]);
         instance.transform.parent = screenCordinate;
         instance.transform.localPosition = gridPosition[r, c];
-        blocks[r, c] = instance.GetComponent<Block>();
+        blocks[r, c] = instance;
         if(x==BlockType.DEFAULT)
         {
-            _breakableBlocks.Add(instance.GetComponent<Block>());
+            _breakableBlocks.Add(instance);
         }
-        return instance.GetComponent<Block>();
+        else if(x==BlockType.HOLE)
+        {
+            _holes.Add(instance as HoleBlock);
+        }
+        else if (x == BlockType.CANDY)
+        {
+            _candies.Add(instance as CandyBlock);
+        }
+        else if (x == BlockType.BUTTON)
+        {
+            _buttons.Add(instance as ButtonBlock);
+        }
+        else if (x == BlockType.MACAROON)
+        {
+            _macaroon.Add(instance as MacaroonBlock);
+        }
+        return instance;
     }
 
     public void DeleteBlock(Block x)
@@ -267,6 +293,10 @@ public class GameManager : Singleton<GameManager>
                     blocks[i, j] = null;
                     Destroy(x.gameObject);
                     _breakableBlocks.Remove(x);
+                    _holes.Remove(x as HoleBlock);
+                    _candies.Remove(x as CandyBlock);
+                    _buttons.Remove(x as ButtonBlock);
+                    _macaroon.Remove(x as MacaroonBlock);
                 }
             }
         }
@@ -280,7 +310,11 @@ public class GameManager : Singleton<GameManager>
                 Destroy(block.gameObject);
         }
         blocks = new Block[_row, _column];
-        _breakableBlocks.Clear(); 
+        _breakableBlocks.Clear();
+        _holes.Clear();
+        _candies.Clear();
+        _buttons.Clear();
+        _macaroon.Clear();
     }
    
 

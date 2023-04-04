@@ -38,15 +38,15 @@ public class SandBoxUI : Singleton<SandBoxUI>
     public TMP_Dropdown dropdown;
     public TextMeshProUGUI gameMode;
     public Slider blockDefaultHPSlider;
-    public Slider ballDeadline1Slider;
-    public Slider ballDeadline2Slider;
-    public Slider ballDeadline3Slider;
+    public Slider star1Slider;
+    public Slider star2Slider;
+    public Slider star3Slider;
     public Slider initialBallSlider;
 
     public TextMeshProUGUI blockDefaultHPNumber;
-    public TextMeshProUGUI ballDeadLine1Number;
-    public TextMeshProUGUI ballDeadLine2Number;
-    public TextMeshProUGUI ballDeadLine3Number;
+    public TextMeshProUGUI star1Number;
+    public TextMeshProUGUI star2Number;
+    public TextMeshProUGUI star3Number;
     public TextMeshProUGUI initialBallNumber;
 
     public VerticalLayoutGroup[] scoreModeGroup;
@@ -55,7 +55,7 @@ public class SandBoxUI : Singleton<SandBoxUI>
     [Header("Output Data")]
     #region OutputData
     public int initialBall;
-    public int[] ballDeadLine = new int[3];
+    public int[] stars = new int[3];
     #endregion
 
     [Header("현재 스테이지 에셋")]
@@ -138,9 +138,9 @@ public class SandBoxUI : Singleton<SandBoxUI>
         }
         SetInitialBall((int)initialBallSlider.value);
         SetBlockDefaultHP((int)blockDefaultHPSlider.value);
-        SetballDeadLine1((int)ballDeadline1Slider.value);
-        SetballDeadLine2((int)ballDeadline2Slider.value);
-        SetballDeadLine3((int)ballDeadline3Slider.value);
+        SetballDeadLine1((int)star1Slider.value);
+        SetballDeadLine2((int)star2Slider.value);
+        SetballDeadLine3((int)star3Slider.value);
     }
     private List<BlockData> SaveBlockToData()
     {
@@ -168,13 +168,20 @@ public class SandBoxUI : Singleton<SandBoxUI>
         {
             List<BlockData> blockData = SaveBlockToData();
             currentStageAsset.blocks = blockData;
-            switch (currentStageAsset.gameMode)
+            StageAsset asset = (StageAsset)currentStageAsset;
+            switch (currentStageAsset.scoreMode)
             {
-                case GameMode.Default:
-                    DefaultStageAsset asset = (DefaultStageAsset)currentStageAsset;
-                    asset.ballDeadLine[0] = ballDeadLine[0];
-                    asset.ballDeadLine[1] = ballDeadLine[1];
-                    asset.ballDeadLine[2] = ballDeadLine[2];
+               case ScoreMode.BallCount:
+                    asset.stars[0] = stars[0];
+                    asset.stars[1] = stars[1];
+                    asset.stars[2] = stars[2];
+                    asset.initailBallCount = initialBall;
+                    break;
+
+                default:
+                    asset.stars[0] = stars[0];
+                    asset.stars[1] = stars[1];
+                    asset.stars[2] = stars[2];
                     asset.initailBallCount = initialBall;
                     break;
             }
@@ -203,12 +210,12 @@ public class SandBoxUI : Singleton<SandBoxUI>
             {
                 case GameMode.Default:
                     DefaultStageAsset asset = (DefaultStageAsset)currentStageAsset;
-                    ballDeadLine[0] = asset.ballDeadLine[0];
-                    ballDeadLine[1] = asset.ballDeadLine[1];
-                    ballDeadLine[2] = asset.ballDeadLine[2];
-                    ballDeadline1Slider.value = ballDeadLine[0];
-                    ballDeadline2Slider.value = ballDeadLine[1];
-                    ballDeadline3Slider.value = ballDeadLine[2];
+                    stars[0] = asset.stars[0];
+                    stars[1] = asset.stars[1];
+                    stars[2] = asset.stars[2];
+                    star1Slider.value = stars[0];
+                    star2Slider.value = stars[1];
+                    star3Slider.value = stars[2];
                     break;
             }
 
@@ -229,17 +236,17 @@ public class SandBoxUI : Singleton<SandBoxUI>
     }
     public void SetballDeadLine1(int value)
     {
-        ballDeadLine[0] = value;
-        ballDeadLine1Number.SetText(ballDeadLine[0].ToString());
+        stars[0] = value;
+        star1Number.SetText(stars[0].ToString());
     }
     public void SetballDeadLine2(int value)
     {
-        ballDeadLine[1] = value;
-        ballDeadLine2Number.SetText(ballDeadLine[1].ToString());
+        stars[1] = value;
+        star2Number.SetText(stars[1].ToString());
     }
     public void SetballDeadLine3(int value)
     {
-        ballDeadLine[2] = value;
-        ballDeadLine3Number.SetText(ballDeadLine[2].ToString());
+        stars[2] = value;
+        star3Number.SetText(stars[2].ToString());
     }
 }

@@ -6,7 +6,12 @@ public class Ball : MonoBehaviour
 {
     public bool isFloor=true;
     public int damage=1;
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        collider.GetComponent<Block>().Hit(damage);
+    }
+        private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Floor"))
         {
