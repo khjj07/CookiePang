@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class StageManager : Singleton<StageManager>
 {
     public List<StageAsset> stageAssets;
     public StageAsset current;
     public int currentIndex;
+    public GameObject selectButtonPrefab;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -42,5 +45,12 @@ public class StageManager : Singleton<StageManager>
            current= stage;
            break;
         }
+    }
+
+    public GameObject CreateSelectButton(Vector3 pos,Transform trans,int count)
+    {
+        var obj = Instantiate(selectButtonPrefab, pos, Quaternion.Euler(0.0f, 0.0f, 0.0f) ,trans);
+        obj.GetComponent<StageSelectButton>().myIndex = count+1;
+        return obj;
     }
 }

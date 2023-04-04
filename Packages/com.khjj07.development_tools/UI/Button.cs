@@ -16,11 +16,10 @@ public class Button : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPo
     public UnityEvent OnClick;
     public UnityEvent OnEnter;
     public UnityEvent OnExit;
-    public void Start()
+    public virtual void Start()
     {
         Origin = transform.localScale;
         ScaleSquence = DOTween.Sequence();
-      
     }
     public void OnEnable()
     {

@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.collider.CompareTag("Floor"))
         {
-            SoundManager.instance.PlaySound(1, "BallCrushSound");
+            SoundManager.instance.PlaySound(1, "BallCrushSound"); 
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             isFloor = true;
         }

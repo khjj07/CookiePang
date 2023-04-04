@@ -30,12 +30,14 @@ public class GameManager : Singleton<GameManager>
 
     public Transform screenCordinate;
     public Vector3[,] gridPosition;
-    private float marginLeft = -30;
-    private float marginTop = 110;
+    private float marginLeft = 90;
+    private float marginTop = 360;
     public Block[,] blocks;
     public int _column = 9;
     public int _row = 9;
-    private float offset = 115;
+
+    public bool isTimeScaleUp = false;
+    private float offset = 90;
 
     [SerializeField]
     public Ball ball;
@@ -64,6 +66,18 @@ public class GameManager : Singleton<GameManager>
 
     private float _currentTimeScale=1.0f;
 
+
+    public void TimeScaleUp()
+    {
+        if(isTimeScaleUp)
+        {
+            Time.timeScale = 1.0f;
+        }
+        else
+        {
+            Time.timeScale = 3.0f;
+        }
+    }
     public void PlayGame()
     {
         isPlay = true;
@@ -92,13 +106,14 @@ public class GameManager : Singleton<GameManager>
         SceneFlowManager.ChangeScene("Stage");
     }
 
-    private IEnumerator TimeScaleUp()
+/*    private IEnumerator TimeScaleUp()
     {
         yield return new WaitForSeconds(timeScaleUpDelay);
         Time.timeScale = 3.0f;
         Debug.Log("speedup");
         yield return null;
     }
+*/
     public void Awake()
     {
         blocks = new Block[_row, _column];
@@ -179,8 +194,8 @@ public class GameManager : Singleton<GameManager>
                 ball.Shoot(direction * shootPower);//Shoot
                 _dummyBall.SetActive(false);
                 ballCount--;
-                _timeScaleUpRoutine = TimeScaleUp();
-                StartCoroutine(_timeScaleUpRoutine);
+                //_timeScaleUpRoutine = TimeScaleUp();
+                //StartCoroutine(_timeScaleUpRoutine);
             });//공 발사
 
         
@@ -191,11 +206,12 @@ public class GameManager : Singleton<GameManager>
                  Time.timeScale = 1;
                  if(_timeScaleUpRoutine != null)
                  {
-                     StopCoroutine(_timeScaleUpRoutine);
+                     //StopCoroutine(_timeScaleUpRoutine);
                  }
              });
 
         this.UpdateAsObservable()
+            .Where(_ => isPlay)
             .Where(_ => ball.isFloor)
             .Where(_ => isClear)
             .Subscribe(_ =>
@@ -204,6 +220,7 @@ public class GameManager : Singleton<GameManager>
             });//스테이지 클리어
 
         this.UpdateAsObservable()
+            .Where(_ => isPlay)
             .Where(_ => ball.isFloor)
             .Where(_ => ballCount <= 0)
             .Subscribe(_ =>
@@ -299,6 +316,8 @@ public class GameManager : Singleton<GameManager>
             }
         }
 
+        DeleteBlock(x);
+
         for (int i = 0; i < _row; i++)
         {
             for (int j = 0; j < _column; j++)
@@ -307,7 +326,7 @@ public class GameManager : Singleton<GameManager>
                 {
                     if (i >= explosionY - 1 && i <= explosionY + 1 && j >= explosionX - 1 && j <= explosionX + 1)
                     {
-                        if (blocks[i, j] && blocks[i, j] != x)
+                        if (blocks[i, j])
                         {
                             blocks[i, j].Hit(1);
                         }
@@ -316,7 +335,7 @@ public class GameManager : Singleton<GameManager>
 
             }
         }
-        DeleteBlock(x);
+        
     }
     private void LateUpdate()
     {

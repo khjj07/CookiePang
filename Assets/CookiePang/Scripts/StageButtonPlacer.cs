@@ -7,12 +7,8 @@ using UnityEngine;
 
 namespace PathCreation.Examples
 {
-
-    [ExecuteInEditMode]
-    public class PathPlacerWithFixedRot : PathSceneTool
+    public class StageButtonPlacer: PathSceneTool
     {
-
-        public GameObject prefab;
         public GameObject holder;
         public float spacing = 3;
 
@@ -20,7 +16,7 @@ namespace PathCreation.Examples
 
         void Generate()
         {
-            if (pathCreator != null && prefab != null && holder != null)
+            if (pathCreator != null && holder != null)
             {
                 DestroyObjects();
 
@@ -28,12 +24,13 @@ namespace PathCreation.Examples
 
                 spacing = Mathf.Max(minSpacing, spacing);
                 float dst = 0;
-
+                int count = 0;
                 while (dst < path.length)
                 {
                     Vector3 point = path.GetPointAtDistance(dst);
-                    Instantiate(prefab, point, Quaternion.Euler(0.0f, 0.0f, 0.0f), holder.transform);
+                    StageManager.instance.CreateSelectButton(point, holder.transform, count);
                     dst += spacing;
+                    count++;
                 }
             }
         }
@@ -47,12 +44,16 @@ namespace PathCreation.Examples
             }
         }
 
-        protected override void PathUpdated()
+        protected void Start()
         {
             if (pathCreator != null)
             {
                 Generate();
             }
+        }
+        protected override void PathUpdated()
+        {
+
         }
     }
 }
