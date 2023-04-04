@@ -79,7 +79,7 @@ public class GameManager : Singleton<GameManager>
 
     public void TimeScaleUp()
     {
-        if(isTimeScaleUp)
+        if (!isTimeScaleUp)
         {
             Time.timeScale = 1.0f;
         }
@@ -109,6 +109,7 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 1;
         SceneFlowManager.ChangeScene("StageSelect");
+        SoundManager.instance.PlaySound(0, "MainSound");
     }
     public void ResetGame()
     {
@@ -185,8 +186,16 @@ public class GameManager : Singleton<GameManager>
                  _dotLine.points.Add(new Vector3(hit.centroid.x, hit.centroid.y, 0) + endPos);
                  _dotLine.DrawDotLine();
                  //투명하게 공표시
-                 _dummyBall.SetActive(true);
-                 _dummyBall.transform.position = hit.centroid;
+                 if (EventSystem.current.IsPointerOverGameObject() == false) 
+                 {
+                     _dotLine.DrawDotLine();
+                     _dummyBall.SetActive(true);
+                     _dummyBall.transform.position = hit.centroid;
+                 }
+                 else
+                 {
+                     _dummyBall.SetActive(false);
+                 }
              });//조준점 생성
 
         var ballShootStream = this.UpdateAsObservable()
@@ -209,16 +218,16 @@ public class GameManager : Singleton<GameManager>
             });//공 발사
 
         
-        this.UpdateAsObservable()
-             .Where(_ => ball.isFloor)
-             .Subscribe(_ =>
-             {
-                 Time.timeScale = 1;
-                 if(_timeScaleUpRoutine != null)
-                 {
-                     //StopCoroutine(_timeScaleUpRoutine);
-                 }
-             });
+        //this.UpdateAsObservable()
+        //     .Where(_ => ball.isFloor)
+        //     .Subscribe(_ =>
+        //     {
+        //         Time.timeScale = 1;
+        //         if(_timeScaleUpRoutine != null)
+        //         {
+        //             //StopCoroutine(_timeScaleUpRoutine);
+        //         }
+        //     });
 
         this.UpdateAsObservable()
             .Where(_ => isPlay)
