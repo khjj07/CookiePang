@@ -5,6 +5,14 @@ using UnityEngine.UI;
 public class TitleSceneSound : MonoBehaviour
 {
     [SerializeField] private Slider[] slider;
+
+    //private bool DontDestroy = true; 
+    private void Awake()
+    {
+
+        //if (DontDestroy)
+        //    DontDestroyOnLoad(this.gameObject);
+    }
     private void Start()
     {
         slider[0].value = SoundManager.instance.Player[0].Volume;

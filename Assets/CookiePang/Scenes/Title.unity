@@ -2450,6 +2450,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1895655077024443418, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_Color.a
+      value: 0.50980395
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077024443418, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077024443418, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077024443418, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1895655077100155763, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1

@@ -76,7 +76,7 @@ public class GameManager : Singleton<GameManager>
 
     private float _currentTimeScale=1.0f;
 
-
+    [SerializeField] private Slider[] slider; //Setting Panel volume //추후에 title에 있는걸로 슬라이더 다 쓸거임 (임시)
     public void TimeScaleUp()
     {
         if (!isTimeScaleUp)
@@ -144,6 +144,8 @@ public class GameManager : Singleton<GameManager>
         _ballRadius = ball.GetComponent<CircleCollider2D>().radius;
         _dummyBall.SetActive(false);
 
+        slider[0].value = SoundManager.instance.Player[0].Volume;
+        slider[1].value = SoundManager.instance.Player[1].Volume;
         this.UpdateAsObservable().Subscribe(_ =>
         {
             starSlider.SetFillArea(ballCount);
@@ -184,7 +186,7 @@ public class GameManager : Singleton<GameManager>
                  var direction = Vector3.Normalize(new Vector3(hit.centroid.x, hit.centroid.y, 0) - ball.transform.position);
                  var endPos = Vector3.Reflect(direction, hit.normal) * reflectDotLength;
                  _dotLine.points.Add(new Vector3(hit.centroid.x, hit.centroid.y, 0) + endPos);
-                 _dotLine.DrawDotLine();
+
                  //투명하게 공표시
                  if (EventSystem.current.IsPointerOverGameObject() == false) 
                  {
@@ -306,6 +308,7 @@ public class GameManager : Singleton<GameManager>
                     _candies.Remove(x as CandyBlock);
                     _buttons.Remove(x as ButtonBlock);
                     _macaroon.Remove(x as MacaroonBlock);
+                    
                 }
             }
         }

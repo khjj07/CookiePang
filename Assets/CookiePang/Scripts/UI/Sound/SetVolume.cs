@@ -16,7 +16,5 @@ public class SetVolume : MonoBehaviour
         SoundManager.instance.SetVolume(1, slider.value);
         SoundManager.instance.GetComponentsInChildren<AudioSource>()[1].volume = slider.value;
     }
-    private void Update()
-    {
-    }
+  
 }
