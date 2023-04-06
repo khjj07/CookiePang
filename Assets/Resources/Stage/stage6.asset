@@ -15,41 +15,41 @@ MonoBehaviour:
   scoreMode: 0
   gameMode: 0
   blocks:
-  - type: 0
-    hp: 1
-    row: 5
-    col: 0
   - type: 5
     hp: 1
-    row: 5
-    col: 1
-  - type: 0
-    hp: 1
-    row: 5
+    row: 0
     col: 2
   - type: 5
     hp: 1
+    row: 0
+    col: 6
+  - type: 2
+    hp: 1
+    row: 1
+    col: 2
+  - type: 2
+    hp: 1
+    row: 1
+    col: 6
+  - type: 0
+    hp: 1
+    row: 2
+    col: 2
+  - type: 0
+    hp: 1
+    row: 2
+    col: 6
+  - type: 4
+    hp: 1
     row: 5
     col: 3
-  - type: 0
+  - type: 4
     hp: 1
     row: 5
     col: 4
-  - type: 5
+  - type: 4
     hp: 1
     row: 5
     col: 5
-  - type: 0
-    hp: 1
-    row: 5
-    col: 6
-  - type: 5
-    hp: 1
-    row: 5
-    col: 7
-  - type: 0
-    hp: 1
-    row: 5
-    col: 8
-  initailBallCount: 7
+  initailBallCount: 3
   stars: 000000000100000002000000

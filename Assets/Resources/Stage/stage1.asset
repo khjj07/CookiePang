@@ -17,19 +17,11 @@ MonoBehaviour:
   blocks:
   - type: 0
     hp: 1
-    row: 0
-    col: 4
+    row: 4
+    col: 5
   - type: 0
     hp: 1
-    row: 6
-    col: 0
-  - type: 0
-    hp: 1
-    row: 6
-    col: 8
-  - type: 0
-    hp: 1
-    row: 7
-    col: 4
-  initailBallCount: 6
-  stars: 000000000200000004000000
+    row: 4
+    col: 6
+  initailBallCount: 3
+  stars: 000000000100000002000000

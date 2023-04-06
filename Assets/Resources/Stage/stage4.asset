@@ -16,44 +16,92 @@ MonoBehaviour:
   gameMode: 0
   blocks:
   - type: 0
-    hp: 2
-    row: 4
+    hp: 1
+    row: 3
     col: 0
   - type: 0
-    hp: 2
-    row: 4
+    hp: 1
+    row: 3
     col: 2
   - type: 0
-    hp: 2
-    row: 4
-    col: 4
-  - type: 0
-    hp: 2
-    row: 4
+    hp: 1
+    row: 3
     col: 6
   - type: 0
-    hp: 2
-    row: 4
+    hp: 1
+    row: 3
     col: 8
-  - type: 0
-    hp: 2
-    row: 6
+  - type: 4
+    hp: 1
+    row: 4
     col: 0
-  - type: 0
-    hp: 2
-    row: 6
+  - type: 2
+    hp: 1
+    row: 4
+    col: 1
+  - type: 4
+    hp: 1
+    row: 4
     col: 2
-  - type: 0
-    hp: 2
+  - type: 4
+    hp: 1
+    row: 4
+    col: 6
+  - type: 2
+    hp: 1
+    row: 4
+    col: 7
+  - type: 4
+    hp: 1
+    row: 4
+    col: 8
+  - type: 4
+    hp: 1
+    row: 5
+    col: 0
+  - type: 4
+    hp: 1
+    row: 5
+    col: 1
+  - type: 4
+    hp: 1
+    row: 5
+    col: 2
+  - type: 4
+    hp: 1
+    row: 5
+    col: 6
+  - type: 4
+    hp: 1
+    row: 5
+    col: 7
+  - type: 4
+    hp: 1
+    row: 5
+    col: 8
+  - type: 4
+    hp: 1
+    row: 6
+    col: 3
+  - type: 4
+    hp: 1
     row: 6
     col: 4
-  - type: 0
-    hp: 2
+  - type: 4
+    hp: 1
     row: 6
-    col: 6
-  - type: 0
-    hp: 2
-    row: 6
-    col: 8
-  initailBallCount: 10
-  stars: 000000000300000005000000
+    col: 5
+  - type: 4
+    hp: 1
+    row: 7
+    col: 3
+  - type: 2
+    hp: 1
+    row: 7
+    col: 4
+  - type: 4
+    hp: 1
+    row: 7
+    col: 5
+  initailBallCount: 7
+  stars: 000000000200000004000000
