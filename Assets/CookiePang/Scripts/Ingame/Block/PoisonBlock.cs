@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PoisonBlock : Block
 {
-    protected virtual void Update()
+    protected override void Start()
+    {
+        base.Start();
+        _textMeshPro.gameObject.SetActive(false);
+    }
+
+    protected override void Update()
     {
        
     }

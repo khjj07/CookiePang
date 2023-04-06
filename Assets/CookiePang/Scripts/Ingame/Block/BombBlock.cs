@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class BombBlock : Block
 {
-   public override void Hit(int damage)
+
+    protected override void Start()
+    {
+        base.Start();
+        _textMeshPro.gameObject.SetActive(false);
+    }
+
+    protected override void Update()
+    {
+
+    }
+
+    public override void Hit(int damage)
     {
         SoundManager.instance.PlaySound(1, "BombSound");
         GameManager.instance.Explode(this);

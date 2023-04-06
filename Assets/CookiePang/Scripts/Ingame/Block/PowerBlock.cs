@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class PowerBlock : Block
 {
-    protected virtual void Update()
-    {
-
-    }
-
     public override void Hit(int damage)
     {
         GameManager.instance.DeleteBlock(this);
