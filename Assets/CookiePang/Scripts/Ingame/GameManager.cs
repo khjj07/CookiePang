@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -264,6 +265,7 @@ public class GameManager : Singleton<GameManager>
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageFailSound");
     }
+
     public Block CreateBlock(BlockType x, int r, int c)
     {
         var instance = Instantiate(blockPrefabs[(int)x]);
@@ -345,7 +347,7 @@ public class GameManager : Singleton<GameManager>
         return new Vector2Int(-1, -1); ;
     }
 
-    public void Explode(Block x)
+    public async Task Explode(Block x)
     {
         int explosionX = -10;
         int explosionY = -10;
@@ -364,6 +366,8 @@ public class GameManager : Singleton<GameManager>
 
         DeleteBlock(x);
 
+        await Task.Delay(100);
+
         for (int i = 0; i < _row; i++)
         {
             for (int j = 0; j < _column; j++)
@@ -374,7 +378,7 @@ public class GameManager : Singleton<GameManager>
                     {
                         if (blocks[i, j])
                         {
-                            blocks[i, j].Hit(1);
+                           blocks[i, j].Shock(1);
                         }
                     }
                 }

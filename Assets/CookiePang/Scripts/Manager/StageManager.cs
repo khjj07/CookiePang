@@ -13,6 +13,8 @@ public class StageManager : Singleton<StageManager>
     public StageAsset current;
     public int currentIndex;
     public GameObject selectButtonPrefab;
+    [SerializeField]
+    private string _folderName = "Stage";
     // Start is called before the first frame update
     private void Awake()
     {
@@ -22,7 +24,7 @@ public class StageManager : Singleton<StageManager>
 
     private void Start()
     {
-        foreach (var stage in Resources.LoadAll("Stage"))
+        foreach (var stage in Resources.LoadAll(_folderName))
         {
             stageAssets.Add((StageAsset)stage);
         }

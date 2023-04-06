@@ -6,8 +6,14 @@ public class BombBlock : Block
 {
    public override void Hit(int damage)
     {
-        GameManager.instance.Explode(this);
         SoundManager.instance.PlaySound(1, "BombSound");
+        GameManager.instance.Explode(this);
+    }
+
+    public override void Shock(int damage)
+    {
+        SoundManager.instance.PlaySound(1, "BombSound");
+        GameManager.instance.Explode(this);
     }
 
     public override BlockData ToData(int row, int column)

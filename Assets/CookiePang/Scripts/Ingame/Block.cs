@@ -21,7 +21,19 @@ public class Block : MonoBehaviour
     {
         _textMeshPro.SetText(hp.ToString());
     }
+
     public virtual void Hit(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            GetComponent<Collider2D>().enabled = false;
+            SoundManager.instance.PlaySound(1, "CookieBreak1Sound");
+            GameManager.instance.DeleteBlock(this);
+        }
+    }
+
+    public virtual void Shock(int damage)
     {
         hp -= damage;
         if (hp <= 0)
