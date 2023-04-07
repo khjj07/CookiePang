@@ -11,10 +11,6 @@ public class BombBlock : Block
         _textMeshPro.gameObject.SetActive(false);
     }
 
-    protected override void Update()
-    {
-
-    }
 
     public override void Hit(int damage)
     {

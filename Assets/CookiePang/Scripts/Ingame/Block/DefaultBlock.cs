@@ -9,6 +9,7 @@ public class DefaultBlock : Block
     public override void Hit(int damage)
     {
         hp -= damage;
+        //Debug.Log(damage);
         if (hp <= 0)
         {
             _textMeshPro.enabled = false;
