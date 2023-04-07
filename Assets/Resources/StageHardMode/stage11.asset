@@ -9,35 +9,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebafb80689a8209428109a8ea1e77fbf, type: 3}
-  m_Name: stage4
+  m_Script: {fileID: 11500000, guid: c7b87a1308b641544b7e3b359328bc11, type: 3}
+  m_Name: stage11
   m_EditorClassIdentifier: 
   scoreMode: 0
-  gameMode: 1
+  gameMode: 0
   blocks:
+  - type: 1
+    hp: 1
+    row: 0
+    col: 4
   - type: 0
     hp: 1
     row: 1
-    col: 7
+    col: 4
   - type: 0
     hp: 1
     row: 2
-    col: 8
-  - type: 6
-    hp: 0
-    row: 4
+    col: 4
+  - type: 0
+    hp: 1
+    row: 3
     col: 4
   - type: 0
     hp: 1
     row: 4
-    col: 8
-  - type: 0
+    col: 4
+  - type: 5
     hp: 1
-    row: 5
-    col: 6
-  - type: 0
+    row: 7
+    col: 4
+  - type: 1
     hp: 1
-    row: 6
-    col: 2
-  initailBallCount: 4
+    row: 8
+    col: 4
+  initailBallCount: 3
   stars: 000000000100000002000000
