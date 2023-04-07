@@ -64,6 +64,12 @@ public class GameManager : Singleton<GameManager>
     public GameObject failPanel;
     [SerializeField]
     private Text ballCntTxt;
+    [SerializeField]
+    private Text ballPowerTxt;
+    [SerializeField]
+    private Image ballGaugeImage;
+    [SerializeField]
+    private Text currentStageTxt;
     public bool isClear = false;
 
 
@@ -399,6 +405,9 @@ public class GameManager : Singleton<GameManager>
     }
     private void LateUpdate()
     {
-        ballCntTxt.text = "³²Àº °ø : " + ballCount;
+        ballPowerTxt.text = ball.damage.ToString();
+        ballGaugeImage.fillAmount = Mathf.Lerp(ballGaugeImage.fillAmount, (float)ballCount / initialBallCount / 1 / 1, Time.deltaTime * 5);
+        ballCntTxt.text = ballCount.ToString();
+        currentStageTxt.text = StageManager.instance.currentIndex.ToString();
     }
 }
