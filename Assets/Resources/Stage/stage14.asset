@@ -79,6 +79,14 @@ MonoBehaviour:
     hp: 1
     row: 1
     col: 8
+  - type: 4
+    hp: 1
+    row: 5
+    col: 0
+  - type: 4
+    hp: 1
+    row: 5
+    col: 1
   - type: 0
     hp: 9
     row: 6
@@ -95,13 +103,17 @@ MonoBehaviour:
     hp: 1
     row: 7
     col: 4
-  - type: 0
-    hp: 2
-    row: 7
-    col: 6
   - type: 3
     hp: 1
+    row: 7
+    col: 5
+  - type: 0
+    hp: 3
+    row: 7
+    col: 6
+  - type: 2
+    hp: 1
     row: 8
-    col: 4
+    col: 5
   initailBallCount: 6
   stars: 000000000100000002000000
