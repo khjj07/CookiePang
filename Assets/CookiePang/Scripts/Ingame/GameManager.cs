@@ -91,6 +91,8 @@ public class GameManager : Singleton<GameManager>
     public void BallCollectButton()
     {
         ball.transform.position = firstBallPos;
+        ball.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        ball.isFloor = true;
     }
     public void TimeScaleUp()
     {
@@ -258,13 +260,22 @@ public class GameManager : Singleton<GameManager>
             {
                 GameOver();
             });//게임오버
+        //this.UpdateAsObservable()
+        //    .Where(_ => isPlay)
+        //    .Subscribe(_ => {
         
+        //    });
     }
 
     public void StageClear()
     {
         ball.transform.position = firstBallPos; //원래 위치로
         successPanel.SetActive(true);
+        foreach (GameObject clearStars in successPanelStarsImage)
+        {
+            clearStars.transform.DOShakeScale(0.3f, 3).SetUpdate(true);
+            clearStars.transform.DOShakePosition(0.3f, 3).SetUpdate(true);
+        }
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageClearSound");
     }
@@ -447,17 +458,14 @@ public class GameManager : Singleton<GameManager>
         {
             deadLineBallCount = ballCount - stars[2];
             deadLindMaxBallCount = initialBallCount - stars[2];
-
         }
         else if (ballCount > stars[1] && ballCount > stars[0])
         {
             deadLineBallCount = ballCount - stars[1];
-            deadLindMaxBallCount = initialBallCount - (stars[1] + stars[2]);
         }
         else if (ballCount > stars[0])
         {
             deadLineBallCount = ballCount - stars[0];
-            deadLindMaxBallCount = initialBallCount - (stars[1] + stars[2] + stars[0]);
         }
         else
         {

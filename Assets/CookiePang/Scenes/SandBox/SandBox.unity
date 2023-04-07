@@ -4797,7 +4797,7 @@ MonoBehaviour:
   - {fileID: 334582632}
   initialBall: 0
   stars: 000000000000000000000000
-  currentStageAsset: {fileID: 11400000, guid: c475fff3bbb30b640a1bb2e1ef48c301, type: 2}
+  currentStageAsset: {fileID: 11400000, guid: 51d12d2b64f3b8544a030c100340424d, type: 2}
 --- !u!1 &1564913635
 GameObject:
   m_ObjectHideFlags: 0

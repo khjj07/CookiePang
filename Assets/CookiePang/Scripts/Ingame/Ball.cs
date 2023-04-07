@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             isFloor = true;
             GameManager.instance.StarsCountImage();
+            GameManager.instance.deadLindMaxBallCount = GameManager.instance.deadLineBallCount;
         }
 
         if(collision.collider.CompareTag("Block"))
