@@ -41,51 +41,51 @@ MonoBehaviour:
     col: 5
   - type: 0
     hp: 1
-    row: 2
+    row: 4
     col: 2
   - type: 0
     hp: 1
-    row: 2
+    row: 4
     col: 6
   - type: 0
     hp: 1
-    row: 3
+    row: 5
     col: 2
   - type: 2
     hp: 1
-    row: 3
+    row: 5
     col: 3
   - type: 2
     hp: 1
-    row: 3
+    row: 5
     col: 4
   - type: 2
     hp: 1
-    row: 3
+    row: 5
     col: 5
   - type: 0
     hp: 1
-    row: 3
+    row: 5
     col: 6
   - type: 0
     hp: 1
-    row: 4
+    row: 6
     col: 2
   - type: 0
-    hp: 1
-    row: 4
+    hp: 2
+    row: 6
     col: 3
   - type: 0
-    hp: 1
-    row: 4
+    hp: 3
+    row: 6
     col: 4
   - type: 0
-    hp: 1
-    row: 4
+    hp: 2
+    row: 6
     col: 5
   - type: 0
     hp: 1
-    row: 4
+    row: 6
     col: 6
   - type: 1
     hp: 1

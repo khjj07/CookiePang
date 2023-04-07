@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1866,6 +1866,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 736138870, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6163511724956743445, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4802,7 +4806,7 @@ MonoBehaviour:
   - {fileID: 334582632}
   initialBall: 0
   stars: 000000000000000000000000
-  currentStageAsset: {fileID: 11400000, guid: 72875f6e2595cfa44a46f93071016649, type: 2}
+  currentStageAsset: {fileID: 11400000, guid: 5ebbd73e34c194040aea259c5e536c88, type: 2}
 --- !u!1 &1564913635
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,18 +15,19 @@ public class DefaultBlock : Block
             _textMeshPro.enabled = false;
             GetComponent<Collider2D>().enabled = false;
             SoundManager.instance.PlaySound(1, "CookieBreak1Sound");
+            GameManager.instance.DeleteBlock(this); //юс╫ц
         }
         transform.DORewind();
         transform.DOShakeScale(0.3f, 10);
-        transform.DOShakePosition(0.3f,10).OnComplete(() =>
-        {
-            transform.DOScale(Vector3.zero, 0.1f).OnComplete(() =>
-            {
-                if (hp <= 0)
-                {
-                    GameManager.instance.DeleteBlock(this);
-                }
-            });
-        });
+        //transform.DOShakePosition(0.3f,10).OnComplete(() =>
+        //{
+        //    transform.DOScale(Vector3.zero, 0.1f).OnComplete(() =>
+        //    {
+        //        if (hp <= 0)
+        //        {
+        //            GameManager.instance.DeleteBlock(this);
+        //        }
+        //    });
+        //});
     }
 }
