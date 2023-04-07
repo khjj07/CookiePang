@@ -46,6 +46,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField]
     public Ball ball;
+    public Vector3 firstBallPos;
     [SerializeField]
     private Block[] blockPrefabs;
     [SerializeField, Range(5.0f, 10.0f)]
@@ -78,6 +79,11 @@ public class GameManager : Singleton<GameManager>
     private float _currentTimeScale=1.0f;
 
     [SerializeField] private Slider[] slider; //Setting Panel volume //추후에 title에 있는걸로 슬라이더 다 쓸거임 (임시)
+
+    public void BallCollectButton()
+    {
+        ball.transform.position = firstBallPos;
+    }
     public void TimeScaleUp()
     {
         if (!isTimeScaleUp)
@@ -147,6 +153,9 @@ public class GameManager : Singleton<GameManager>
 
         slider[0].value = SoundManager.instance.Player[0].Volume;
         slider[1].value = SoundManager.instance.Player[1].Volume;
+
+        firstBallPos = ball.transform.position; //첫위치 생성
+
         this.UpdateAsObservable().Subscribe(_ =>
         {
             starSlider.SetFillArea(ballCount);
@@ -234,7 +243,7 @@ public class GameManager : Singleton<GameManager>
 
         this.UpdateAsObservable()
             .Where(_ => isPlay)
-            .Where(_ => ball.isFloor)
+            //.Where(_ => ball.isFloor)
             .Where(_ => isClear)
             .Subscribe(_ =>
             {
@@ -254,6 +263,7 @@ public class GameManager : Singleton<GameManager>
 
     public void StageClear()
     {
+        ball.transform.position = firstBallPos; //원래 위치로
         successPanel.SetActive(true);
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageClearSound");
