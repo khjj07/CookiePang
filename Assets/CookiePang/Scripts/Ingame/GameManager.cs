@@ -8,7 +8,7 @@ using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public enum BlockType
 {
     DEFAULT,
@@ -71,7 +71,11 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private Text currentStageTxt;
     public bool isClear = false;
-
+    [SerializeField]
+    private GameObject[] StarsImage;
+    [SerializeField]
+    private GameObject[] successPanelStarsImage;
+    public int deadLineBallCount;
 
     public List<Block> _breakableBlocks;
     public List<HoleBlock> _holes;
@@ -79,8 +83,6 @@ public class GameManager : Singleton<GameManager>
     public List<ButtonBlock> _buttons;
     public List<MacaroonBlock> _macaroon;
     public string _letters;
-
-    private IEnumerator _timeScaleUpRoutine = null;
 
     private float _currentTimeScale=1.0f;
 
@@ -129,15 +131,6 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1;
         SceneFlowManager.ChangeScene("Stage");
     }
-
-/*    private IEnumerator TimeScaleUp()
-    {
-        yield return new WaitForSeconds(timeScaleUpDelay);
-        Time.timeScale = 3.0f;
-        Debug.Log("speedup");
-        yield return null;
-    }
-*/
     public void Awake()
     {
         blocks = new Block[_row, _column];
@@ -161,7 +154,7 @@ public class GameManager : Singleton<GameManager>
         slider[1].value = SoundManager.instance.Player[1].Volume;
 
         firstBallPos = ball.transform.position; //첫위치 생성
-
+        
         this.UpdateAsObservable().Subscribe(_ =>
         {
             starSlider.SetFillArea(ballCount);
@@ -176,7 +169,6 @@ public class GameManager : Singleton<GameManager>
                     starSlider.SetStar(i, stars[i]);
                 }
             });//별 표시
-
         this.UpdateAsObservable()
             .Where(_ => isPlay)
              .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > minHeight)
@@ -264,7 +256,7 @@ public class GameManager : Singleton<GameManager>
             {
                 GameOver();
             });//게임오버
-
+        
     }
 
     public void StageClear()
@@ -277,6 +269,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameOver()
     {
+        deadLineBallCount = 0;
         failPanel.SetActive(true);
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageFailSound");
@@ -407,7 +400,58 @@ public class GameManager : Singleton<GameManager>
     {
         ballPowerTxt.text = ball.damage.ToString();
         ballGaugeImage.fillAmount = Mathf.Lerp(ballGaugeImage.fillAmount, (float)ballCount / initialBallCount / 1 / 1, Time.deltaTime * 5);
-        ballCntTxt.text = ballCount.ToString();
+        DeadLineCount();
+        ballCntTxt.text = deadLineBallCount.ToString(); //총 갯수인데 별마다 갯수로 바꿔줘야해
         currentStageTxt.text = StageManager.instance.currentIndex.ToString();
     }
+    public void StarsCountImage()
+    {
+
+        if (ballCount > stars[2])
+        {
+            return;
+        }
+        else if (ballCount > stars[1])
+        {
+            successPanelStarsImage[2].SetActive(false);
+            StarsImage[2].transform.DOShakeScale(0.3f, 3);
+            StarsImage[2].transform.DOShakePosition(0.3f, 3).OnComplete(() =>
+            {
+                StarsImage[2].SetActive(false);
+            });
+        }
+        else if (ballCount > stars[0])
+        {
+            successPanelStarsImage[1].SetActive(false);
+            StarsImage[1].transform.DOShakeScale(0.3f, 3);
+            StarsImage[1].transform.DOShakePosition(0.3f, 3).OnComplete(() =>
+            {
+                StarsImage[1].SetActive(false); 
+            });
+        }
+        else
+        {
+            StarsImage[0].SetActive(false);
+        }
+
+    }
+    public void DeadLineCount()
+    {
+        if(ballCount > stars[0] && ballCount > stars[1] && ballCount > stars[2])
+        {
+            deadLineBallCount = ballCount - stars[2];
+        }else if (ballCount > stars[1] && ballCount > stars[0])
+        {
+            deadLineBallCount = ballCount - stars[1];
+        }
+        else if (ballCount > stars[0])
+        {
+            deadLineBallCount = ballCount - stars[0];
+        }
+        else
+        {
+            return;
+        }
+    }
+
 }

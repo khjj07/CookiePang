@@ -18,6 +18,7 @@ public class Ball : MonoBehaviour
             SoundManager.instance.PlaySound(1, "BallCrushSound"); 
             GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             isFloor = true;
+            GameManager.instance.StarsCountImage();
         }
 
         if(collision.collider.CompareTag("Block"))
