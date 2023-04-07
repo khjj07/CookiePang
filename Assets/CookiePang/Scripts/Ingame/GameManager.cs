@@ -76,7 +76,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject[] successPanelStarsImage;
     public int deadLineBallCount;
-
+    public int deadLindMaxBallCount;
     public List<Block> _breakableBlocks;
     public List<HoleBlock> _holes;
     public List<CandyBlock> _candies;
@@ -150,9 +150,11 @@ public class GameManager : Singleton<GameManager>
         _ballRadius = ball.GetComponent<CircleCollider2D>().radius;
         _dummyBall.SetActive(false);
 
-        slider[0].value = SoundManager.instance.Player[0].Volume;
-        slider[1].value = SoundManager.instance.Player[1].Volume;
-
+        if (SoundManager.instance)
+        {
+            slider[0].value = SoundManager.instance.Player[0].Volume;
+            slider[1].value = SoundManager.instance.Player[1].Volume;
+        }
         firstBallPos = ball.transform.position; //Ã¹À§Ä¡ »ý¼º
         
         this.UpdateAsObservable().Subscribe(_ =>
@@ -399,10 +401,14 @@ public class GameManager : Singleton<GameManager>
     private void LateUpdate()
     {
         ballPowerTxt.text = ball.damage.ToString();
-        ballGaugeImage.fillAmount = Mathf.Lerp(ballGaugeImage.fillAmount, (float)ballCount / initialBallCount / 1 / 1, Time.deltaTime * 5);
+        ballGaugeImage.fillAmount = Mathf.Lerp(ballGaugeImage.fillAmount, (float)deadLineBallCount / deadLindMaxBallCount / 1 / 1, Time.deltaTime * 5);
         DeadLineCount();
         ballCntTxt.text = deadLineBallCount.ToString(); //ÃÑ °¹¼öÀÎµ¥ º°¸¶´Ù °¹¼ö·Î ¹Ù²ãÁà¾ßÇØ
-        currentStageTxt.text = StageManager.instance.currentIndex.ToString();
+        if (StageManager.instance)
+        {
+            currentStageTxt.text = StageManager.instance.currentIndex.ToString();
+        }
+        
     }
     public void StarsCountImage()
     {
@@ -440,13 +446,18 @@ public class GameManager : Singleton<GameManager>
         if(ballCount > stars[0] && ballCount > stars[1] && ballCount > stars[2])
         {
             deadLineBallCount = ballCount - stars[2];
-        }else if (ballCount > stars[1] && ballCount > stars[0])
+            deadLindMaxBallCount = initialBallCount - stars[2];
+
+        }
+        else if (ballCount > stars[1] && ballCount > stars[0])
         {
             deadLineBallCount = ballCount - stars[1];
+            deadLindMaxBallCount = initialBallCount - (stars[1] + stars[2]);
         }
         else if (ballCount > stars[0])
         {
             deadLineBallCount = ballCount - stars[0];
+            deadLindMaxBallCount = initialBallCount - (stars[1] + stars[2] + stars[0]);
         }
         else
         {
