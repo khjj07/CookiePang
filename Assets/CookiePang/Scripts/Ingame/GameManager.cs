@@ -84,7 +84,7 @@ public class GameManager : Singleton<GameManager>
     public List<MacaroonBlock> _macaroon;
     public string _letters;
 
-    private float _currentTimeScale=1.0f;
+    private float _currentTimeScale = 1.0f;
 
     [SerializeField] private Slider[] slider; //Setting Panel volume //추후에 title에 있는걸로 슬라이더 다 쓸거임 (임시)
 
@@ -113,7 +113,7 @@ public class GameManager : Singleton<GameManager>
     public void PauseGame()
     {
         isPlay = false;
-        _currentTimeScale=Time.timeScale;
+        _currentTimeScale = Time.timeScale;
         Time.timeScale = 0;
     }
     public void NextGame()
@@ -158,7 +158,7 @@ public class GameManager : Singleton<GameManager>
             slider[1].value = SoundManager.instance.Player[1].Volume;
         }
         firstBallPos = ball.transform.position; //첫위치 생성
-        
+
         this.UpdateAsObservable().Subscribe(_ =>
         {
             starSlider.SetFillArea(ballCount);
@@ -175,7 +175,7 @@ public class GameManager : Singleton<GameManager>
             });//별 표시
         this.UpdateAsObservable()
             .Where(_ => isPlay)
-             .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > ball.transform.position.y+minHeight)
+             .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > ball.transform.position.y + minHeight)
              .Where(_ =>
              {
                  var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -200,7 +200,7 @@ public class GameManager : Singleton<GameManager>
                  _dotLine.points.Add(new Vector3(hit.centroid.x, hit.centroid.y, 0) + endPos);
 
                  //투명하게 공표시
-                 if (EventSystem.current.IsPointerOverGameObject() == false) 
+                 if (EventSystem.current.IsPointerOverGameObject() == false)
                  {
                      _dotLine.DrawDotLine();
                      _dummyBall.SetActive(true);
@@ -212,7 +212,7 @@ public class GameManager : Singleton<GameManager>
                  }
              });//조준점 생성
 
-      
+
 
         var ballShootStream = this.UpdateAsObservable()
             .Where(_ => isPlay)
@@ -229,9 +229,15 @@ public class GameManager : Singleton<GameManager>
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
                 ballCount--;
+
+                DeadLineCount();
+                if (StageManager.instance)
+                {
+                    currentStageTxt.text = StageManager.instance.currentIndex.ToString();
+                }
                 //_timeScaleUpRoutine = TimeScaleUp();
                 //StartCoroutine(_timeScaleUpRoutine);
-            });//공 발사
+            });//공
 
         this.UpdateAsObservable()
           .Where(_ => isPlay)
@@ -249,6 +255,7 @@ public class GameManager : Singleton<GameManager>
                 _dummyBall.SetActive(false);
             });
 
+
         //this.UpdateAsObservable()
         //     .Where(_ => ball.isFloor)
         //     .Subscribe(_ =>
@@ -259,6 +266,15 @@ public class GameManager : Singleton<GameManager>
         //             //StopCoroutine(_timeScaleUpRoutine);
         //         }
         //     });
+        this.UpdateAsObservable().Select(_ => ball.isFloor)
+            .DistinctUntilChanged()
+            .Where(x => x == true)
+            .Subscribe(_ =>
+            {
+                StarsCountImage();
+                DeadLineCount();
+
+            });
 
         this.UpdateAsObservable()
             .Where(_ => isPlay)
@@ -276,11 +292,14 @@ public class GameManager : Singleton<GameManager>
             .Subscribe(_ =>
             {
                 GameOver();
-            });//게임오버
+            });
+
+
+        //게임오버
         //this.UpdateAsObservable()
         //    .Where(_ => isPlay)
         //    .Subscribe(_ => {
-        
+
         //    });
     }
 
@@ -311,11 +330,11 @@ public class GameManager : Singleton<GameManager>
         instance.transform.parent = screenCordinate;
         instance.transform.localPosition = gridPosition[r, c];
         blocks[r, c] = instance;
-        if(x==BlockType.DEFAULT)
+        if (x == BlockType.DEFAULT)
         {
             _breakableBlocks.Add(instance);
         }
-        else if(x==BlockType.HOLE)
+        else if (x == BlockType.HOLE)
         {
             _holes.Add(instance as HoleBlock);
         }
@@ -349,7 +368,7 @@ public class GameManager : Singleton<GameManager>
                     _candies.Remove(x as CandyBlock);
                     _buttons.Remove(x as ButtonBlock);
                     _macaroon.Remove(x as MacaroonBlock);
-                    
+
                 }
             }
         }
@@ -369,7 +388,7 @@ public class GameManager : Singleton<GameManager>
         _buttons.Clear();
         _macaroon.Clear();
     }
-   
+
 
     public Vector2Int GetBlockIndex(Block x)
     {
@@ -417,26 +436,19 @@ public class GameManager : Singleton<GameManager>
                     {
                         if (blocks[i, j])
                         {
-                           blocks[i, j].Shock(1);
+                            blocks[i, j].Shock(1);
                         }
                     }
                 }
 
             }
         }
-        
+
     }
     private void LateUpdate()
     {
         ballPowerTxt.text = ball.damage.ToString();
-        ballGaugeImage.fillAmount = Mathf.Lerp(ballGaugeImage.fillAmount, (float)deadLineBallCount / deadLindMaxBallCount / 1 / 1, Time.deltaTime * 5);
-        DeadLineCount();
-        ballCntTxt.text = deadLineBallCount.ToString(); //총 갯수인데 별마다 갯수로 바꿔줘야해
-        if (StageManager.instance)
-        {
-            currentStageTxt.text = StageManager.instance.currentIndex.ToString();
-        }
-        
+        ballCntTxt.text = deadLineBallCount.ToString();
     }
     public void StarsCountImage()
     {
@@ -460,7 +472,7 @@ public class GameManager : Singleton<GameManager>
             StarsImage[1].transform.DOShakeScale(0.3f, 3);
             StarsImage[1].transform.DOShakePosition(0.3f, 3).OnComplete(() =>
             {
-                StarsImage[1].SetActive(false); 
+                StarsImage[1].SetActive(false);
             });
         }
         else
@@ -471,7 +483,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void DeadLineCount()
     {
-        if(ballCount > stars[0] && ballCount > stars[1] && ballCount > stars[2])
+        if (ballCount > stars[0] && ballCount > stars[1] && ballCount > stars[2])
         {
             deadLineBallCount = ballCount - stars[2];
             deadLindMaxBallCount = initialBallCount - stars[2];
@@ -484,10 +496,9 @@ public class GameManager : Singleton<GameManager>
         {
             deadLineBallCount = ballCount - stars[0];
         }
-        else
-        {
-            return;
-        }
+
+        //ballGaugeImage.fillAmount = (float)deadLineBallCount / deadLindMaxBallCount;
+        DOTween.To(() => ballGaugeImage.fillAmount, x => ballGaugeImage.fillAmount = x, (float)deadLineBallCount / deadLindMaxBallCount, 0.2f).SetEase(Ease.InBack);
     }
 
 }
