@@ -9,6 +9,13 @@ public class PowerBlock : Block
         GameManager.instance.DeleteBlock(this);
         GameManager.instance.ball.damage += 1;
     }
+
+    public override void Shock(int damage)
+    {
+        GameManager.instance.DeleteBlock(this);
+        GameManager.instance.ball.damage += 1;
+    }
+
     protected override void Update()
     {
         

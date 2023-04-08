@@ -27,7 +27,7 @@ public class GameManager : Singleton<GameManager>
 {
     private bool isPlay = false;
     public float shootPower;
-    public float minHeight = -15.0f;
+    public float minHeight = 1.0f;
     public int initialBallCount;
     public int ballCount;
     public int[] stars = new int[3];
@@ -76,7 +76,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject[] successPanelStarsImage;
     public int deadLineBallCount;
-
+    public int deadLindMaxBallCount;
     public List<Block> _breakableBlocks;
     public List<HoleBlock> _holes;
     public List<CandyBlock> _candies;
@@ -91,6 +91,8 @@ public class GameManager : Singleton<GameManager>
     public void BallCollectButton()
     {
         ball.transform.position = firstBallPos;
+        ball.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        ball.isFloor = true;
     }
     public void TimeScaleUp()
     {
@@ -150,9 +152,11 @@ public class GameManager : Singleton<GameManager>
         _ballRadius = ball.GetComponent<CircleCollider2D>().radius;
         _dummyBall.SetActive(false);
 
-        slider[0].value = SoundManager.instance.Player[0].Volume;
-        slider[1].value = SoundManager.instance.Player[1].Volume;
-
+        if (SoundManager.instance)
+        {
+            slider[0].value = SoundManager.instance.Player[0].Volume;
+            slider[1].value = SoundManager.instance.Player[1].Volume;
+        }
         firstBallPos = ball.transform.position; //첫위치 생성
         
         this.UpdateAsObservable().Subscribe(_ =>
@@ -171,7 +175,7 @@ public class GameManager : Singleton<GameManager>
             });//별 표시
         this.UpdateAsObservable()
             .Where(_ => isPlay)
-             .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > minHeight)
+             .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > ball.transform.position.y+minHeight)
              .Where(_ =>
              {
                  var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -208,26 +212,43 @@ public class GameManager : Singleton<GameManager>
                  }
              });//조준점 생성
 
+      
+
         var ballShootStream = this.UpdateAsObservable()
             .Where(_ => isPlay)
             .Where(_ => ballCount > 0)
             .Where(_ => Input.GetMouseButtonUp(0) && ball.isFloor) //마우스 업 && ball이 땅에 있다면
-            .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > minHeight)
+            .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > ball.transform.position.y + minHeight)
             .Where(_ => EventSystem.current.IsPointerOverGameObject() == false) //ui위에 있으면 슈팅못하게
             .Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition)); //마우스 위치를 필터링
 
         ballShootStream.Subscribe(mousePos =>
             {
+                _dummyBall.SetActive(false);
                 mousePos.z = 0;
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
-                _dummyBall.SetActive(false);
                 ballCount--;
                 //_timeScaleUpRoutine = TimeScaleUp();
                 //StartCoroutine(_timeScaleUpRoutine);
             });//공 발사
 
-        
+        this.UpdateAsObservable()
+          .Where(_ => isPlay)
+          .Where(_ => ballCount > 0)
+          .Where(_ => Input.GetMouseButtonUp(0) && ball.isFloor).Subscribe(_ =>
+          {
+              _dummyBall.SetActive(false);
+          });
+
+        this.UpdateAsObservable()
+           .Where(_ => isPlay)
+            .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y <= ball.transform.position.y + minHeight)
+            .Subscribe(_ =>
+            {
+                _dummyBall.SetActive(false);
+            });
+
         //this.UpdateAsObservable()
         //     .Where(_ => ball.isFloor)
         //     .Subscribe(_ =>
@@ -256,13 +277,22 @@ public class GameManager : Singleton<GameManager>
             {
                 GameOver();
             });//게임오버
+        //this.UpdateAsObservable()
+        //    .Where(_ => isPlay)
+        //    .Subscribe(_ => {
         
+        //    });
     }
 
     public void StageClear()
     {
         ball.transform.position = firstBallPos; //원래 위치로
         successPanel.SetActive(true);
+        foreach (GameObject clearStars in successPanelStarsImage)
+        {
+            clearStars.transform.DOShakeScale(0.3f, 3).SetUpdate(true);
+            clearStars.transform.DOShakePosition(0.3f, 3).SetUpdate(true);
+        }
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageClearSound");
     }
@@ -399,10 +429,14 @@ public class GameManager : Singleton<GameManager>
     private void LateUpdate()
     {
         ballPowerTxt.text = ball.damage.ToString();
-        ballGaugeImage.fillAmount = Mathf.Lerp(ballGaugeImage.fillAmount, (float)ballCount / initialBallCount / 1 / 1, Time.deltaTime * 5);
+        ballGaugeImage.fillAmount = Mathf.Lerp(ballGaugeImage.fillAmount, (float)deadLineBallCount / deadLindMaxBallCount / 1 / 1, Time.deltaTime * 5);
         DeadLineCount();
         ballCntTxt.text = deadLineBallCount.ToString(); //총 갯수인데 별마다 갯수로 바꿔줘야해
-        currentStageTxt.text = StageManager.instance.currentIndex.ToString();
+        if (StageManager.instance)
+        {
+            currentStageTxt.text = StageManager.instance.currentIndex.ToString();
+        }
+        
     }
     public void StarsCountImage()
     {
@@ -440,7 +474,9 @@ public class GameManager : Singleton<GameManager>
         if(ballCount > stars[0] && ballCount > stars[1] && ballCount > stars[2])
         {
             deadLineBallCount = ballCount - stars[2];
-        }else if (ballCount > stars[1] && ballCount > stars[0])
+            deadLindMaxBallCount = initialBallCount - stars[2];
+        }
+        else if (ballCount > stars[1] && ballCount > stars[0])
         {
             deadLineBallCount = ballCount - stars[1];
         }
