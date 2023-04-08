@@ -14,6 +14,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreMode: 0
   gameMode: 1
-  blocks: []
-  initailBallCount: 0
-  stars: 000000000000000000000000
+  blocks:
+  - type: 5
+    hp: 1
+    row: 0
+    col: 0
+  - type: 0
+    hp: 1
+    row: 0
+    col: 1
+  - type: 0
+    hp: 1
+    row: 0
+    col: 7
+  - type: 5
+    hp: 1
+    row: 0
+    col: 8
+  - type: 0
+    hp: 1
+    row: 1
+    col: 0
+  - type: 4
+    hp: 1
+    row: 1
+    col: 1
+  - type: 4
+    hp: 1
+    row: 1
+    col: 2
+  - type: 4
+    hp: 1
+    row: 1
+    col: 6
+  - type: 4
+    hp: 1
+    row: 1
+    col: 7
+  - type: 0
+    hp: 1
+    row: 1
+    col: 8
+  - type: 3
+    hp: 1
+    row: 2
+    col: 0
+  - type: 4
+    hp: 1
+    row: 2
+    col: 1
+  - type: 6
+    hp: 0
+    row: 2
+    col: 2
+  - type: 0
+    hp: 6
+    row: 2
+    col: 3
+  - type: 2
+    hp: 1
+    row: 2
+    col: 4
+  - type: 4
+    hp: 1
+    row: 2
+    col: 7
+  - type: 2
+    hp: 1
+    row: 3
+    col: 0
+  - type: 0
+    hp: 6
+    row: 3
+    col: 2
+  - type: 0
+    hp: 6
+    row: 3
+    col: 3
+  - type: 3
+    hp: 1
+    row: 3
+    col: 4
+  - type: 3
+    hp: 1
+    row: 6
+    col: 0
+  - type: 3
+    hp: 1
+    row: 6
+    col: 7
+  - type: 3
+    hp: 1
+    row: 6
+    col: 8
+  - type: 2
+    hp: 1
+    row: 7
+    col: 8
+  initailBallCount: 4
+  stars: 000000000100000002000000
