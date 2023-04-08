@@ -27,7 +27,7 @@ public class GameManager : Singleton<GameManager>
 {
     private bool isPlay = false;
     public float shootPower;
-    public float minHeight = -15.0f;
+    public float minHeight = 1.0f;
     public int initialBallCount;
     public int ballCount;
     public int[] stars = new int[3];
@@ -175,7 +175,7 @@ public class GameManager : Singleton<GameManager>
             });//별 표시
         this.UpdateAsObservable()
             .Where(_ => isPlay)
-             .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > minHeight)
+             .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > ball.transform.position.y+minHeight)
              .Where(_ =>
              {
                  var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -212,26 +212,43 @@ public class GameManager : Singleton<GameManager>
                  }
              });//조준점 생성
 
+      
+
         var ballShootStream = this.UpdateAsObservable()
             .Where(_ => isPlay)
             .Where(_ => ballCount > 0)
             .Where(_ => Input.GetMouseButtonUp(0) && ball.isFloor) //마우스 업 && ball이 땅에 있다면
-            .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > minHeight)
+            .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > ball.transform.position.y + minHeight)
             .Where(_ => EventSystem.current.IsPointerOverGameObject() == false) //ui위에 있으면 슈팅못하게
             .Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition)); //마우스 위치를 필터링
 
         ballShootStream.Subscribe(mousePos =>
             {
+                _dummyBall.SetActive(false);
                 mousePos.z = 0;
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
-                _dummyBall.SetActive(false);
                 ballCount--;
                 //_timeScaleUpRoutine = TimeScaleUp();
                 //StartCoroutine(_timeScaleUpRoutine);
             });//공 발사
 
-        
+        this.UpdateAsObservable()
+          .Where(_ => isPlay)
+          .Where(_ => ballCount > 0)
+          .Where(_ => Input.GetMouseButtonUp(0) && ball.isFloor).Subscribe(_ =>
+          {
+              _dummyBall.SetActive(false);
+          });
+
+        this.UpdateAsObservable()
+           .Where(_ => isPlay)
+            .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y <= ball.transform.position.y + minHeight)
+            .Subscribe(_ =>
+            {
+                _dummyBall.SetActive(false);
+            });
+
         //this.UpdateAsObservable()
         //     .Where(_ => ball.isFloor)
         //     .Subscribe(_ =>
