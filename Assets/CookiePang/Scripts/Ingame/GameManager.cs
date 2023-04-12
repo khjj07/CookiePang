@@ -46,7 +46,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField]
     public Ball ball;
-    public Vector3 firstBallPos;
+    public Vector3 lastBallPos;
     [SerializeField]
     private Block[] blockPrefabs;
     [SerializeField, Range(5.0f, 10.0f)]
@@ -60,6 +60,7 @@ public class GameManager : Singleton<GameManager>
     private GameObject _dummyBall;
 
     [Header("추가")]
+    public GameObject ballCollectButton;
     public GameObject successPanel;
     public GameObject failPanel;
     [SerializeField]
@@ -77,6 +78,7 @@ public class GameManager : Singleton<GameManager>
     private GameObject[] successPanelStarsImage;
     public int deadLineBallCount;
     public int deadLindMaxBallCount;
+
     public List<Block> _breakableBlocks;
     public List<HoleBlock> _holes;
     public List<CandyBlock> _candies;
@@ -90,7 +92,7 @@ public class GameManager : Singleton<GameManager>
 
     public void BallCollectButton()
     {
-        ball.transform.position = firstBallPos;
+        ball.transform.position = lastBallPos;
         ball.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         ball.isFloor = true;
     }
@@ -148,6 +150,10 @@ public class GameManager : Singleton<GameManager>
     }
     public void Start()
     {
+        if (StageManager.instance) //게임시작시 스테이지 표기
+        {
+            currentStageTxt.text = StageManager.instance.currentIndex.ToString();
+        }
         _dotLine = GetComponent<DotLine>();
         _ballRadius = ball.GetComponent<CircleCollider2D>().radius;
         _dummyBall.SetActive(false);
@@ -157,7 +163,7 @@ public class GameManager : Singleton<GameManager>
             slider[0].value = SoundManager.instance.Player[0].Volume;
             slider[1].value = SoundManager.instance.Player[1].Volume;
         }
-        firstBallPos = ball.transform.position; //첫위치 생성
+        lastBallPos = ball.transform.position; //첫위치 생성
 
         this.UpdateAsObservable().Subscribe(_ =>
         {
@@ -229,12 +235,8 @@ public class GameManager : Singleton<GameManager>
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
                 ballCount--;
-
+                ballCollectButton.SetActive(true); //공버튼 보이게
                 DeadLineCount();
-                if (StageManager.instance)
-                {
-                    currentStageTxt.text = StageManager.instance.currentIndex.ToString();
-                }
                 //_timeScaleUpRoutine = TimeScaleUp();
                 //StartCoroutine(_timeScaleUpRoutine);
             });//공
@@ -271,9 +273,10 @@ public class GameManager : Singleton<GameManager>
             .Where(x => x == true)
             .Subscribe(_ =>
             {
+                ballCollectButton.SetActive(false);  //공버튼 안보이게
                 StarsCountImage();
                 DeadLineCount();
-
+                lastBallPos = ball.transform.position;
             });
 
         this.UpdateAsObservable()
@@ -305,7 +308,7 @@ public class GameManager : Singleton<GameManager>
 
     public void StageClear()
     {
-        ball.transform.position = firstBallPos; //원래 위치로
+        ball.transform.position = lastBallPos; //원래 위치로
         successPanel.SetActive(true);
         foreach (GameObject clearStars in successPanelStarsImage)
         {

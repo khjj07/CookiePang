@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1675469117}
   - component: {fileID: 8608775062478343274}
   - component: {fileID: 7424178543746694550}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CandyBlock
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -138,13 +138,13 @@ GameObject:
   - component: {fileID: 4606933590216189551}
   - component: {fileID: 7514402875756763034}
   - component: {fileID: 8890746863768441847}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4606933590216189551
 RectTransform:
   m_ObjectHideFlags: 0

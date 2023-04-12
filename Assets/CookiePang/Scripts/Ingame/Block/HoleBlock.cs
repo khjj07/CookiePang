@@ -9,6 +9,10 @@ public class HoleBlock : Block
 {
     public bool holeIn = false;
 
+    protected override void Update()
+    {
+        //_textMeshPro.SetText(hp.ToString());
+    }
     public override void Hit(int damage)
     {
         if(!holeIn)

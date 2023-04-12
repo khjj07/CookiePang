@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6359345366481425365}
   - component: {fileID: 623164444}
   - component: {fileID: 4242976777669019373}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PowerBlock
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 7471457883050243492}
   - component: {fileID: 3461134446063846481}
   - component: {fileID: 2531772583707197500}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
