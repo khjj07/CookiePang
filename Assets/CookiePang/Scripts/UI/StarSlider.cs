@@ -10,7 +10,7 @@ public class StarSlider : MonoBehaviour
     public RectTransform filledArea;
     public void SetStar(int index, int value)
     {
-        stars[index].GetComponent<RectTransform>().anchoredPosition = new Vector2(offset * value, 0);
+        //stars[index].GetComponent<RectTransform>().anchoredPosition = new Vector2(offset * value, 0);
         stars[index].SetValue(value);
     }
 

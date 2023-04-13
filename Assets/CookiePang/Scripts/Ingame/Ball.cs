@@ -12,7 +12,7 @@ public class Ball : MonoBehaviour
         collider.GetComponent<Block>().Hit(damage);
     }
         private void OnCollisionEnter2D(Collision2D collision)
-    {
+        {
         if (collision.collider.CompareTag("Floor"))
         {
             SoundManager.instance.PlaySound(1, "BallCrushSound"); 

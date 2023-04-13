@@ -9,6 +9,10 @@ public class CandyBlock : Block
 {
     public bool holeIn = false;
 
+    protected override void Update()
+    {
+        //_textMeshPro.SetText(hp.ToString());
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Ball") && !holeIn)

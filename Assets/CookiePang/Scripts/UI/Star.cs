@@ -10,13 +10,13 @@ public class Star : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
+        //_textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void SetValue(int val)
     {
         value = val;
-        _textMeshPro.SetText(value.ToString());
+        //_textMeshPro.SetText(value.ToString());
     }
 
     // Update is called once per frame
