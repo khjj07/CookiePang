@@ -79,6 +79,7 @@ public class GameManager : Singleton<GameManager>
     public int deadLineBallCount;
     public int deadLindMaxBallCount;
 
+
     public List<Block> _breakableBlocks;
     public List<HoleBlock> _holes;
     public List<CandyBlock> _candies;
@@ -426,7 +427,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         DeleteBlock(x);
-
+        EffectManager.instance.PlayEffect(2, x);
         await Task.Delay(100);
 
         for (int i = 0; i < _row; i++)
