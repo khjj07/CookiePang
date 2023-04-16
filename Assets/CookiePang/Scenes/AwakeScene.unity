@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -412,7 +412,7 @@ MonoBehaviour:
   current: {fileID: 0}
   currentIndex: 0
   selectButtonPrefab: {fileID: 6119127042071375622, guid: b7c3b6c7b7598dd4baa711db80a38dc5, type: 3}
-  _folderName: StageVariousMode
+  _folderName: Stage
 --- !u!4 &1655981468
 Transform:
   m_ObjectHideFlags: 0
