@@ -412,7 +412,7 @@ MonoBehaviour:
   current: {fileID: 0}
   currentIndex: 0
   selectButtonPrefab: {fileID: 6119127042071375622, guid: b7c3b6c7b7598dd4baa711db80a38dc5, type: 3}
-  _folderName: StageVariousMode
+  _folderName: StageHardMode
 --- !u!4 &1655981468
 Transform:
   m_ObjectHideFlags: 0
