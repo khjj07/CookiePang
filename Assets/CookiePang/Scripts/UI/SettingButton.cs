@@ -19,4 +19,11 @@ public class SettingButton : Button
     {
         settingPanel.SetActive(false);
     }
+    public void OnOffParticleButton()
+    {
+        if (EffectManager.instance.isParticle)
+            EffectManager.instance.isParticle = false;
+        else
+            EffectManager.instance.isParticle = true;
+    }
 }

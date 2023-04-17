@@ -18,7 +18,6 @@ public class PoisonBlock : Block
     {
         GameManager.instance.DeleteBlock(this);
         //GameManager.instance.GameOver();
-        GameManager.instance.ballCount--; //임시
         GameManager.instance.ball.isFloor = false;
         EffectManager.instance.PlayEffect(5, this);
     }
@@ -27,7 +26,6 @@ public class PoisonBlock : Block
     {
         GameManager.instance.DeleteBlock(this);
         //GameManager.instance.GameOver();
-        GameManager.instance.ballCount--; //임시
         GameManager.instance.ball.isFloor = false;
     }
 

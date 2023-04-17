@@ -9,7 +9,7 @@ public class TeleportationBlock : Block
 {
     public TeleportationBlock destination;
     private bool _ballEntered = false;
-
+    public Sprite[] sprite;
     protected override void Start()
     {
         base.Start();
@@ -18,6 +18,7 @@ public class TeleportationBlock : Block
             if (block != this && block as TeleportationBlock && hp == block.hp)
             {
                 destination = (TeleportationBlock)block;
+                block.GetComponent<SpriteRenderer>().sprite = sprite[hp - 1];
                 break;
             }
         }
