@@ -311,6 +311,7 @@ public class GameManager : Singleton<GameManager>
     {
         ball.transform.position = lastBallPos; //원래 위치로
         successPanel.SetActive(true);
+        EffectManager.instance.UiEffect(0, successPanel);
         foreach (GameObject clearStars in successPanelStarsImage)
         {
             clearStars.transform.DOShakeScale(0.3f, 3).SetUpdate(true);
