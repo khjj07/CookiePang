@@ -46,10 +46,6 @@ MonoBehaviour:
   - type: 4
     hp: 1
     row: 5
-    col: 4
-  - type: 4
-    hp: 1
-    row: 5
     col: 5
   - type: 4
     hp: 1

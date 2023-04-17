@@ -15,88 +15,64 @@ MonoBehaviour:
   scoreMode: 0
   gameMode: 0
   blocks:
-  - type: 5
+  - type: 0
     hp: 1
     row: 0
+    col: 2
+  - type: 0
+    hp: 2
+    row: 0
+    col: 3
+  - type: 0
+    hp: 3
+    row: 0
+    col: 4
+  - type: 0
+    hp: 2
+    row: 0
+    col: 5
+  - type: 0
+    hp: 1
+    row: 0
+    col: 6
+  - type: 0
+    hp: 1
+    row: 1
+    col: 2
+  - type: 2
+    hp: 1
+    row: 1
+    col: 3
+  - type: 2
+    hp: 1
+    row: 1
+    col: 4
+  - type: 2
+    hp: 1
+    row: 1
+    col: 5
+  - type: 0
+    hp: 1
+    row: 1
+    col: 6
+  - type: 4
+    hp: 1
+    row: 5
     col: 0
+  - type: 4
+    hp: 1
+    row: 5
+    col: 1
   - type: 0
     hp: 1
-    row: 0
-    col: 2
-  - type: 0
-    hp: 1
-    row: 0
-    col: 3
-  - type: 0
-    hp: 2
-    row: 0
-    col: 4
-  - type: 0
-    hp: 1
-    row: 0
-    col: 5
-  - type: 0
-    hp: 1
-    row: 0
-    col: 6
-  - type: 5
-    hp: 1
-    row: 0
-    col: 8
-  - type: 0
-    hp: 2
-    row: 1
-    col: 2
-  - type: 2
-    hp: 1
-    row: 1
-    col: 3
-  - type: 0
-    hp: 5
-    row: 1
-    col: 4
-  - type: 2
-    hp: 1
-    row: 1
-    col: 5
-  - type: 0
-    hp: 2
-    row: 1
-    col: 6
-  - type: 2
-    hp: 1
-    row: 2
-    col: 3
-  - type: 2
-    hp: 1
-    row: 2
-    col: 4
-  - type: 2
-    hp: 1
-    row: 2
-    col: 5
-  - type: 2
-    hp: 1
-    row: 4
-    col: 3
-  - type: 2
-    hp: 1
-    row: 4
-    col: 4
-  - type: 2
-    hp: 1
-    row: 4
-    col: 5
-  - type: 0
-    hp: 2
     row: 5
     col: 2
   - type: 2
     hp: 1
     row: 5
     col: 3
-  - type: 0
-    hp: 5
+  - type: 2
+    hp: 1
     row: 5
     col: 4
   - type: 2
@@ -104,28 +80,40 @@ MonoBehaviour:
     row: 5
     col: 5
   - type: 0
-    hp: 2
+    hp: 1
     row: 5
     col: 6
+  - type: 0
+    hp: 1
+    row: 5
+    col: 7
   - type: 0
     hp: 1
     row: 6
     col: 2
   - type: 0
-    hp: 1
+    hp: 2
     row: 6
     col: 3
   - type: 0
-    hp: 2
+    hp: 3
     row: 6
     col: 4
   - type: 0
-    hp: 1
+    hp: 2
     row: 6
     col: 5
   - type: 0
     hp: 1
     row: 6
     col: 6
+  - type: 0
+    hp: 1
+    row: 6
+    col: 7
+  - type: 0
+    hp: 1
+    row: 7
+    col: 7
   initailBallCount: 6
   stars: 000000000200000004000000

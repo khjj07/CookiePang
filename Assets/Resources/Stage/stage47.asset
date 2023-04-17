@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7b87a1308b641544b7e3b359328bc11, type: 3}
-  m_Name: stage39
+  m_Name: stage47
   m_EditorClassIdentifier: 
   scoreMode: 0
   gameMode: 0
@@ -19,11 +19,11 @@ MonoBehaviour:
     hp: 1
     row: 0
     col: 0
-  - type: 0
-    hp: 8
+  - type: 3
+    hp: 1
     row: 0
     col: 1
-  - type: 4
+  - type: 3
     hp: 1
     row: 0
     col: 2
@@ -39,23 +39,31 @@ MonoBehaviour:
     hp: 1
     row: 0
     col: 5
-  - type: 4
+  - type: 3
     hp: 1
     row: 0
     col: 6
-  - type: 1
+  - type: 3
+    hp: 1
+    row: 0
+    col: 7
+  - type: 3
     hp: 1
     row: 0
     col: 8
-  - type: 1
+  - type: 2
     hp: 1
     row: 1
     col: 0
-  - type: 4
+  - type: 2
+    hp: 1
+    row: 1
+    col: 1
+  - type: 2
     hp: 1
     row: 1
     col: 2
-  - type: 4
+  - type: 2
     hp: 1
     row: 1
     col: 3
@@ -63,49 +71,101 @@ MonoBehaviour:
     hp: 1
     row: 1
     col: 4
-  - type: 4
+  - type: 2
     hp: 1
     row: 1
     col: 5
-  - type: 4
+  - type: 2
     hp: 1
     row: 1
     col: 6
-  - type: 3
+  - type: 2
     hp: 1
     row: 1
     col: 7
-  - type: 3
+  - type: 2
     hp: 1
     row: 1
     col: 8
   - type: 0
-    hp: 3
+    hp: 1
+    row: 2
+    col: 1
+  - type: 0
+    hp: 1
+    row: 2
+    col: 2
+  - type: 0
+    hp: 1
+    row: 2
+    col: 3
+  - type: 0
+    hp: 1
     row: 2
     col: 4
-  - type: 3
+  - type: 0
     hp: 1
-    row: 3
-    col: 4
-  - type: 4
-    hp: 1
-    row: 6
-    col: 3
-  - type: 4
-    hp: 1
-    row: 6
-    col: 4
-  - type: 4
-    hp: 1
-    row: 6
+    row: 2
     col: 5
-  - type: 3
+  - type: 0
+    hp: 1
+    row: 2
+    col: 6
+  - type: 0
+    hp: 1
+    row: 2
+    col: 7
+  - type: 0
+    hp: 1
+    row: 2
+    col: 8
+  - type: 4
+    hp: 1
+    row: 5
+    col: 1
+  - type: 4
+    hp: 1
+    row: 5
+    col: 2
+  - type: 0
+    hp: 4
+    row: 5
+    col: 4
+  - type: 0
+    hp: 4
+    row: 5
+    col: 6
+  - type: 0
+    hp: 4
+    row: 5
+    col: 8
+  - type: 1
     hp: 1
     row: 7
     col: 0
-  - type: 5
+  - type: 4
     hp: 1
-    row: 7
-    col: 4
+    row: 8
+    col: 2
+  - type: 4
+    hp: 1
+    row: 8
+    col: 3
+  - type: 4
+    hp: 1
+    row: 8
+    col: 5
+  - type: 4
+    hp: 1
+    row: 8
+    col: 6
+  - type: 4
+    hp: 1
+    row: 8
+    col: 7
+  - type: 1
+    hp: 1
+    row: 8
+    col: 8
   initailBallCount: 7
   stars: 000000000200000004000000

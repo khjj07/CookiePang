@@ -81,6 +81,30 @@ MonoBehaviour:
     col: 8
   - type: 4
     hp: 1
+    row: 2
+    col: 1
+  - type: 4
+    hp: 1
+    row: 2
+    col: 2
+  - type: 4
+    hp: 1
+    row: 2
+    col: 3
+  - type: 4
+    hp: 1
+    row: 2
+    col: 4
+  - type: 4
+    hp: 1
+    row: 2
+    col: 5
+  - type: 4
+    hp: 1
+    row: 2
+    col: 6
+  - type: 4
+    hp: 1
     row: 5
     col: 0
   - type: 4
@@ -99,6 +123,10 @@ MonoBehaviour:
     hp: 1
     row: 6
     col: 7
+  - type: 5
+    hp: 1
+    row: 6
+    col: 8
   - type: 4
     hp: 1
     row: 7
