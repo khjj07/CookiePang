@@ -39,8 +39,10 @@ public class EffectManager : Singleton<EffectManager>
         if (!isParticle)
             return;
         GameObject effect = Instantiate(uiList[num].effect, pos.transform.position + new Vector3(0,15,-1), pos.transform.rotation);
+        
         effect.SetActive(false);
         effect.SetActive(true);
+        
         Destroy(effect, 2 * Time.unscaledDeltaTime);
     }
 }

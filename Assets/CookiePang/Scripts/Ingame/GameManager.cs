@@ -12,6 +12,7 @@ using DG.Tweening;
 public enum BlockType
 {
     DEFAULT,
+    DEFAULTTRIANGLE,
     TELEPORT,
     BOMB,
     POWER,

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class TitleSceneSound : MonoBehaviour
+public class TitleScene : MonoBehaviour
 {
     [SerializeField] private Slider[] slider;
-
+    public Text onOffParticleText;
     //private bool DontDestroy = true; 
     private void Awake()
     {
@@ -22,7 +22,10 @@ public class TitleSceneSound : MonoBehaviour
             SoundManager.instance.PlaySound(0, "MainSound"); 
             SoundManager.instance.isStartSound = false; 
         }
-        
+        if (EffectManager.instance.isParticle == false)
+            onOffParticleText.text = "OFF";
+        else
+            onOffParticleText.text = "ON";
     }
     
 }

@@ -567,6 +567,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   settingPanel: {fileID: 1887095276}
+  onOffText: {fileID: 1895655077294630389}
 --- !u!114 &654993826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,7 +861,7 @@ GameObject:
   - component: {fileID: 1856506554}
   - component: {fileID: 1856506555}
   m_Layer: 0
-  m_Name: StageSelectSound
+  m_Name: StageSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -896,6 +897,7 @@ MonoBehaviour:
   slider:
   - {fileID: 1753624612}
   - {fileID: 1428980931}
+  onOffParticleText: {fileID: 1895655077294630389}
 --- !u!1 &1887095276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1895655077024443416, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
@@ -1228,5 +1230,44 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_Text
+      value: ON
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+--- !u!114 &1895655077294630389 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+  m_PrefabInstance: {fileID: 1895655077294630388}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
