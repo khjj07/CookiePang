@@ -32,7 +32,7 @@ public class EffectManager : Singleton<EffectManager>
         if (!isParticle)
             return;
         GameObject effect = Instantiate(effectList[num].effect, pos.transform.position, pos.transform.rotation);
-        Destroy(effect, 2);
+        Destroy(effect, 2 * Time.unscaledTime);
     }
     public void UiEffect(int num, GameObject pos)
     {
@@ -43,6 +43,6 @@ public class EffectManager : Singleton<EffectManager>
         effect.SetActive(false);
         effect.SetActive(true);
         
-        Destroy(effect, 2 * Time.unscaledDeltaTime);
+        Destroy(effect, 2 * Time.unscaledTime);
     }
 }

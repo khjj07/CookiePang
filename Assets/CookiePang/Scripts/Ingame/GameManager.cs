@@ -91,7 +91,7 @@ public class GameManager : Singleton<GameManager>
     private float _currentTimeScale = 1.0f;
 
     [SerializeField] private Slider[] slider; //Setting Panel volume //추후에 title에 있는걸로 슬라이더 다 쓸거임 (임시)
-
+    
     public void BallCollectButton()
     {
         ball.transform.position = lastBallPos;
