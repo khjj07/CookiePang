@@ -258,6 +258,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.data[0].name
+      value: Clear
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.data[1].name
+      value: BallCountDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.data[2].name
+      value: BallCountDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.data[1].effect
+      value: 
+      objectReference: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.data[2].effect
+      value: 
+      objectReference: {fileID: 5700784828077083704, guid: ed962e35f7fa6f34f8d27aa6d19ea293, type: 3}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.data[6].name
+      value: BallCountDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.data[5].effect
+      value: 
+      objectReference: {fileID: 4425129568585013132, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.data[6].effect
+      value: 
+      objectReference: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
     - target: {fileID: 383717548323839021, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: m_Name
       value: EffectManager

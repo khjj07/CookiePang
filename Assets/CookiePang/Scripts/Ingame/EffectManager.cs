@@ -21,6 +21,7 @@ public class EffectManager : Singleton<EffectManager>
     public List<UIStruct> uiList = new List<UIStruct>();
     private bool DontDestroy = true;
     public bool isParticle = true;
+    private int destroyTime = 2;
     private void Awake()
     {
         if (DontDestroy)
@@ -32,17 +33,17 @@ public class EffectManager : Singleton<EffectManager>
         if (!isParticle)
             return;
         GameObject effect = Instantiate(effectList[num].effect, pos.transform.position, pos.transform.rotation);
-        Destroy(effect, 2 * Time.unscaledTime);
+        Destroy(effect, destroyTime);
     }
-    public void UiEffect(int num, GameObject pos)
+    public void UiEffect(int num, Vector3 pos)
     {
         if (!isParticle)
             return;
-        GameObject effect = Instantiate(uiList[num].effect, pos.transform.position + new Vector3(0,15,-1), pos.transform.rotation);
+        GameObject effect = Instantiate(uiList[num].effect, pos, Quaternion.Euler(pos));
         
         effect.SetActive(false);
         effect.SetActive(true);
         
-        Destroy(effect, 2 * Time.unscaledTime);
+        Destroy(effect, destroyTime);
     }
 }

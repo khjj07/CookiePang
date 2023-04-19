@@ -239,6 +239,7 @@ public class GameManager : Singleton<GameManager>
                 ballCount--;
                 ballCollectButton.SetActive(true); //공버튼 보이게
                 DeadLineCount();
+                EffectManager.instance.UiEffect(1, ballCntTxt.gameObject.transform.position);
                 //_timeScaleUpRoutine = TimeScaleUp();
                 //StartCoroutine(_timeScaleUpRoutine);
             });//공
@@ -312,7 +313,7 @@ public class GameManager : Singleton<GameManager>
     {
         ball.transform.position = lastBallPos; //원래 위치로
         successPanel.SetActive(true);
-        EffectManager.instance.UiEffect(0, successPanel);
+        EffectManager.instance.UiEffect(0, successPanel.transform.position + new Vector3(0,15,-1));
         foreach (GameObject clearStars in successPanelStarsImage)
         {
             clearStars.transform.DOShakeScale(0.3f, 3).SetUpdate(true);
