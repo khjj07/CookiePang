@@ -80,7 +80,9 @@ public class NextStageButton : Button
     public override void OnPointerClick(PointerEventData pointerEventData)
     {
         base.OnPointerClick(pointerEventData);
-        ShowAd(); //광고를 시작해야 할 때 함수
+        //ShowAd(); //광고를 시작해야 할 때 함수
+        StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //광고가 닫혔을때 스테이지 넘어감
+        SceneFlowManager.ChangeScene("Stage");
     }
     private void RegisterEventHandlers(InterstitialAd ad)
     {
@@ -110,8 +112,8 @@ public class NextStageButton : Button
         ad.OnAdFullScreenContentClosed += () => 
         {
             Debug.Log("Interstitial ad full screen content closed.");
-            StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //광고가 닫혔을때 스테이지 넘어감
-            SceneFlowManager.ChangeScene("Stage");
+            //StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //광고가 닫혔을때 스테이지 넘어감
+            //SceneFlowManager.ChangeScene("Stage");
         };
         // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
