@@ -12,7 +12,6 @@ using DG.Tweening;
 public enum BlockType
 {
     DEFAULT,
-    DEFAULTTRIANGLE,
     TELEPORT,
     BOMB,
     POWER,
@@ -21,7 +20,8 @@ public enum BlockType
     HOLE,
     CANDY,
     BUTTON,
-    MACAROON
+    MACAROON,
+    DEFAULTTRIANGLE
 }
 
 public class GameManager : Singleton<GameManager>
