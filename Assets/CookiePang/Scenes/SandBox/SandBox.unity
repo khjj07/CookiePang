@@ -1971,6 +1971,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Macaroon
       m_Image: {fileID: 0}
+    - m_Text: DefaultTriangle
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3688,6 +3690,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: -4672851573033685177, guid: 39febc0de5e483b4ebce71a323c0d92d, type: 3}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: -8934176636264706175, guid: e3ed0011802c00e489ee85ced83a7d01, type: 3}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 6359345366481425365, guid: 3e0e325381d0c3047a35cab3ab881a83, type: 3}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 131055598940841538, guid: 69eb4486e7dff8d438ec99e7991019a0, type: 3}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 4180814415107740701, guid: adb48acd119a5f149ab90ec44d5ed1be, type: 3}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 4331607297159681301, guid: dd28521a0d696a44fb521526552e69b5, type: 3}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 7424178543746694550, guid: a519361b7a137f3418d52b4d4ed17395, type: 3}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: -3363605501387026561, guid: e5e6524f4d8391a4c9a53fbcd04dc379, type: 3}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 6929829636525740885, guid: bf5859d9e89ca3145ad8912ab56c2d6a, type: 3}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: blockPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: -7729290416908658509, guid: cbd4f6fe408d1924ca4c32a1f4315dcd, type: 3}
     - target: {fileID: 9189633971154522043, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: m_Name
       value: Essential
@@ -4797,7 +4843,7 @@ MonoBehaviour:
   - {fileID: 334582632}
   initialBall: 0
   stars: 000000000000000000000000
-  currentStageAsset: {fileID: 11400000, guid: 51d12d2b64f3b8544a030c100340424d, type: 2}
+  currentStageAsset: {fileID: 11400000, guid: 8433a6b4d32afd544bb238326ff19e8b, type: 2}
 --- !u!1 &1564913635
 GameObject:
   m_ObjectHideFlags: 0

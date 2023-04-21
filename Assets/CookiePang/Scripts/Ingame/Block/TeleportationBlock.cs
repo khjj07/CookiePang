@@ -9,7 +9,7 @@ public class TeleportationBlock : Block
 {
     public TeleportationBlock destination;
     private bool _ballEntered = false;
-
+    public Sprite[] sprite;
     protected override void Start()
     {
         base.Start();
@@ -18,6 +18,7 @@ public class TeleportationBlock : Block
             if (block != this && block as TeleportationBlock && hp == block.hp)
             {
                 destination = (TeleportationBlock)block;
+                block.GetComponent<SpriteRenderer>().sprite = sprite[hp - 1];
                 break;
             }
         }
@@ -38,6 +39,8 @@ public class TeleportationBlock : Block
                 destination._ballEntered = true;
                 GameManager.instance.ball.transform.position = destination.transform.position;
                 SoundManager.instance.PlaySound(1, "TeleportSound");
+                EffectManager.instance.PlayEffect(3, this);
+                EffectManager.instance.PlayEffect(3, destination);
             }
         }
     }
@@ -58,6 +61,7 @@ public class TeleportationBlock : Block
             var telInstance2 = GameManager.instance.blocks[tel.destinationRow, tel.destinationCol] as TeleportationBlock;
             destination = telInstance2;
             telInstance2.destination = this;
+
         }
     }
 }

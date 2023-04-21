@@ -17,14 +17,15 @@ public class PoisonBlock : Block
     public override void Hit(int damage)
     {
         GameManager.instance.DeleteBlock(this);
-        GameManager.instance.GameOver();
+        //GameManager.instance.GameOver();
         GameManager.instance.ball.isFloor = false;
+        EffectManager.instance.PlayEffect(5, this);
     }
 
     public override void Shock(int damage)
     {
         GameManager.instance.DeleteBlock(this);
-        GameManager.instance.GameOver();
+        //GameManager.instance.GameOver();
         GameManager.instance.ball.isFloor = false;
     }
 

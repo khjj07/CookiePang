@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1675469117}
   - component: {fileID: 8608775062478343274}
   - component: {fileID: -3363605501387026561}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ButtonBlock
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 4606933590216189551}
   - component: {fileID: 7514402875756763034}
   - component: {fileID: 8890746863768441847}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}

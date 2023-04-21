@@ -251,6 +251,103 @@ Transform:
   m_Father: {fileID: 2065074814}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1283432628
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.data[0].name
+      value: Clear
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.data[1].name
+      value: BallCountDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.data[2].name
+      value: BallCountDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.data[1].effect
+      value: 
+      objectReference: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: uiList.Array.data[2].effect
+      value: 
+      objectReference: {fileID: 5700784828077083704, guid: ed962e35f7fa6f34f8d27aa6d19ea293, type: 3}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.data[6].name
+      value: BallCountDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.data[5].effect
+      value: 
+      objectReference: {fileID: 4425129568585013132, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.data[6].effect
+      value: 
+      objectReference: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
+    - target: {fileID: 383717548323839021, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_Name
+      value: EffectManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839023, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
 --- !u!1 &1423772902
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +509,7 @@ MonoBehaviour:
   current: {fileID: 0}
   currentIndex: 0
   selectButtonPrefab: {fileID: 6119127042071375622, guid: b7c3b6c7b7598dd4baa711db80a38dc5, type: 3}
-  _folderName: StageVariousMode
+  _folderName: Stage
 --- !u!4 &1655981468
 Transform:
   m_ObjectHideFlags: 0

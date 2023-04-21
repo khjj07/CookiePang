@@ -12,6 +12,7 @@ using DG.Tweening;
 public enum BlockType
 {
     DEFAULT,
+    DEFAULTTRIANGLE,
     TELEPORT,
     BOMB,
     POWER,
@@ -79,6 +80,7 @@ public class GameManager : Singleton<GameManager>
     public int deadLineBallCount;
     public int deadLindMaxBallCount;
 
+
     public List<Block> _breakableBlocks;
     public List<HoleBlock> _holes;
     public List<CandyBlock> _candies;
@@ -89,7 +91,7 @@ public class GameManager : Singleton<GameManager>
     private float _currentTimeScale = 1.0f;
 
     [SerializeField] private Slider[] slider; //Setting Panel volume //추후에 title에 있는걸로 슬라이더 다 쓸거임 (임시)
-
+    
     public void BallCollectButton()
     {
         ball.transform.position = lastBallPos;
@@ -237,6 +239,7 @@ public class GameManager : Singleton<GameManager>
                 ballCount--;
                 ballCollectButton.SetActive(true); //공버튼 보이게
                 DeadLineCount();
+                EffectManager.instance.UiEffect(1, ballCntTxt.gameObject.transform.position);
                 //_timeScaleUpRoutine = TimeScaleUp();
                 //StartCoroutine(_timeScaleUpRoutine);
             });//공
@@ -310,6 +313,7 @@ public class GameManager : Singleton<GameManager>
     {
         ball.transform.position = lastBallPos; //원래 위치로
         successPanel.SetActive(true);
+        EffectManager.instance.UiEffect(0, successPanel.transform.position + new Vector3(0,15,-1));
         foreach (GameObject clearStars in successPanelStarsImage)
         {
             clearStars.transform.DOShakeScale(0.3f, 3).SetUpdate(true);
@@ -426,7 +430,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         DeleteBlock(x);
-
+        EffectManager.instance.PlayEffect(2, x);
         await Task.Delay(100);
 
         for (int i = 0; i < _row; i++)
