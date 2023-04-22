@@ -39,8 +39,8 @@ public class TeleportationBlock : Block
                 destination._ballEntered = true;
                 GameManager.instance.ball.transform.position = destination.transform.position;
                 SoundManager.instance.PlaySound(1, "TeleportSound");
-                EffectManager.instance.PlayEffect(3, this);
-                EffectManager.instance.PlayEffect(3, destination);
+                EffectManager.instance.PlayEffect(3, this, 2f);
+                EffectManager.instance.PlayEffect(3, destination, 2f);
             }
         }
     }

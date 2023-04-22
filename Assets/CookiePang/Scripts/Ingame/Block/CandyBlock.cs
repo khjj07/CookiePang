@@ -17,7 +17,7 @@ public class CandyBlock : Block
     {
         if (other.CompareTag("Ball") && !holeIn)
         {
-            EffectManager.instance.PlayEffect(4, this);
+            EffectManager.instance.PlayEffect(4, this, 2f);
             GameManager.instance.DeleteBlock(this);
         }
     }

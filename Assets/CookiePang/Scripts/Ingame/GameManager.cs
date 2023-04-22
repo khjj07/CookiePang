@@ -64,8 +64,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject ballCollectButton;
     public GameObject successPanel;
     public GameObject failPanel;
-    [SerializeField]
-    private Text ballCntTxt;
+    public Text ballCntTxt;
     [SerializeField]
     private Text ballPowerTxt;
     [SerializeField]
@@ -113,28 +112,33 @@ public class GameManager : Singleton<GameManager>
     {
         isPlay = true;
         Time.timeScale = _currentTimeScale;
+        SoundManager.instance.PlaySound(1, "UiClickSound");
     }
     public void PauseGame()
     {
         isPlay = false;
         _currentTimeScale = Time.timeScale;
         Time.timeScale = 0;
+        SoundManager.instance.PlaySound(1, "UiClickSound");
     }
     public void NextGame()
     {
         Time.timeScale = 1;
         StageManager.instance.currentIndex++;
         SceneFlowManager.ChangeScene("Stage");
+
     }
     public void BackToMenu()
     {
         Time.timeScale = 1;
         SceneFlowManager.ChangeScene("StageSelect");
+        SoundManager.instance.PlaySound(1, "UiClickSound");
         SoundManager.instance.PlaySound(0, "MainSound");
     }
     public void ResetGame()
     {
         Time.timeScale = 1;
+        SoundManager.instance.PlaySound(1, "UiClickSound");
         SceneFlowManager.ChangeScene("Stage");
     }
     public void Awake()
@@ -239,7 +243,7 @@ public class GameManager : Singleton<GameManager>
                 ballCount--;
                 ballCollectButton.SetActive(true); //공버튼 보이게
                 DeadLineCount();
-                EffectManager.instance.UiEffect(1, ballCntTxt.gameObject.transform.position);
+                
                 //_timeScaleUpRoutine = TimeScaleUp();
                 //StartCoroutine(_timeScaleUpRoutine);
             });//공
@@ -313,7 +317,7 @@ public class GameManager : Singleton<GameManager>
     {
         ball.transform.position = lastBallPos; //원래 위치로
         successPanel.SetActive(true);
-        EffectManager.instance.UiEffect(0, successPanel.transform.position + new Vector3(0,15,-1));
+        EffectManager.instance.UiEffect(0, successPanel.transform.position + new Vector3(0,15,-2.5f));
         foreach (GameObject clearStars in successPanelStarsImage)
         {
             clearStars.transform.DOShakeScale(0.3f, 3).SetUpdate(true);
@@ -430,7 +434,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         DeleteBlock(x);
-        EffectManager.instance.PlayEffect(2, x);
+        EffectManager.instance.PlayEffect(2, x, 2f);
         await Task.Delay(100);
 
         for (int i = 0; i < _row; i++)

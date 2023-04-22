@@ -8,6 +8,7 @@ public class SceneFlowManager : MonoBehaviour
     // Start is called before the first frame update
     public static void ChangeScene(string name)
     {
+        //SoundManager.instance.PlaySound(1, "UiClickSound");
         SceneManager.LoadSceneAsync(name,LoadSceneMode.Single);
     }
 

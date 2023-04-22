@@ -614,7 +614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[1].ClipList.Array.size
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[2].ClipList.Array.size
@@ -645,6 +645,10 @@ PrefabInstance:
       value: MainOrStageSelectionSound
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[1].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a36218fca07764548b5190527afc1d09, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[1].ClipList.Array.data[6].Clip
       value: 
       objectReference: {fileID: 8300000, guid: de8d86b5815587d4d8a627c34bc4e97c, type: 3}
@@ -667,6 +671,14 @@ PrefabInstance:
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[1].ClipList.Array.data[8].Name
       value: JellyBlockSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[9].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e35ecaa59eddb824d819db81567fa28d, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[9].Name
+      value: PoisonBlockSound
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[2].ClipList.Array.data[0].Clip
@@ -731,6 +743,14 @@ PrefabInstance:
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[2].ClipList.Array.data[7].Name
       value: StageFailSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[10].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5192434ef61704540b787cbf7648628c, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[10].Name
+      value: UiClickSound
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760735, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Loop

@@ -12,7 +12,7 @@ public class DefaultBlock : Block
         transform.DORewind();
         if (hp <= 0)
         {
-            EffectManager.instance.PlayEffect(1, this);
+            EffectManager.instance.PlayEffect(1, this, 2f);
             _textMeshPro.enabled = false;
             GetComponent<Collider2D>().enabled = false;
             SoundManager.instance.PlaySound(1, "CookieBreak1Sound");
@@ -23,7 +23,7 @@ public class DefaultBlock : Block
         }
         else
         {
-            EffectManager.instance.PlayEffect(0, this);
+            EffectManager.instance.PlayEffect(0, this, 2f);
             transform.DOShakeScale(0.3f, 10);
             transform.DOShakePosition(0.3f, 10);
         }

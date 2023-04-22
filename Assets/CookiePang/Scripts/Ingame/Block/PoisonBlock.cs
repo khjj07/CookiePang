@@ -19,7 +19,10 @@ public class PoisonBlock : Block
         GameManager.instance.DeleteBlock(this);
         //GameManager.instance.GameOver();
         GameManager.instance.ball.isFloor = false;
-        EffectManager.instance.PlayEffect(5, this);
+        SoundManager.instance.PlaySound(1, "PoisonBlockSound");
+        EffectManager.instance.PlayEffect(5, this, 4f); //블럭에서 나오는 파티클
+        EffectManager.instance.UiEffect(1, GameManager.instance.ballCntTxt.transform.position);
+
     }
 
     public override void Shock(int damage)
