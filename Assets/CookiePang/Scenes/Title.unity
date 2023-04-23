@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: select stage
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e5b52bd9a82ad154ca54654539e03919, type: 2}
+  m_sharedMaterial: {fileID: -6207330279718764911, guid: e5b52bd9a82ad154ca54654539e03919, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.4
+  m_fontSize: 49.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1396,8 +1396,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: game out
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e5b52bd9a82ad154ca54654539e03919, type: 2}
+  m_sharedMaterial: {fileID: -6207330279718764911, guid: e5b52bd9a82ad154ca54654539e03919, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1421,7 +1421,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 64.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1478,6 +1478,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 741219941}
     m_Modifications:
+    - target: {fileID: 124248158329650007, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ad888877d97d52640abd52f0270a6dc2, type: 3}
     - target: {fileID: 1895655076517571913, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1538,6 +1542,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1895655077648056978, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ad888877d97d52640abd52f0270a6dc2, type: 3}
     - target: {fileID: 1895655077670724540, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1574,6 +1582,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1895655078134797459, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ad888877d97d52640abd52f0270a6dc2, type: 3}
     - target: {fileID: 2014642221693826886, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1609,7 +1621,7 @@ PrefabInstance:
     - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+      objectReference: {fileID: 12800000, guid: ad888877d97d52640abd52f0270a6dc2, type: 3}
     - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 3
