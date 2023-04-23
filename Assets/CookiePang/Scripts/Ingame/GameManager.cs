@@ -138,7 +138,7 @@ public class GameManager : Singleton<GameManager>
     public void ResetGame()
     {
         Time.timeScale = 1;
-        SoundManager.instance.PlaySound(1, "UiClickSound");
+        //SoundManager.instance.PlaySound(1, "UiClickSound");
         SceneFlowManager.ChangeScene("Stage");
     }
     public void Awake()
