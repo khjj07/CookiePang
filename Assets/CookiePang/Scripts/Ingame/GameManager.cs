@@ -169,7 +169,7 @@ public class GameManager : Singleton<GameManager>
             slider[0].value = SoundManager.instance.Player[0].Volume;
             slider[1].value = SoundManager.instance.Player[1].Volume;
         }
-        lastBallPos = ball.transform.position; //첫위치 생성
+        lastBallPos = ball.transform.position; //마지막위치 생성
 
         this.UpdateAsObservable().Subscribe(_ =>
         {
@@ -432,9 +432,8 @@ public class GameManager : Singleton<GameManager>
                 }
             }
         }
-
         DeleteBlock(x);
-        EffectManager.instance.PlayEffect(2, x, 2f);
+        EffectManager.instance.PlayEffect(2, x.gameObject, 2f);
         await Task.Delay(100);
 
         for (int i = 0; i < _row; i++)

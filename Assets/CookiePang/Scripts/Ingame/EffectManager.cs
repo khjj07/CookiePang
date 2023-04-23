@@ -27,7 +27,7 @@ public class EffectManager : Singleton<EffectManager>
             DontDestroyOnLoad(this.gameObject);
 
     }
-    public void PlayEffect(int num,Block pos, float time)
+    public void PlayEffect(int num,GameObject pos, float time)
     {
         if (!isParticle)
             return;

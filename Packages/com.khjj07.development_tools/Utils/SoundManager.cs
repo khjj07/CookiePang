@@ -67,6 +67,7 @@ public class SoundManager : Singleton<SoundManager>
     private bool DontDestroy = true;
     [SerializeField]
     public List<PlayerStruct> Player;
+    
 
     private void Awake()
     {

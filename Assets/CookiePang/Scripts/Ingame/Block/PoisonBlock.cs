@@ -20,7 +20,7 @@ public class PoisonBlock : Block
         //GameManager.instance.GameOver();
         GameManager.instance.ball.isFloor = false;
         SoundManager.instance.PlaySound(1, "PoisonBlockSound");
-        EffectManager.instance.PlayEffect(5, this, 4f); //블럭에서 나오는 파티클
+        EffectManager.instance.PlayEffect(5, transform.gameObject, 4f); //블럭에서 나오는 파티클
         EffectManager.instance.UiEffect(1, GameManager.instance.ballCntTxt.transform.position);
 
     }
