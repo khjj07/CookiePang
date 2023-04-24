@@ -69,6 +69,7 @@ public class GameManager : Singleton<GameManager>
     private Text ballPowerTxt;
     [SerializeField]
     private Image ballGaugeImage;
+    public Text particleOnOffTxt;
     [SerializeField]
     private Text currentStageTxt;
     public bool isClear = false;
@@ -78,7 +79,7 @@ public class GameManager : Singleton<GameManager>
     private GameObject[] successPanelStarsImage;
     public int deadLineBallCount;
     public int deadLindMaxBallCount;
-
+    
 
     public List<Block> _breakableBlocks;
     public List<HoleBlock> _holes;
@@ -119,7 +120,6 @@ public class GameManager : Singleton<GameManager>
         isPlay = false;
         _currentTimeScale = Time.timeScale;
         Time.timeScale = 0;
-        SoundManager.instance.PlaySound(1, "UiClickSound");
     }
     public void NextGame()
     {
@@ -159,6 +159,10 @@ public class GameManager : Singleton<GameManager>
         if (StageManager.instance) //게임시작시 스테이지 표기
         {
             currentStageTxt.text = StageManager.instance.currentIndex.ToString();
+            if (EffectManager.instance.isParticle)
+                particleOnOffTxt.text = "ON";
+            else
+                particleOnOffTxt.text = "OFF";
         }
         _dotLine = GetComponent<DotLine>();
         _ballRadius = ball.GetComponent<CircleCollider2D>().radius;
@@ -317,6 +321,14 @@ public class GameManager : Singleton<GameManager>
     {
         ball.transform.position = lastBallPos; //원래 위치로
         successPanel.SetActive(true);
+
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("Effect");
+        for(int i=0; i<temp.Length; i++)
+        {
+            temp[i].SetActive(false);
+        }
+            
+        
         EffectManager.instance.UiEffect(0, successPanel.transform.position + new Vector3(0,15,-2.5f));
         foreach (GameObject clearStars in successPanelStarsImage)
         {

@@ -32,6 +32,7 @@ public class EffectManager : Singleton<EffectManager>
         if (!isParticle)
             return;
         GameObject effect = Instantiate(effectList[num].effect, pos.transform.position, pos.transform.rotation);
+        
         Destroy(effect, time);
     }
     public void UiEffect(int num, Vector3 pos)
