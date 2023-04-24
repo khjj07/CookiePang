@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: effectList.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: uiList.Array.data[0].name
@@ -288,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 5700784828077083704, guid: ed962e35f7fa6f34f8d27aa6d19ea293, type: 3}
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: effectList.Array.data[6].name
-      value: BallCountDown
+      value: BlockHit
       objectReference: {fileID: 0}
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: effectList.Array.data[5].effect
@@ -297,7 +297,7 @@ PrefabInstance:
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: effectList.Array.data[6].effect
       value: 
-      objectReference: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
+      objectReference: {fileID: 2442135080449099332, guid: 10f95fda4b153594f9b45849d706bd8d, type: 3}
     - target: {fileID: 383717548323839021, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: m_Name
       value: EffectManager
@@ -610,11 +610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[0].ClipList.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[1].ClipList.Array.size
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[2].ClipList.Array.size
@@ -634,16 +634,28 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 1ca1110e541102a489c9f409c4bc8311, type: 3}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[0].ClipList.Array.data[1].Name
-      value: IngameSound
+      value: IngameSound1
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[0].ClipList.Array.data[2].Clip
       value: 
-      objectReference: {fileID: 8300000, guid: ca9c2e7f2a06c2a47a624f4b5c943a68, type: 3}
+      objectReference: {fileID: 8300000, guid: c353ba22034ad314b985ea431899a152, type: 3}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[0].ClipList.Array.data[2].Name
-      value: MainOrStageSelectionSound
+      value: IngameSound2
       objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[0].ClipList.Array.data[3].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c8431d8c1b9ebb4899463cc12d741e0, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[0].ClipList.Array.data[3].Name
+      value: IngameSound3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[1].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a36218fca07764548b5190527afc1d09, type: 3}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[1].ClipList.Array.data[6].Clip
       value: 
@@ -667,6 +679,14 @@ PrefabInstance:
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[1].ClipList.Array.data[8].Name
       value: JellyBlockSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[9].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e35ecaa59eddb824d819db81567fa28d, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[9].Name
+      value: PoisonBlockSound
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[2].ClipList.Array.data[0].Clip
@@ -731,6 +751,46 @@ PrefabInstance:
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[2].ClipList.Array.data[7].Name
       value: StageFailSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[10].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5192434ef61704540b787cbf7648628c, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[10].Name
+      value: UiClickSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[11].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fbc02caa62e4be4fab0db4e9bf1cc80, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[11].Name
+      value: ButtonBlockOnSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[12].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: bcf5088631965cc48acc5be3b560014d, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[12].Name
+      value: ButtonBlockOffSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[13].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 09d23e43b82cccc42aed1572ca304561, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[13].Name
+      value: CandyBlockSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[14].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ec04c9dd0e90e1841b38c9712bf23d32, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[14].Name
+      value: PowerUpBlockSound
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760735, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Loop

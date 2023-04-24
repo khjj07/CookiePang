@@ -473,7 +473,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a6ac07668d74028409705bccd225f888, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ed8ec7123b8d6e4c9e40a21096599ab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -995,6 +995,18 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 654993825}
+        m_TargetAssemblyTypeName: SettingButton, Assembly-CSharp
+        m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 931050856}
         m_TargetAssemblyTypeName: SceneFlowManager, Assembly-CSharp
         m_MethodName: ChangeScene
@@ -1058,6 +1070,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 654993824}
     m_Modifications:
+    - target: {fileID: 124248158329650007, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ad888877d97d52640abd52f0270a6dc2, type: 3}
     - target: {fileID: 1895655076517571913, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1194,14 +1210,66 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1895655077648056978, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ad888877d97d52640abd52f0270a6dc2, type: 3}
+    - target: {fileID: 1895655077670724531, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077670724531, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077670724531, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 478.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077670724540, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077670724540, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1895655077670724540, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1887095276}
     - target: {fileID: 1895655077670724540, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 654993825}
+    - target: {fileID: 1895655077670724540, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077670724540, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
+    - target: {fileID: 1895655077670724540, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ClickSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077670724540, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SettingButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077670724540, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655077707454006, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895655078134797459, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ad888877d97d52640abd52f0270a6dc2, type: 3}
     - target: {fileID: 2014642221693826886, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1237,7 +1305,7 @@ PrefabInstance:
     - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+      objectReference: {fileID: 12800000, guid: ad888877d97d52640abd52f0270a6dc2, type: 3}
     - target: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 3

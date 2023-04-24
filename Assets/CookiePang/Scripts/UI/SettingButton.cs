@@ -11,7 +11,7 @@ public class SettingButton : Button
     public override void OnPointerClick(PointerEventData pointerEventData)
     {
         base.OnPointerClick(pointerEventData);
-        
+        ClickSound();
     }
     public void OpenPanelButton()
     {
@@ -23,6 +23,7 @@ public class SettingButton : Button
     }
     public void OnOffParticleButton()
     {
+        ClickSound();
         if (EffectManager.instance.isParticle)
         {
             EffectManager.instance.isParticle = false;
@@ -34,5 +35,9 @@ public class SettingButton : Button
             onOffText.text = "ON";
         }
             
+    }
+    public void ClickSound()
+    {
+        SoundManager.instance.PlaySound(1, "UiClickSound");
     }
 }

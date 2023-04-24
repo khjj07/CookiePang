@@ -25,13 +25,16 @@ public class Ball : MonoBehaviour
             if(collision.collider.gameObject.name != "JellyBlock(Clone)")
             {
                 SoundManager.instance.PlaySound(1, "BallCrushSound");
+                EffectManager.instance.PlayEffect(6, transform.gameObject, 3);
             }
             collision.collider.GetComponent<Block>().Hit(damage);
+            
         }
 
         if (collision.collider.CompareTag("Wall"))
         {
             SoundManager.instance.PlaySound(1, "BallCrushSound");
+            EffectManager.instance.PlayEffect(6, transform.gameObject, 3);
         }
     }
 

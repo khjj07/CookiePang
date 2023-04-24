@@ -8,7 +8,7 @@ using TMPro;
 public class ButtonBlock : Block
 {
     public bool pressed = false;
-
+    public Sprite[] sprite;
     protected override void Update()
     { 
     }
@@ -17,11 +17,15 @@ public class ButtonBlock : Block
         if(!pressed)
         {
             _textMeshPro.SetText("ON");
+            GetComponent<SpriteRenderer>().sprite = sprite[1];
+            SoundManager.instance.PlaySound(1, "ButtonBlockOnSound");
             pressed = true;
         }
         else if (pressed)
         {
             _textMeshPro.SetText("OFF");
+            GetComponent<SpriteRenderer>().sprite = sprite[0];
+            SoundManager.instance.PlaySound(1, "ButtonBlockOffSound");
             pressed = false;
         }
     }

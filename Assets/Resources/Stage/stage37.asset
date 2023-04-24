@@ -22,7 +22,7 @@ MonoBehaviour:
   - type: 8
     hp: 0
     row: 0
-    col: 5
+    col: 3
   - type: 1
     hp: 1
     row: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
   - type: 8
     hp: 0
     row: 2
-    col: 5
+    col: 3
   - type: 1
     hp: 1
     row: 7

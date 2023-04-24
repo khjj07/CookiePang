@@ -75,10 +75,6 @@ MonoBehaviour:
     hp: 1
     row: 4
     col: 1
-  - type: 0
-    hp: 1
-    row: 4
-    col: 2
   - type: 2
     hp: 1
     row: 4

@@ -16,7 +16,20 @@ public class Stage : MonoBehaviour
             Destroy(gameObject);
         
         GameManager.instance.PlayGame();
-        SoundManager.instance.PlaySound(0, "IngameSound");
+        int ran = Random.Range(1, 4);
+        switch (ran)
+        {
+            case 1:
+                SoundManager.instance.PlaySound(0, "IngameSound1");
+                break;
+            case 2:
+                SoundManager.instance.PlaySound(0, "IngameSound2");
+                break;
+            case 3:
+                SoundManager.instance.PlaySound(0, "IngameSound3");
+                break;
+        }
+        
     }    
 
     public void Update()

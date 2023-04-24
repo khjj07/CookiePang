@@ -9,6 +9,8 @@ TagManager:
   - BombBlock
   - Block
   - Wall
+  - FxTemporaire
+  - Effect
   layers:
   - Default
   - TransparentFX

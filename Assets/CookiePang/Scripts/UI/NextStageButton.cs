@@ -15,7 +15,7 @@ public class NextStageButton : Button
         {
             LoadInterstitialAd();
         });
-        
+
     }
     // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
@@ -25,7 +25,7 @@ public class NextStageButton : Button
 #else
   private string _adUnitId = "unused";
 #endif
-    
+
     public void LoadInterstitialAd()
     {
         // Clean up the old ad before loading a new one.
@@ -62,7 +62,7 @@ public class NextStageButton : Button
             });
     }
 
-    
+
     public void ShowAd()
     {
         if (interstitialAd != null && interstitialAd.CanShowAd())
@@ -81,6 +81,8 @@ public class NextStageButton : Button
     {
         base.OnPointerClick(pointerEventData);
         ShowAd(); //광고를 시작해야 할 때 함수
+        //StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //광고가 닫혔을때 스테이지 넘어감
+        //SceneFlowManager.ChangeScene("Stage");
     }
     private void RegisterEventHandlers(InterstitialAd ad)
     {
@@ -107,7 +109,7 @@ public class NextStageButton : Button
             Debug.Log("Interstitial ad full screen content opened.");
         };
         // Raised when the ad closed full screen content.
-        ad.OnAdFullScreenContentClosed += () => 
+        ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Interstitial ad full screen content closed.");
             StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //광고가 닫혔을때 스테이지 넘어감
