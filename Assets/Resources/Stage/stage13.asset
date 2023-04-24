@@ -102,10 +102,6 @@ MonoBehaviour:
   - type: 4
     hp: 1
     row: 7
-    col: 0
-  - type: 4
-    hp: 1
-    row: 7
     col: 2
   - type: 4
     hp: 1

@@ -248,7 +248,7 @@ MonoBehaviour:
     row: 6
     col: 3
   - type: 0
-    hp: 19
+    hp: 20
     row: 6
     col: 4
   - type: 4

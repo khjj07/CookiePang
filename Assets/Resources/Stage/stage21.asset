@@ -64,7 +64,7 @@ MonoBehaviour:
     row: 1
     col: 3
   - type: 0
-    hp: 1
+    hp: 4
     row: 1
     col: 4
   - type: 7
