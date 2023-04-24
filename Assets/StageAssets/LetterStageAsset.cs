@@ -38,15 +38,27 @@ public class LetterStageAsset : StageAsset
             GameManager.instance.stars[count] = star;
             count++;
         }
-
     }
 
     public override bool IsClear()
     {
-        string str = new string("");
         if(_answer.Equals(GameManager.instance._letters))
         {
             return true;
+        }
+        return false;
+    }
+
+    public override bool IsOver()
+    {
+        int count = 0;
+        foreach (var l in GameManager.instance._letters)
+        {
+            if (_answer[count] != l)
+            {
+                return true;
+            }
+            count++;
         }
         return false;
     }

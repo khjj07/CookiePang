@@ -25,6 +25,10 @@ public class Stage : MonoBehaviour
         {
             GameManager.instance.isClear = true;
         }
+       if (asset.IsOver())
+       {
+           GameManager.instance.isOver = true;
+       }
     }
 
     public int GetStars()

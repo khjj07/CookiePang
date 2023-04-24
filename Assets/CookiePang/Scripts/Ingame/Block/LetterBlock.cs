@@ -12,5 +12,4 @@ public class LetterBlock : Block
         GameManager.instance.DeleteBlock(this);
         GameManager.instance._letters.Append(letter);
     }
-
 }

@@ -9,6 +9,7 @@ using TMPro;
 
 public class StageSelectButton : Button
 {
+    public bool isLocked;
     public int myIndex;
     private TextMeshProUGUI _text;
 
@@ -20,6 +21,10 @@ public class StageSelectButton : Button
 
     public void Update()
     {
+        if (isLocked)
+        {
+
+        }
         _text.SetText(myIndex.ToString());
     }
 

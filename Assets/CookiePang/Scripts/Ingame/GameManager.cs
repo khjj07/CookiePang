@@ -73,6 +73,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private Text currentStageTxt;
     public bool isClear = false;
+    public bool isOver = false;
     [SerializeField]
     private GameObject[] StarsImage;
     [SerializeField]
@@ -259,7 +260,7 @@ public class GameManager : Singleton<GameManager>
             {
                 _dummyBall.SetActive(false);
             });
-
+      
 
         //this.UpdateAsObservable()
         //     .Where(_ => ball.isFloor)
@@ -290,6 +291,13 @@ public class GameManager : Singleton<GameManager>
             {
                 StageClear();
             });//스테이지 클리어
+        this.UpdateAsObservable()
+            .Where(_ => isPlay)
+            .Where(_ => isOver)
+            .Subscribe(_ => {
+                GameOver();
+            });
+
 
         this.UpdateAsObservable()
             .Where(_ => isPlay)

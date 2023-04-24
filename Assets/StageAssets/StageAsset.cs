@@ -59,6 +59,11 @@ public abstract class StageAsset : ScriptableObject
 
     }
     public abstract bool IsClear();
+
+    public virtual bool IsOver()
+    {
+        return false;
+    }
     public virtual int GetStars()
     {
         int starCount = 0;
