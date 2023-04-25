@@ -8,7 +8,9 @@ public class PowerBlock : Block
     {
         GameManager.instance.DeleteBlock(this);
         GameManager.instance.ball.damage += 1;
+        EffectManager.instance.PlayEffect(7, this.gameObject, 3);
         SoundManager.instance.PlaySound(1, "PowerUpBlockSound");
+
     }
 
     public override void Shock(int damage)
