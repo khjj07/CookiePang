@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -164,11 +164,17 @@ MonoBehaviour:
       - {x: -0.5867386, y: 0.8187158, z: 0}
       - {x: -1.4078097, y: 1.6397871, z: 0}
       - {x: -2.5618236, y: 2.7938004, z: 0}
-      - {x: -2.2342706, y: 3.6986337, z: 0}
+      - {x: -2.2342708, y: 3.6986341, z: 0}
       - {x: -0.25182825, y: 4.199461, z: 0}
-      - {x: 2.0321567, y: 4.7764673, z: 0}
-      - {x: 1.8639078, y: 3.9651008, z: 0}
-      - {x: 1.7917819, y: 3.7246823, z: 0}
+      - {x: 0.8224572, y: 4.470859, z: 0}
+      - {x: 2.5011895, y: 5.489775, z: 0}
+      - {x: 2.2531319, y: 6.840315, z: 0}
+      - {x: 1.8774328, y: 8.885793, z: 0}
+      - {x: -0.9572048, y: 7.2631006, z: 0}
+      - {x: -2.489025, y: 9.143648, z: 0}
+      - {x: -3.728156, y: 10.664874, z: 0}
+      - {x: -2.0137806, y: 12.843102, z: 0}
+      - {x: 1.1692104, y: 12.259923, z: 0}
       isClosed: 0
       space: 1
       controlMode: 0
@@ -183,9 +189,11 @@ MonoBehaviour:
       - 0
       - 0
       - 0
+      - 0
+      - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0
     vertexPathMinVertexSpacing: 0
     showTransformTool: 1

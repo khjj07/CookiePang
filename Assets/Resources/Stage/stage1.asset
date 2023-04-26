@@ -19,6 +19,22 @@ MonoBehaviour:
     hp: 1
     row: 0
     col: 4
+  - type: 1
+    hp: 1
+    row: 2
+    col: 2
+  - type: 1
+    hp: 1
+    row: 2
+    col: 6
+  - type: 1
+    hp: 2
+    row: 4
+    col: 4
+  - type: 1
+    hp: 2
+    row: 5
+    col: 5
   - type: 0
     hp: 1
     row: 6

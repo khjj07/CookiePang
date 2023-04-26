@@ -36,14 +36,14 @@ public class GameManager : Singleton<GameManager>
 
     public Transform screenCordinate;
     public Vector3[,] gridPosition;
-    private float marginLeft = 90;
-    private float marginTop = 360;
+    private float marginLeft = 40;
+    private float marginTop = 500;
     public Block[,] blocks;
     public int _column = 9;
     public int _row = 9;
 
     public bool isTimeScaleUp = false;
-    private float offset = 90;
+    private float offset = 100;
 
     [SerializeField]
     public Ball ball;
@@ -79,7 +79,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject[] successPanelStarsImage;
     public int deadLineBallCount;
-    public int deadLindMaxBallCount;
+    public int deadLineMaxBallCount;
     
 
     public List<Block> _breakableBlocks;
@@ -380,6 +380,10 @@ public class GameManager : Singleton<GameManager>
         else if (x == BlockType.MACAROON)
         {
             _macaroon.Add(instance as MacaroonBlock);
+            
+            blocks[Math.Clamp(r + 1, 0, _row), c] = instance;
+            blocks[r, Math.Clamp(c + 1, 0, _column)] = instance;
+            blocks[Math.Clamp(r + 1, 0, _row), Math.Clamp(c + 1, 0, _column)] = instance;
         }
         return instance;
     }
@@ -393,16 +397,15 @@ public class GameManager : Singleton<GameManager>
                 if (blocks[i, j] == x)
                 {
                     blocks[i, j] = null;
-                    Destroy(x.gameObject);
-                    _breakableBlocks.Remove(x);
-                    _holes.Remove(x as HoleBlock);
-                    _candies.Remove(x as CandyBlock);
-                    _buttons.Remove(x as ButtonBlock);
-                    _macaroon.Remove(x as MacaroonBlock);
-
                 }
             }
         }
+        Destroy(x.gameObject);
+        _breakableBlocks.Remove(x);
+        _holes.Remove(x as HoleBlock);
+        _candies.Remove(x as CandyBlock);
+        _buttons.Remove(x as ButtonBlock);
+        _macaroon.Remove(x as MacaroonBlock);
     }
 
     public void ClearBlocks()
@@ -516,19 +519,21 @@ public class GameManager : Singleton<GameManager>
         if (ballCount > stars[0] && ballCount > stars[1] && ballCount > stars[2])
         {
             deadLineBallCount = ballCount - stars[2];
-            deadLindMaxBallCount = initialBallCount - stars[2];
+            deadLineMaxBallCount = initialBallCount - stars[2];
         }
         else if (ballCount > stars[1] && ballCount > stars[0])
         {
             deadLineBallCount = ballCount - stars[1];
+            deadLineMaxBallCount = initialBallCount - stars[2] - stars[1];
         }
         else if (ballCount > stars[0])
         {
             deadLineBallCount = ballCount - stars[0];
+            deadLineMaxBallCount = initialBallCount - stars[2] - stars[1] - stars[0];
         }
 
         //ballGaugeImage.fillAmount = (float)deadLineBallCount / deadLindMaxBallCount;
-        DOTween.To(() => ballGaugeImage.fillAmount, x => ballGaugeImage.fillAmount = x, (float)deadLineBallCount / deadLindMaxBallCount, 0.2f).SetEase(Ease.InBack);
+        DOTween.To(() => ballGaugeImage.fillAmount, x => ballGaugeImage.fillAmount = x, (float)deadLineBallCount / (float)deadLineMaxBallCount, 0.2f).SetEase(Ease.InBack);
     }
 
 }

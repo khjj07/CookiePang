@@ -4,12 +4,15 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
+using System.Threading;
 
 public class TeleportationBlock : Block
 {
     public TeleportationBlock destination;
     private bool _ballEntered = false;
     public Sprite[] sprite;
+    public Vector2 savedVelocity;
     protected override void Start()
     {
         base.Start();
@@ -37,18 +40,41 @@ public class TeleportationBlock : Block
             {
                 _ballEntered = true;
                 destination._ballEntered = true;
-                GameManager.instance.ball.transform.position = destination.transform.position;
-                SoundManager.instance.PlaySound(1, "TeleportSound");
+
+               
                 EffectManager.instance.PlayEffect(3, transform.gameObject, 2f);
-                EffectManager.instance.PlayEffect(3, destination.gameObject, 2f);
+
+                var ballBody = GameManager.instance.ball.GetComponent<Rigidbody2D>();
+                savedVelocity = ballBody.velocity;
+                ballBody.velocity = Vector2.zero;
+                SoundManager.instance.PlaySound(1, "TeleportSound");
+                GameManager.instance.ball.gameObject.SetActive(false);
+                StartCoroutine("Teleport");
+                    
             }
         }
     }
 
+    public IEnumerator Teleport()
+    {
+        yield return new WaitForSeconds(0.2f);
+        GameManager.instance.ball.gameObject.SetActive(true);
+        GameManager.instance.ball.GetComponent<Rigidbody2D>().velocity = savedVelocity;
+        GameManager.instance.ball.transform.position = destination.transform.position;
+        EffectManager.instance.PlayEffect(3, destination.gameObject, 2f);
+        SoundManager.instance.PlaySound(1, "TeleportSound");
+        yield return null;
+    }
+
+    public override void Shock(int damage)
+    {
+
+    }
+
     public override BlockData ToData(int row, int column)
     {
-        Vector2Int index =GameManager.instance.GetBlockIndex(destination);
-        TeleportationBlockData data = new TeleportationBlockData(hp, row, column,index.x,index.y);
+        Vector2Int index = GameManager.instance.GetBlockIndex(destination);
+        TeleportationBlockData data = new TeleportationBlockData(hp, row, column, index.x, index.y);
         //data.position = transform.position;
         return data;
     }
