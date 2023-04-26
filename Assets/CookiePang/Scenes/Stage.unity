@@ -175,6 +175,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 736138872, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnBall
+      objectReference: {fileID: 0}
     - target: {fileID: 6163511724956743445, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -219,9 +223,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8273944590780734124, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -521.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: ballCollectButton
+      value: 
+      objectReference: {fileID: 538649629}
     - target: {fileID: 9189633971154522043, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: m_Name
       value: Essential
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+--- !u!1 &538649629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 736138870, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+  m_PrefabInstance: {fileID: 538649628}
+  m_PrefabAsset: {fileID: 0}

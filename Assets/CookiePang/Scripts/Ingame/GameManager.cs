@@ -93,7 +93,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private Slider[] slider; //Setting Panel volume //추후에 title에 있는걸로 슬라이더 다 쓸거임 (임시)
     
-    public void BallCollectButton()
+    public void ReturnBall()
     {
         ball.transform.position = lastBallPos;
         ball.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
@@ -160,10 +160,6 @@ public class GameManager : Singleton<GameManager>
         if (StageManager.instance) //게임시작시 스테이지 표기
         {
             currentStageTxt.text = StageManager.instance.currentIndex.ToString();
-            if (EffectManager.instance.isParticle)
-                particleOnOffTxt.text = "ON";
-            else
-                particleOnOffTxt.text = "OFF";
         }
         _dotLine = GetComponent<DotLine>();
         _ballRadius = ball.GetComponent<CircleCollider2D>().radius;
