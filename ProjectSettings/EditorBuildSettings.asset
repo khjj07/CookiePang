@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CookiePang/Scenes/Stage.unity
     guid: d39de1e6ddecaa64dbf4710ff270b505
+  - enabled: 1
+    path: Assets/CookiePang/Scenes/AwakeScene.unity
+    guid: 3b2a2eca84788c246a04b5422eb6ed1a
   m_configObjects: {}
