@@ -226,6 +226,8 @@ MonoBehaviour:
   sprite:
   - {fileID: 21300000, guid: a545ce74747a4a94da3e7825c87af209, type: 3}
   - {fileID: 21300000, guid: a2f4313946067f04a8cfbcc59f29e5f6, type: 3}
+  - {fileID: 21300000, guid: 464e68da8b2b5584a95c315f3c9e6a48, type: 3}
+  savedVelocity: {x: 0, y: 0}
 --- !u!212 &558458705
 SpriteRenderer:
   m_ObjectHideFlags: 0
