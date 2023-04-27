@@ -575,7 +575,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   settingPanel: {fileID: 1887095276}
-  onOffText: {fileID: 1895655077294630389}
+  sprites:
+  - {fileID: 21300000, guid: aa718c4169423604ca513f9e9b05fc97, type: 3}
+  - {fileID: 21300000, guid: a79aba28390a22144abfce63974cc086, type: 3}
+  particleOnOffButton: {fileID: 1895655077294630389}
 --- !u!114 &654993826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,7 +908,10 @@ MonoBehaviour:
   slider:
   - {fileID: 1753624612}
   - {fileID: 1428980931}
-  onOffParticleText: {fileID: 1895655077294630389}
+  sprites:
+  - {fileID: 21300000, guid: aa718c4169423604ca513f9e9b05fc97, type: 3}
+  - {fileID: 21300000, guid: a79aba28390a22144abfce63974cc086, type: 3}
+  onOffButton: {fileID: 1895655077294630389}
 --- !u!1 &1887095276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1895655077024443416, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
@@ -1336,14 +1342,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
---- !u!114 &1895655077294630389 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2687821779894968467, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
+--- !u!1 &1895655077294630389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9175989004000249146, guid: 4b21c1719eb786f45be07529a5524acf, type: 3}
   m_PrefabInstance: {fileID: 1895655077294630388}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

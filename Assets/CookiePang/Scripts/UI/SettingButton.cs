@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class SettingButton : Button
 {
     [SerializeField] private GameObject settingPanel;
-    public Text onOffText;
+    public Sprite[] sprites;
+    public GameObject particleOnOffButton;
     public override void OnPointerClick(PointerEventData pointerEventData)
     {
         base.OnPointerClick(pointerEventData);
@@ -27,12 +28,12 @@ public class SettingButton : Button
         if (EffectManager.instance.isParticle)
         {
             EffectManager.instance.isParticle = false;
-            onOffText.text = "OFF";
+            particleOnOffButton.GetComponent<Image>().sprite = sprites[1];
         }
         else
         {
             EffectManager.instance.isParticle = true;
-            onOffText.text = "ON";
+            particleOnOffButton.GetComponent<Image>().sprite = sprites[0];
         }
             
     }

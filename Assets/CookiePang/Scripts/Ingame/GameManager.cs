@@ -62,6 +62,11 @@ public class GameManager : Singleton<GameManager>
 
     [Header("추가")]
     public GameObject ballCollectButton;
+    [SerializeField]
+    private float ballCollectActiveTime = 5;
+    private float resetballCollectActiveTime = 5;
+    [SerializeField]
+    private bool isBallCollect = false;
     public GameObject successPanel;
     public GameObject failPanel;
     public Text ballCntTxt;
@@ -69,7 +74,8 @@ public class GameManager : Singleton<GameManager>
     private Text ballPowerTxt;
     [SerializeField]
     private Image ballGaugeImage;
-    public Text particleOnOffTxt;
+    public Sprite[] onOffParticleImage;
+    public GameObject onOffParticleButton;
     [SerializeField]
     private Text currentStageTxt;
     public bool isClear = false;
@@ -98,6 +104,16 @@ public class GameManager : Singleton<GameManager>
         ball.transform.position = lastBallPos;
         ball.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         ball.isFloor = true;
+    }
+    public void ReturnBallActive()
+    {
+        
+            ballCollectActiveTime -= Time.deltaTime;
+            if(ballCollectActiveTime < 0)
+            {
+                isBallCollect = true;
+            }
+        
     }
     public void TimeScaleUp()
     {
@@ -157,6 +173,10 @@ public class GameManager : Singleton<GameManager>
     }
     public void Start()
     {
+        if (EffectManager.instance.isParticle)
+            onOffParticleButton.GetComponent<Image>().sprite = onOffParticleImage[0];
+        else
+            onOffParticleButton.GetComponent<Image>().sprite = onOffParticleImage[1];
         if (StageManager.instance) //게임시작시 스테이지 표기
         {
             currentStageTxt.text = StageManager.instance.currentIndex.ToString();
@@ -242,9 +262,10 @@ public class GameManager : Singleton<GameManager>
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
                 ballCount--;
-                ballCollectButton.SetActive(true); //공버튼 보이게
+               
                 DeadLineCount();
-                
+                isBallCollect = false;
+                ballCollectActiveTime = resetballCollectActiveTime;
                 //_timeScaleUpRoutine = TimeScaleUp();
                 //StartCoroutine(_timeScaleUpRoutine);
             });//공
@@ -281,6 +302,7 @@ public class GameManager : Singleton<GameManager>
             .Where(x => x == true)
             .Subscribe(_ =>
             {
+                
                 ballCollectButton.SetActive(false);  //공버튼 안보이게
                 StarsCountImage();
                 DeadLineCount();
@@ -313,12 +335,17 @@ public class GameManager : Singleton<GameManager>
             });
 
 
-        //게임오버
-        //this.UpdateAsObservable()
-        //    .Where(_ => isPlay)
-        //    .Subscribe(_ => {
-
-        //    });
+       
+        this.UpdateAsObservable()
+            .Where(_ => !ball.isFloor)
+            .Subscribe(_ =>
+            {
+                ReturnBallActive();
+                if (isBallCollect)
+                {
+                    ballCollectButton.SetActive(true); //공버튼 보이게
+                }
+            });
     }
 
     public void StageClear()
@@ -333,7 +360,7 @@ public class GameManager : Singleton<GameManager>
         }
             
         
-        EffectManager.instance.UiEffect(0, successPanel.transform.position + new Vector3(0,15,-2.5f));
+        EffectManager.instance.UiEffect(0, successPanel.transform.position + new Vector3(0,15));
         foreach (GameObject clearStars in successPanelStarsImage)
         {
             clearStars.transform.DOShakeScale(0.3f, 3).SetUpdate(true);

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class TitleScene : MonoBehaviour
 {
     [SerializeField] private Slider[] slider;
-    public Text onOffParticleText;
+    public Sprite[] sprites;
+    public GameObject onOffButton;
     //private bool DontDestroy = true; 
     private void Awake()
     {
@@ -23,9 +24,9 @@ public class TitleScene : MonoBehaviour
             SoundManager.instance.isStartSound = false; 
         }
         if (EffectManager.instance.isParticle == false)
-            onOffParticleText.text = "OFF";
+            onOffButton.GetComponent<Image>().sprite = sprites[1];
         else
-            onOffParticleText.text = "ON";
+            onOffButton.GetComponent<Image>().sprite = sprites[0];
     }
     
 }
