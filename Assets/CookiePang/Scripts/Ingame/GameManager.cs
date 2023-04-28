@@ -148,9 +148,7 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 1;
         StageManager.instance.currentIndex++;
-        HeartManager.instance.AddHeart(1);
         SceneFlowManager.ChangeScene("Stage");
-
     }
     public void BackToMenu()
     {
@@ -361,6 +359,7 @@ public class GameManager : Singleton<GameManager>
         successPanel.SetActive(true);
         StageManager.instance.LastStageUp();
         StageManager.instance.SetCurrentStageAchievementRate(starCount);
+        HeartManager.instance.AddHeart(1);
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Effect");
         for(int i=0; i<temp.Length; i++)
         {
