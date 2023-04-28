@@ -77,7 +77,8 @@ public class TeleportationBlock : Block
     {
         destination.gameObject.layer = 2;
         var hit = Physics2D.CircleCast(destination.transform.position, GameManager.instance._ballRadius, direction);
-        destination.gameObject.layer = 0;
+        destination.gameObject.layer = 0
+            ;
         _dotLine.points.Clear();
         _dotLine.points.Add(destination.transform.position);
         _dotLine.points.Add(hit.centroid);

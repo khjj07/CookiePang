@@ -16,6 +16,7 @@ public class Button : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPo
     public UnityEvent OnClick;
     public UnityEvent OnEnter;
     public UnityEvent OnExit;
+    float lastTimeClick=0.0f;
     public virtual void Start()
     {
         Origin = transform.localScale;
@@ -33,9 +34,15 @@ public class Button : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPo
 
     public virtual void OnPointerClick(PointerEventData pointerEventData)
     {
-        transform.DOKill();
-        transform.DOScale(Origin, 0.1f).SetEase(Easing)
-            .OnComplete(()=> { OnClick.Invoke(); });
+        float currentTimeClick = pointerEventData.clickTime;
+        if (Mathf.Abs(currentTimeClick - lastTimeClick) < 0.75f)
+        {
+            transform.DOKill();
+            transform.DOScale(Origin, 0.1f).SetEase(Easing)
+                .OnComplete(() => { OnClick.Invoke(); });
+        }
+        lastTimeClick = currentTimeClick;
+        
     }
 
     public virtual void OnPointerEnter(PointerEventData pointerEventData)
