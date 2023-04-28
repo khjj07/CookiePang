@@ -136,6 +136,7 @@ public class GameManager : Singleton<GameManager>
         isPlay = true;
         Time.timeScale = _currentTimeScale;
         SoundManager.instance.PlaySound(1, "UiClickSound");
+        HeartManager.instance.UseHeart();
     }
     public void PauseGame()
     {
@@ -147,6 +148,7 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 1;
         StageManager.instance.currentIndex++;
+        HeartManager.instance.AddHeart(1);
         SceneFlowManager.ChangeScene("Stage");
 
     }

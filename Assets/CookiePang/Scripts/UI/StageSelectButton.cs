@@ -50,7 +50,7 @@ public class StageSelectButton : Button
 
     public override void OnPointerClick(PointerEventData pointerEventData)
     {
-        if (!isLocked)
+        if (!isLocked && HeartManager.instance.currentHeart>0)
         {
             base.OnPointerClick(pointerEventData);
             StageManager.instance.SetCurrent(myIndex);

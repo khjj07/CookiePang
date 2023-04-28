@@ -1,29 +1,22 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartManager : MonoBehaviour
+public class HeartManager : Singleton<HeartManager>
 {
-    public static HeartManager instance;
 
     private const string HEART_KEY = "HEART";
     private const string LAST_RECHARGE_TIME_KEY = "LAST_RECHARGE_TIME";
 
     private int maxHeart = 5;  //최대 하트 개수
-    private int currentHeart;  //현재 하트 개수
+    public int currentHeart;  //현재 하트 개수
     private float rechargeInterval = 10f * 60f;  //하트 자동 충전 주기 (초단위)
-
+    public TimeSpan timeSinceLastRecharge;
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        DontDestroyOnLoad(this);
     }
+
 
     private void Start()
     {
@@ -36,7 +29,7 @@ public class HeartManager : MonoBehaviour
         {
             // 마지막 하트 충전 시간이 지난 시간을 구한다.
             DateTime lastRechargeTime = DateTime.Parse(PlayerPrefs.GetString(LAST_RECHARGE_TIME_KEY, DateTime.Now.ToString()));
-            TimeSpan timeSinceLastRecharge = DateTime.Now - lastRechargeTime;
+            timeSinceLastRecharge = DateTime.Now - lastRechargeTime;
 
             // 충전 시간이 되었다면 하트를 자동으로 충전한다.
             if (timeSinceLastRecharge.TotalSeconds >= rechargeInterval)
@@ -71,5 +64,10 @@ public class HeartManager : MonoBehaviour
         currentHeart = Mathf.Min(currentHeart + amount, maxHeart);
         PlayerPrefs.SetInt(HEART_KEY, currentHeart);
         PlayerPrefs.SetString(LAST_RECHARGE_TIME_KEY, DateTime.Now.ToString());
+    }
+
+    public float GetRechargingTime()
+    {
+       return rechargeInterval - (float)timeSinceLastRecharge.TotalSeconds;
     }
 }
