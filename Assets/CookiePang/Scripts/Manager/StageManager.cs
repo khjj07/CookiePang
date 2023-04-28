@@ -38,6 +38,7 @@ public class StageManager : Singleton<StageManager>
             stageAssets.Add((StageAsset)stage);
         }
         lastStage = PlayerPrefs.GetInt(CURRNET_STAGE_KEY, 1);
+        currentIndex = lastStage;
         string achievementRateString = PlayerPrefs.GetString(ACHIEVEMENT_RATE_ARRAY_KEY, "0,0,0,0,0");
         var list = achievementRateString.Split(',');
         for (int i = 0; i < stageAssets.Count; i++)

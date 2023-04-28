@@ -36,7 +36,12 @@ namespace PathCreation.Examples
                 while (dst < path.length && count < StageManager.instance.stageAssets.Count)
                 {
                     Vector3 point = path.GetPointAtDistance(dst);
-                    StageManager.instance.CreateSelectButton(point, holder.transform, count);
+                    var obj = StageManager.instance.CreateSelectButton(point, holder.transform, count);
+                    if(StageManager.instance.currentIndex==count)
+                    {
+                        Mover.transform.DOLocalMoveY(100-obj.transform.localPosition.y,0.1f);
+                    }
+
                     dst += spacing;
                     count++;
                 }
@@ -59,6 +64,7 @@ namespace PathCreation.Examples
                 Generate();
             }
 
+            ;
 
             var downStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0));
             var upStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0));
