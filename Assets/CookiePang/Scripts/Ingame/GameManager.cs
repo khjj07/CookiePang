@@ -403,6 +403,11 @@ public class GameManager : Singleton<GameManager>
     {
         deadLineBallCount = 0;
         failPanel.SetActive(true);
+        if(failPanel.active && HeartManager.instance.addMobCount <= 0)
+        {
+            FailaddMob.ShowAd();//광고를 시작해야 할 때 함수
+            HeartManager.instance.addMobCount = 2;
+        }      
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageFailSound");
     }
