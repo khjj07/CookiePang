@@ -42,7 +42,7 @@ public class CandyStageAsset : StageAsset
 
     public override bool IsClear()
     {
-        if (initailCandyCount-GameManager.instance._candies.Count <= goalNumber)
+        if (initailCandyCount-GameManager.instance._candies.Count >= goalNumber)
         {
             return true;
         }
