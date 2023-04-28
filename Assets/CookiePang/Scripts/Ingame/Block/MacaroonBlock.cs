@@ -21,7 +21,6 @@ public class MacaroonBlock : Block
             EffectManager.instance.PlayEffect(1, transform.gameObject, 2f);
             _textMeshPro.enabled = false;
             GetComponent<Collider2D>().enabled = false;
-            SoundManager.instance.PlaySound(1, "MacaroonBlockSound");
             transform.DOScale(Vector3.zero, 0.1f).OnComplete(() =>
             {
                 GameManager.instance.DeleteBlock(this);
@@ -29,6 +28,7 @@ public class MacaroonBlock : Block
         }
         else
         {
+            SoundManager.instance.PlaySound(1, "MacaroonBlockSound");
             transform.DOShakeScale(0.3f, 10);
             transform.DOShakePosition(0.3f, 10);
         }

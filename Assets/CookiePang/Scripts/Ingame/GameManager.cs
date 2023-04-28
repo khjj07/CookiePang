@@ -570,11 +570,14 @@ public class GameManager : Singleton<GameManager>
             StarsImage[1].transform.DOShakeScale(0.3f, 3);
             StarsImage[1].transform.DOShakePosition(0.3f, 3).OnComplete(() =>
             {
+                StarsImage[2].SetActive(false);
                 StarsImage[1].SetActive(false);
             });
         }
         else
         {
+            StarsImage[2].SetActive(false);
+            StarsImage[1].SetActive(false);
             StarsImage[0].SetActive(false);
         }
 
