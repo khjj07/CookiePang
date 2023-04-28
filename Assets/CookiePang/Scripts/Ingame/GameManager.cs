@@ -164,6 +164,8 @@ public class GameManager : Singleton<GameManager>
     }
     public void ResetGame()
     {
+        if (HeartManager.instance.currentHeart <= 0)
+            return;
         Time.timeScale = 1;
         //SoundManager.instance.PlaySound(1, "UiClickSound");
         SceneFlowManager.ChangeScene("Stage");
