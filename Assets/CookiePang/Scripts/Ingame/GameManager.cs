@@ -357,7 +357,8 @@ public class GameManager : Singleton<GameManager>
     {
         ball.transform.position = lastBallPos; //원래 위치로
         successPanel.SetActive(true);
-
+        StageManager.instance.LastStageUp();
+        StageManager.instance.SetCurrentStageAchievementRate(starCount);
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Effect");
         for(int i=0; i<temp.Length; i++)
         {
@@ -373,8 +374,7 @@ public class GameManager : Singleton<GameManager>
         }
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageClearSound");
-        StageManager.instance.LastStageUp();
-        StageManager.instance.SetCurrentStageAchievementRate(starCount);
+      
           
     
     }

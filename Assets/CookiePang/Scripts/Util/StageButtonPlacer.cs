@@ -17,7 +17,8 @@ namespace PathCreation.Examples
         public float spacing = 3;
 
         const float minSpacing = .1f;
-        const float tick = 1.0f;
+        const float minHeight = -30000.0f;
+        const float tick = 100.0f;
 
         void Generate()
         {
@@ -71,7 +72,14 @@ namespace PathCreation.Examples
                 .Subscribe(_ =>
                 {
                     holder.transform.DORewind();
-                    holder.transform.DOMoveY(tick, 0.1f).SetRelative(true);
+                    if(holder.transform.localPosition.y > -270 )
+                    {
+                        holder.transform.DOLocalMoveY(-270, 0.01f);
+                    }
+                    else
+                    {
+                        holder.transform.DOLocalMoveY(tick, 0.01f).SetRelative(true);
+                    }
                 });
 
 
@@ -81,7 +89,15 @@ namespace PathCreation.Examples
                   .Subscribe(_ =>
                   {
                       holder.transform.DORewind();
-                      holder.transform.DOMoveY(-tick, 0.1f).SetRelative(true);
+                      
+                      if (holder.transform.localPosition.y < minHeight)
+                      {
+                          holder.transform.DOLocalMoveY(minHeight, 0.01f);
+                      }
+                      else
+                      {
+                          holder.transform.DOLocalMoveY(-tick, 0.01f).SetRelative(true);
+                      }
                   });
 
         }
