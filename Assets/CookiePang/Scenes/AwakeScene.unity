@@ -515,8 +515,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageAssets: []
   current: {fileID: 0}
-  currentIndex: 0
   selectButtonPrefab: {fileID: 6119127042071375622, guid: b7c3b6c7b7598dd4baa711db80a38dc5, type: 3}
+  currentIndex: 0
+  lastStage: 0
+  achievementRateArray: 
   _folderName: Stage
 --- !u!4 &1655981468
 Transform:
