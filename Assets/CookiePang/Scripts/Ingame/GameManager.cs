@@ -562,12 +562,12 @@ public class GameManager : Singleton<GameManager>
         else if (ballCount > stars[1] && ballCount > stars[0])
         {
             deadLineBallCount = ballCount - stars[1];
-            deadLineMaxBallCount = initialBallCount - stars[2] - stars[1];
+            deadLineMaxBallCount = stars[2] - stars[1];
         }
-        else if (ballCount > stars[0])
+        else if (ballCount >= stars[0])
         {
-            deadLineBallCount = ballCount - stars[0];
-            deadLineMaxBallCount = initialBallCount - stars[2] - stars[1] - stars[0];
+            deadLineBallCount = ballCount;
+            deadLineMaxBallCount = stars[1];
         }
 
         //ballGaugeImage.fillAmount = (float)deadLineBallCount / deadLindMaxBallCount;

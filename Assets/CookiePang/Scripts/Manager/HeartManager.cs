@@ -6,7 +6,7 @@ public class HeartManager : Singleton<HeartManager>
 {
 
     private const string HEART_KEY = "HEART";
-    private const string LAST_RECHARGE_TIME_KEY = "LAST_RECHARGE_TIME";
+    private const string LAST_RECHARGE_TIME_KEY = "LAST_RECHARGE";
 
     public int maxHeart = 5;  //최대 하트 개수
     public int currentHeart;  //현재 하트 개수

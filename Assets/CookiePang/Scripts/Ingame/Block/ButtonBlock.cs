@@ -30,6 +30,10 @@ public class ButtonBlock : Block
         }
     }
 
+    public override void Shock(int damage)
+    {
+       
+    }
 
     public override BlockData ToData(int row, int column)
     {
