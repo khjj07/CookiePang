@@ -8,6 +8,8 @@ using static UnityEngine.GraphicsBuffer;
 [CreateAssetMenu(menuName = "Stage / Create New Candy Stage")]
 public class CandyStageAsset : StageAsset
 {
+    private int initailCandyCount;
+    public int goalNumber;
     public CandyStageAsset()
     {
         scoreMode = ScoreMode.BallCount;
@@ -35,15 +37,20 @@ public class CandyStageAsset : StageAsset
             GameManager.instance.stars[count] = star;
             count++;
         }
-
+        initailCandyCount = GameManager.instance._candies.Count;
     }
 
     public override bool IsClear()
     {
-        if (GameManager.instance._candies.Count <= 0)
+        if (initailCandyCount-GameManager.instance._candies.Count <= goalNumber)
         {
             return true;
         }
         return false;
+    }
+
+    public override string GetGoal()
+    {
+        return "<size=150%><voffset=0.2em>" + "<sprite=0>" + "</voffset></size>" + (initailCandyCount - GameManager.instance._candies.Count) + " / " + goalNumber;
     }
 }

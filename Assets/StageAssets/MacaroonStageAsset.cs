@@ -8,6 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 [CreateAssetMenu(menuName = "Stage / Create New Macaroon Stage")]
 public class MacaroonStageAsset : StageAsset
 {
+    private int initailMacroonBlockCount;
     public MacaroonStageAsset()
     {
         scoreMode = ScoreMode.BallCount;
@@ -35,6 +36,7 @@ public class MacaroonStageAsset : StageAsset
             GameManager.instance.stars[count] = star;
             count++;
         }
+        initailMacroonBlockCount = GameManager.instance._macaroon.Count;
 
     }
 
@@ -45,5 +47,10 @@ public class MacaroonStageAsset : StageAsset
             return false;
         }
         return true;
+    }
+
+    public override string GetGoal()
+    {
+        return "<size=150%><voffset=0.2em>" + "<sprite=16>" + "</voffset></size>" + GameManager.instance._macaroon.Count + " / " + initailMacroonBlockCount;
     }
 }

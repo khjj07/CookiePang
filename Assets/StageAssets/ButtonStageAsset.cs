@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
 using static UnityEngine.GraphicsBuffer;
+using System.Linq;
 
 [CreateAssetMenu(menuName = "Stage / Create New Button Stage")]
 public class ButtonStageAsset : StageAsset
 {
+    int initialButtonCount;
     public ButtonStageAsset()
     {
         scoreMode = ScoreMode.BallCount;
@@ -35,7 +37,7 @@ public class ButtonStageAsset : StageAsset
             GameManager.instance.stars[count] = star;
             count++;
         }
-
+        initialButtonCount = GameManager.instance._buttons.Count;
     }
 
     public override bool IsClear()
@@ -48,5 +50,14 @@ public class ButtonStageAsset : StageAsset
             }
         }
         return true;
+    }
+
+    public override string GetGoal()
+    {
+        var results = from button in GameManager.instance._buttons
+                      where button.pressed
+                      select button;
+
+        return "<size=150%><voffset=0.2em>" + "<sprite=2>" + "</voffset></size>" + results.Count() + " / " + initialButtonCount;
     }
 }

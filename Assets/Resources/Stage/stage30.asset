@@ -97,3 +97,4 @@ MonoBehaviour:
     col: 6
   initailBallCount: 7
   stars: 000000000200000004000000
+  initialHoleBlockCount: 0

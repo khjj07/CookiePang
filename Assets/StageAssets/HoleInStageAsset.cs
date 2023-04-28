@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
-using static UnityEngine.GraphicsBuffer;
+using System.Linq;
 
 [CreateAssetMenu(menuName = "Stage / Create New Hole in Stage")]
 public class HoleInStageAsset : StageAsset
 {
+    public int initialHoleBlockCount;
     public HoleInStageAsset()
     {
         scoreMode = ScoreMode.BallCount;
@@ -35,7 +36,7 @@ public class HoleInStageAsset : StageAsset
             GameManager.instance.stars[count] = star;
             count++;
         }
-
+        initialHoleBlockCount=GameManager.instance._holes.Count;
     }
 
     public override bool IsClear()
@@ -48,5 +49,14 @@ public class HoleInStageAsset : StageAsset
             }
         }
         return true;
+    }
+
+    public override string GetGoal()
+    {
+        var results = from hole in GameManager.instance._holes
+                          where hole.holeIn
+                          select hole;
+        
+        return "<size=150%><voffset=0.2em>" + "<sprite=14>" + "</voffset></size>" + results.Count() + " / " + initialHoleBlockCount;
     }
 }
