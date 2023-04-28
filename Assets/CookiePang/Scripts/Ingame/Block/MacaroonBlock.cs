@@ -21,7 +21,7 @@ public class MacaroonBlock : Block
             EffectManager.instance.PlayEffect(1, transform.gameObject, 2f);
             _textMeshPro.enabled = false;
             GetComponent<Collider2D>().enabled = false;
-            SoundManager.instance.PlaySound(1, "CookieBreak1Sound");
+            SoundManager.instance.PlaySound(1, "MacaroonBlockSound");
             transform.DOScale(Vector3.zero, 0.1f).OnComplete(() =>
             {
                 GameManager.instance.DeleteBlock(this);

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using GoogleMobileAds.Api;
 using GoogleMobileAds;
-public class NextStageButton : Button
+public class FailAddMob : MonoBehaviour
 {
     private InterstitialAd interstitialAd;
     public void Start()
@@ -77,23 +77,6 @@ public class NextStageButton : Button
 
         }
     }
-    public override void OnPointerClick(PointerEventData pointerEventData)
-    {
-        base.OnPointerClick(pointerEventData);
-        if (HeartManager.instance.addMobCount <= 0)
-        {
-            ShowAd();//±¤°í¸¦ ½ÃÀÛÇØ¾ß ÇÒ ¶§ ÇÔ¼ö
-            HeartManager.instance.addMobCount = 2;
-        }
-        else
-        {
-            StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //±¤°í°¡ ´ÝÇûÀ»¶§ ½ºÅ×ÀÌÁö ³Ñ¾î°¨
-            SceneFlowManager.ChangeScene("Stage");
-        }
-
-        //StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //±¤°í°¡ ´ÝÇûÀ»¶§ ½ºÅ×ÀÌÁö ³Ñ¾î°¨
-        //SceneFlowManager.ChangeScene("Stage");
-    }
     private void RegisterEventHandlers(InterstitialAd ad)
     {
         // Raised when the ad is estimated to have earned money.
@@ -122,8 +105,6 @@ public class NextStageButton : Button
         ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Interstitial ad full screen content closed.");
-            StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //±¤°í°¡ ´ÝÇûÀ»¶§ ½ºÅ×ÀÌÁö ³Ñ¾î°¨
-            SceneFlowManager.ChangeScene("Stage");
         };
         // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
