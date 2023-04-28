@@ -42,6 +42,7 @@ public class Stage : MonoBehaviour
        {
            GameManager.instance.isOver = true;
        }
+        GameManager.instance.goal = asset.GetGoal();
     }
 
     public int GetStars()

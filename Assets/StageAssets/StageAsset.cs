@@ -76,4 +76,9 @@ public abstract class StageAsset : ScriptableObject
         }
         return starCount;
     }
+
+    public virtual string GetGoal()
+    {
+        return "<size=150%><voffset=0.2em><sprite=0></voffset></size>";
+    }
 }

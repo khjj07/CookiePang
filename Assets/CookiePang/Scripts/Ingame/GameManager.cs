@@ -37,7 +37,7 @@ public class GameManager : Singleton<GameManager>
     public Transform screenCordinate;
     public Vector3[,] gridPosition;
     private float marginLeft = 40;
-    private float marginTop = 500;
+    private float marginTop = 350;
     public Block[,] blocks;
     public int _column = 9;
     public int _row = 9;
@@ -94,6 +94,7 @@ public class GameManager : Singleton<GameManager>
     public List<ButtonBlock> _buttons;
     public List<MacaroonBlock> _macaroon;
     public string _letters;
+    public string goal;
 
     private float _currentTimeScale = 1.0f;
 

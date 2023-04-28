@@ -8,6 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 [CreateAssetMenu(menuName = "Stage / Create New Default Stage")]
 public class DefaultStageAsset : StageAsset
 {
+    private int initailBlockCount;
     public DefaultStageAsset()
     {
         scoreMode = ScoreMode.BallCount;
@@ -35,7 +36,7 @@ public class DefaultStageAsset : StageAsset
             GameManager.instance.stars[count] = star;
             count++;
         }
-
+        initailBlockCount = GameManager.instance._breakableBlocks.Count;
     }
 
     public override bool IsClear()
@@ -45,5 +46,10 @@ public class DefaultStageAsset : StageAsset
             return false;
         }
         return true;
+    }
+
+    public override string GetGoal()
+    {
+        return "<size=150%><voffset=0.2em>" + "<sprite=0>" + "</voffset></size>" + GameManager.instance._breakableBlocks.Count + " / " + initailBlockCount;
     }
 }
