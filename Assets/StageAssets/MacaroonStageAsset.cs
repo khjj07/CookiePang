@@ -51,6 +51,6 @@ public class MacaroonStageAsset : StageAsset
 
     public override string GetGoal()
     {
-        return "<size=150%><voffset=0.2em>" + "<sprite=16>" + "</voffset></size>" + GameManager.instance._macaroon.Count + " / " + initailMacroonBlockCount;
+        return "<size=150%><voffset=0.2em>" + "<sprite=16>" + "</voffset></size>" +" HP : "+ GameManager.instance._macaroon[0].hp;
     }
 }
