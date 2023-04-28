@@ -30,7 +30,7 @@ namespace PathCreation.Examples
                 spacing = Mathf.Max(minSpacing, spacing);
                 float dst = 0;
                 int count = 0;
-                while (dst < path.length)
+                while (dst < path.length && count < StageManager.instance.stageAssets.Count)
                 {
                     Vector3 point = path.GetPointAtDistance(dst);
                     StageManager.instance.CreateSelectButton(point, holder.transform, count);

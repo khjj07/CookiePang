@@ -9,6 +9,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
+using Unity.VisualScripting;
+using static UnityEditorInternal.VersionControl.ListControl;
+
 public enum BlockType
 {
     DEFAULT,
@@ -32,6 +35,7 @@ public class GameManager : Singleton<GameManager>
     public int initialBallCount;
     public int ballCount;
     public int[] stars = new int[3];
+    public int starCount = 0;
     public float timeScaleUpDelay = 10.0f;
 
     public Transform screenCordinate;
@@ -369,6 +373,10 @@ public class GameManager : Singleton<GameManager>
         }
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageClearSound");
+        StageManager.instance.LastStageUp();
+        StageManager.instance.SetCurrentStageAchievementRate(starCount);
+          
+    
     }
 
     public void GameOver()
