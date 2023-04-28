@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: effectList.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: uiList.Array.data[0].name
@@ -295,6 +295,10 @@ PrefabInstance:
       value: PowerBlock
       objectReference: {fileID: 0}
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.data[8].name
+      value: JellyBlockHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: effectList.Array.data[5].effect
       value: 
       objectReference: {fileID: 4425129568585013132, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
@@ -306,6 +310,10 @@ PrefabInstance:
       propertyPath: effectList.Array.data[7].effect
       value: 
       objectReference: {fileID: 8680598818964007281, guid: dcd90c4976197424b9958a7c54b6bb8c, type: 3}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.data[8].effect
+      value: 
+      objectReference: {fileID: 5787675097417047974, guid: 18091afca05222748a9fd3074ea44e72, type: 3}
     - target: {fileID: 383717548323839021, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: m_Name
       value: EffectManager

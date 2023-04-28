@@ -8,6 +8,7 @@ using UnityEditor.PackageManager;
 using System;
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 namespace PathCreation.Examples
 {
@@ -69,6 +70,7 @@ namespace PathCreation.Examples
 
            var dragUpStream = dragStream
                 .Buffer(2,10)
+                .Where(_ => EventSystem.current.IsPointerOverGameObject() == false)
                 .Where(g => { return g[0].y > g[1].y; })
                 .Subscribe(_ =>
                 {
@@ -86,6 +88,7 @@ namespace PathCreation.Examples
 
             var dragDownStream = dragStream
                   .Buffer(2,10)
+                  .Where(_ => EventSystem.current.IsPointerOverGameObject() == false)
                   .Where(g => { return g[0].y < g[1].y; })
                   .Subscribe(_ =>
                   {

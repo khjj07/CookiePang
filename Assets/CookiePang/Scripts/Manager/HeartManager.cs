@@ -22,7 +22,7 @@ public class HeartManager : Singleton<HeartManager>
     {
         currentHeart = PlayerPrefs.GetInt(HEART_KEY, maxHeart);
         var lastRechargeTime = DateTime.Parse(PlayerPrefs.GetString(LAST_RECHARGE_TIME_KEY, DateTime.Now.ToString()));
-        if ((lastRechargeTime - DateTime.Now).TotalSeconds < 10.0f) ;
+        if ((lastRechargeTime - DateTime.Now).TotalSeconds < 10.0f);
         {
             PlayerPrefs.SetString(LAST_RECHARGE_TIME_KEY, DateTime.Now.ToString());
         }
@@ -30,7 +30,6 @@ public class HeartManager : Singleton<HeartManager>
 
     private void Update()
     {
-        Debug.Log(timeSinceLastRecharge.TotalSeconds);
         if (currentHeart < maxHeart)
         {
             // 마지막 하트 충전 시간이 지난 시간을 구한다.
