@@ -22,10 +22,14 @@ public class Ball : MonoBehaviour
 
         if(collision.collider.CompareTag("Block"))
         {
-            if(collision.collider.gameObject.name != "JellyBlock(Clone)")
+            if(collision.collider.GetComponent<JellyBlock>())
             {
                 SoundManager.instance.PlaySound(1, "BallCrushSound");
-                EffectManager.instance.PlayEffect(6, transform.gameObject, 3);
+                EffectManager.instance.PlayEffect(8, transform.gameObject, 3);
+            }
+            else if(collision.collider.GetComponent<MacaroonBlock>())
+            {
+                EffectManager.instance.PlayEffect(9, transform.gameObject, 2f);
             }
             collision.collider.GetComponent<Block>().Hit(damage);
             

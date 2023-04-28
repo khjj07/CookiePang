@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: effectList.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: uiList.Array.data[0].name
@@ -299,6 +299,10 @@ PrefabInstance:
       value: JellyBlockHit
       objectReference: {fileID: 0}
     - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.data[9].name
+      value: MacaroonBlockHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: effectList.Array.data[5].effect
       value: 
       objectReference: {fileID: 4425129568585013132, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
@@ -314,6 +318,10 @@ PrefabInstance:
       propertyPath: effectList.Array.data[8].effect
       value: 
       objectReference: {fileID: 5787675097417047974, guid: 18091afca05222748a9fd3074ea44e72, type: 3}
+    - target: {fileID: 383717548323839020, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
+      propertyPath: effectList.Array.data[9].effect
+      value: 
+      objectReference: {fileID: 9105269724959087306, guid: 0b8b205d82648ec4088d0db6bda78bad, type: 3}
     - target: {fileID: 383717548323839021, guid: 6be47394038acb14eb34c51ae076143c, type: 3}
       propertyPath: m_Name
       value: EffectManager
