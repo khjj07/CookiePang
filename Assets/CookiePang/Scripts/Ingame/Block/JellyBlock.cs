@@ -21,7 +21,8 @@ public class JellyBlock : Block
         transform.DORewind();
         transform.DOShakeScale(0.3f, 10);
         transform.DOShakePosition(0.3f, 10);
-        SoundManager.instance.PlaySound(1, "JellyBlockSound"); 
+        SoundManager.instance.PlaySound(1, "JellyBlockSound");
+        EffectManager.instance.PlayEffect(8, GameManager.instance.ball.gameObject, 2f);
     }
     public override BlockData ToData(int row, int column)
     {

@@ -58,6 +58,6 @@ public class ButtonStageAsset : StageAsset
                       where button.pressed
                       select button;
 
-        return "<size=150%><voffset=0.2em>" + "<sprite=2>" + "</voffset></size>" + results.Count() + " / " + initialButtonCount;
+        return "<size=150%><voffset=0.2em>" + "<sprite=3>" + "</voffset></size>" + results.Count() + " / " + initialButtonCount;
     }
 }

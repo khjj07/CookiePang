@@ -8,6 +8,7 @@ using UnityEditor.PackageManager;
 using System;
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 namespace PathCreation.Examples
 {
@@ -35,7 +36,12 @@ namespace PathCreation.Examples
                 while (dst < path.length && count < StageManager.instance.stageAssets.Count)
                 {
                     Vector3 point = path.GetPointAtDistance(dst);
-                    StageManager.instance.CreateSelectButton(point, holder.transform, count);
+                    var obj = StageManager.instance.CreateSelectButton(point, holder.transform, count);
+                    if(StageManager.instance.currentIndex==count)
+                    {
+                        Mover.transform.DOLocalMoveY(100-obj.transform.localPosition.y,0.1f);
+                    }
+
                     dst += spacing;
                     count++;
                 }
@@ -58,6 +64,7 @@ namespace PathCreation.Examples
                 Generate();
             }
 
+            ;
 
             var downStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0));
             var upStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0));
@@ -69,6 +76,7 @@ namespace PathCreation.Examples
 
            var dragUpStream = dragStream
                 .Buffer(2,10)
+                .Where(_ => EventSystem.current.IsPointerOverGameObject() == false)
                 .Where(g => { return g[0].y > g[1].y; })
                 .Subscribe(_ =>
                 {
@@ -86,6 +94,7 @@ namespace PathCreation.Examples
 
             var dragDownStream = dragStream
                   .Buffer(2,10)
+                  .Where(_ => EventSystem.current.IsPointerOverGameObject() == false)
                   .Where(g => { return g[0].y < g[1].y; })
                   .Subscribe(_ =>
                   {
