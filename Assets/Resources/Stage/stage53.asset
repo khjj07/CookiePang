@@ -17,3 +17,4 @@ MonoBehaviour:
   blocks: []
   initailBallCount: 0
   stars: 000000000000000000000000
+  goalNumber: 0
