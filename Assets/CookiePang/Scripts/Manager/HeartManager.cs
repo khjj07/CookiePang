@@ -63,7 +63,7 @@ public class HeartManager : Singleton<HeartManager>
     {
         currentHeart = Mathf.Min(currentHeart + amount, maxHeart);
         PlayerPrefs.SetInt(HEART_KEY, currentHeart);
-        PlayerPrefs.SetString(LAST_RECHARGE_TIME_KEY, DateTime.Now.ToString());
+        //PlayerPrefs.SetString(LAST_RECHARGE_TIME_KEY, DateTime.Now.ToString());
     }
 
     public float GetRechargingTime()
