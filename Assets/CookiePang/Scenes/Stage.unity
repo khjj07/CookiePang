@@ -409,6 +409,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1744580796}
     - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
+      propertyPath: FailaddMob
+      value: 
+      objectReference: {fileID: 1744580796}
+    - target: {fileID: 8273944591444230213, guid: 15bf6cce67e20684a9c1cd72dc806cbe, type: 3}
       propertyPath: heartFailImage
       value: 
       objectReference: {fileID: 1501398330}
