@@ -152,7 +152,7 @@ public class GameManager : Singleton<GameManager>
     {
 
         Time.timeScale = 1;
-        StageManager.instance.currentIndex++;
+        StageManager.instance.SetCurrent(++StageManager.instance.currentIndex);
         SceneFlowManager.ChangeScene("Stage");
     }
     public void BackToMenu()

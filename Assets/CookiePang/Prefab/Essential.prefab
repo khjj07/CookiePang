@@ -1296,29 +1296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17cc60bbac2a9844ab56a6066b5e7a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scaled: {x: 1, y: 1, z: 1}
-  Easing: 0
-  OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8273944591444230213}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: TimeScaleUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  OnExit:
-    m_PersistentCalls:
-      m_Calls: []
   sprites:
   - {fileID: 21300000, guid: aea79604e02b9ea4d84eeece6b20d56a, type: 3}
   - {fileID: 21300000, guid: e0f563532b1cc704f81caff53173afae, type: 3}
