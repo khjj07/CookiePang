@@ -24,8 +24,10 @@ public class ButtonStageAsset : StageAsset
         stageAsset.stars[0] = stars[0];
         stageAsset.stars[1] = stars[1];
         stageAsset.stars[2] = stars[2];
+#if UNITY_EDITOR
         AssetDatabase.CreateAsset(stageAsset, "Assets/CookiePang/Stage/NewButtonStage.asset");
         AssetDatabase.Refresh();
+#endif
     }
 
     public override void Initialize()

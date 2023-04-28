@@ -21,9 +21,8 @@ public enum GameMode
 public abstract class StageAsset : ScriptableObject
 {
     public ScoreMode scoreMode;
-    [ReadOnlyAttribute]
+    
     public GameMode gameMode;
-    [ReadOnlyAttribute]
     public List<BlockData> blocks;
 
     public int initailBallCount;
@@ -37,7 +36,9 @@ public abstract class StageAsset : ScriptableObject
 
     private void OnEnable()
     {
+#if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+#endif
     }
 
     public virtual void Initialize()
