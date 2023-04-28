@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class TimeScaleUpButton : Button
+public class TimeScaleUpButton : MonoBehaviour
 {
     public Sprite[] sprites;
-    public override void OnPointerClick(PointerEventData pointerEventData)
+    public void TimeScaleButtonClick()
     {
-        base.OnPointerClick(pointerEventData);
         if (!GameManager.instance.isTimeScaleUp)
         {
             GameManager.instance.isTimeScaleUp = true;
