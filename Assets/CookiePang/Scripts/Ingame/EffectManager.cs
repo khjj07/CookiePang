@@ -40,6 +40,7 @@ public class EffectManager : Singleton<EffectManager>
         if (!isParticle)
             return;
         GameObject effect = Instantiate(uiList[num].effect, pos, Quaternion.Euler(pos));
+        
         effect.SetActive(false);
         effect.SetActive(true);
         
