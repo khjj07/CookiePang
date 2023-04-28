@@ -17,7 +17,7 @@ MonoBehaviour:
   blocks:
   - type: 0
     hp: 1
-    row: 0
+    row: 1
     col: 4
   - type: 0
     hp: 1

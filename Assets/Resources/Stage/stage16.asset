@@ -15,18 +15,6 @@ MonoBehaviour:
   scoreMode: 0
   gameMode: 0
   blocks:
-  - type: 3
-    hp: 1
-    row: 0
-    col: 3
-  - type: 2
-    hp: 1
-    row: 0
-    col: 4
-  - type: 3
-    hp: 1
-    row: 0
-    col: 5
   - type: 0
     hp: 11
     row: 0
@@ -35,6 +23,18 @@ MonoBehaviour:
     hp: 1
     row: 0
     col: 8
+  - type: 3
+    hp: 1
+    row: 1
+    col: 3
+  - type: 2
+    hp: 1
+    row: 1
+    col: 4
+  - type: 3
+    hp: 1
+    row: 1
+    col: 5
   - type: 3
     hp: 1
     row: 3

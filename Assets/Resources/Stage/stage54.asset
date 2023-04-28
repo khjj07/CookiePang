@@ -53,9 +53,17 @@ MonoBehaviour:
     col: 8
   - type: 1
     hp: 1
-    row: 5
+    row: 2
     col: 3
   - type: 1
+    hp: 1
+    row: 4
+    col: 4
+  - type: 5
+    hp: 1
+    row: 5
+    col: 3
+  - type: 4
     hp: 1
     row: 5
     col: 4
@@ -66,18 +74,6 @@ MonoBehaviour:
   - type: 4
     hp: 1
     row: 6
-    col: 0
-  - type: 4
-    hp: 1
-    row: 6
-    col: 1
-  - type: 4
-    hp: 1
-    row: 6
-    col: 2
-  - type: 4
-    hp: 1
-    row: 6
     col: 3
   - type: 4
     hp: 1
@@ -87,19 +83,7 @@ MonoBehaviour:
     hp: 1
     row: 6
     col: 5
-  - type: 4
-    hp: 1
-    row: 6
-    col: 6
-  - type: 4
-    hp: 1
-    row: 6
-    col: 7
-  - type: 4
-    hp: 1
-    row: 6
-    col: 8
-  - type: 4
+  - type: 2
     hp: 1
     row: 7
     col: 3
@@ -111,10 +95,6 @@ MonoBehaviour:
     hp: 1
     row: 7
     col: 5
-  - type: 4
-    hp: 1
-    row: 7
-    col: 6
   initailBallCount: 6
   stars: 000000000200000004000000
-  initialHoleBlockCount: 0
+  initialHoleBlockCount: 1

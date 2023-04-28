@@ -85,10 +85,6 @@ MonoBehaviour:
     col: 6
   - type: 0
     hp: 1
-    row: 5
-    col: 7
-  - type: 0
-    hp: 1
     row: 6
     col: 2
   - type: 0
@@ -107,13 +103,5 @@ MonoBehaviour:
     hp: 1
     row: 6
     col: 6
-  - type: 0
-    hp: 1
-    row: 6
-    col: 7
-  - type: 0
-    hp: 1
-    row: 7
-    col: 7
   initailBallCount: 6
   stars: 000000000200000004000000

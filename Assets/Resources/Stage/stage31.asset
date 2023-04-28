@@ -77,33 +77,13 @@ MonoBehaviour:
     col: 1
   - type: 2
     hp: 1
-    row: 4
+    row: 5
     col: 3
   - type: 0
     hp: 1
-    row: 4
+    row: 5
     col: 4
   - type: 2
-    hp: 1
-    row: 4
-    col: 5
-  - type: 0
-    hp: 1
-    row: 4
-    col: 6
-  - type: 0
-    hp: 1
-    row: 5
-    col: 2
-  - type: 0
-    hp: 1
-    row: 5
-    col: 3
-  - type: 0
-    hp: 1
-    row: 5
-    col: 4
-  - type: 0
     hp: 1
     row: 5
     col: 5
@@ -115,6 +95,26 @@ MonoBehaviour:
     hp: 1
     row: 6
     col: 0
+  - type: 0
+    hp: 1
+    row: 6
+    col: 2
+  - type: 0
+    hp: 1
+    row: 6
+    col: 3
+  - type: 0
+    hp: 1
+    row: 6
+    col: 4
+  - type: 0
+    hp: 1
+    row: 6
+    col: 5
+  - type: 0
+    hp: 1
+    row: 6
+    col: 6
   - type: 5
     hp: 1
     row: 6

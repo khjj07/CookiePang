@@ -65,4 +65,4 @@ MonoBehaviour:
     col: 7
   initailBallCount: 6
   stars: 000000000200000004000000
-  goalNumber: 0
+  goalNumber: 3

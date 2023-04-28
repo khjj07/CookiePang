@@ -17,15 +17,15 @@ MonoBehaviour:
   blocks:
   - type: 5
     hp: 1
-    row: 0
+    row: 1
     col: 3
   - type: 0
     hp: 1
-    row: 0
+    row: 1
     col: 4
   - type: 5
     hp: 1
-    row: 0
+    row: 1
     col: 5
   - type: 5
     hp: 1

@@ -112,7 +112,7 @@ MonoBehaviour:
     row: 5
     col: 0
   - type: 0
-    hp: 9
+    hp: 10
     row: 6
     col: 0
   - type: 1

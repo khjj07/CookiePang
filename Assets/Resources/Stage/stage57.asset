@@ -19,6 +19,10 @@ MonoBehaviour:
     hp: 0
     row: 0
     col: 2
+  - type: 8
+    hp: 0
+    row: 0
+    col: 5
   - type: 1
     hp: 2
     row: 1
@@ -43,10 +47,6 @@ MonoBehaviour:
     hp: 2
     row: 4
     col: 6
-  - type: 8
-    hp: 0
-    row: 6
-    col: 2
   - type: 8
     hp: 0
     row: 6
@@ -63,5 +63,5 @@ MonoBehaviour:
     hp: 1
     row: 8
     col: 5
-  initailBallCount: 8
+  initailBallCount: 7
   stars: 000000000200000004000000

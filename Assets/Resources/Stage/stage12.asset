@@ -45,7 +45,7 @@ MonoBehaviour:
     col: 6
   - type: 1
     hp: 1
-    row: 7
-    col: 6
+    row: 8
+    col: 5
   initailBallCount: 3
   stars: 000000000100000002000000
