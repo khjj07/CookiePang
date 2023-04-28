@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using Unity.VisualScripting;
 using static UnityEditorInternal.VersionControl.ListControl;
+using TMPro;
 
 public enum BlockType
 {
@@ -41,7 +42,7 @@ public class GameManager : Singleton<GameManager>
     public Transform screenCordinate;
     public Vector3[,] gridPosition;
     private float marginLeft = 40;
-    private float marginTop = 350;
+    private float marginTop = 400;
     public Block[,] blocks;
     public int _column = 9;
     public int _row = 9;
@@ -88,6 +89,9 @@ public class GameManager : Singleton<GameManager>
     private GameObject[] StarsImage;
     [SerializeField]
     private GameObject[] successPanelStarsImage;
+
+    [SerializeField]
+    private TextMeshProUGUI heartText;
     public int deadLineBallCount;
     public int deadLineMaxBallCount;
     
@@ -136,7 +140,8 @@ public class GameManager : Singleton<GameManager>
         isPlay = true;
         Time.timeScale = _currentTimeScale;
         SoundManager.instance.PlaySound(1, "UiClickSound");
-        HeartManager.instance.UseHeart();
+        heartText.SetText(HeartManager.instance.currentHeart.ToString());
+        HeartManager.instance.UseHeartNoReset();
     }
     public void PauseGame()
     {
@@ -359,7 +364,7 @@ public class GameManager : Singleton<GameManager>
         successPanel.SetActive(true);
         StageManager.instance.LastStageUp();
         StageManager.instance.SetCurrentStageAchievementRate(starCount);
-        HeartManager.instance.AddHeart(1);
+        HeartManager.instance.AddHeartNoReset(1);
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Effect");
         for(int i=0; i<temp.Length; i++)
         {

@@ -14,11 +14,12 @@ namespace PathCreation.Examples
     public class StageButtonPlacer: PathSceneTool
     {
         public GameObject holder;
+        public GameObject Mover;
         public float spacing = 3;
 
         const float minSpacing = .1f;
         const float minHeight = -30000.0f;
-        const float tick = 100.0f;
+        const float tick = 300.0f;
 
         void Generate()
         {
@@ -71,14 +72,14 @@ namespace PathCreation.Examples
                 .Where(g => { return g[0].y > g[1].y; })
                 .Subscribe(_ =>
                 {
-                    holder.transform.DORewind();
-                    if(holder.transform.localPosition.y > -270 )
+                    Mover.transform.DORewind();
+                    if(Mover.transform.localPosition.y > 100 )
                     {
-                        holder.transform.DOLocalMoveY(-270, 0.01f);
+                        Mover.transform.DOLocalMoveY(100, 0.01f);
                     }
                     else
                     {
-                        holder.transform.DOLocalMoveY(tick, 0.01f).SetRelative(true);
+                        Mover.transform.DOLocalMoveY(tick, 0.01f).SetRelative(true);
                     }
                 });
 
@@ -88,15 +89,15 @@ namespace PathCreation.Examples
                   .Where(g => { return g[0].y < g[1].y; })
                   .Subscribe(_ =>
                   {
-                      holder.transform.DORewind();
+                      Mover.transform.DORewind();
                       
-                      if (holder.transform.localPosition.y < minHeight)
+                      if (Mover.transform.localPosition.y < minHeight)
                       {
-                          holder.transform.DOLocalMoveY(minHeight, 0.01f);
+                          Mover.transform.DOLocalMoveY(minHeight, 0.01f);
                       }
                       else
                       {
-                          holder.transform.DOLocalMoveY(-tick, 0.01f).SetRelative(true);
+                          Mover.transform.DOLocalMoveY(-tick, 0.01f).SetRelative(true);
                       }
                   });
 
