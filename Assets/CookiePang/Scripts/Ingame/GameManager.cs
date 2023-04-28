@@ -89,7 +89,7 @@ public class GameManager : Singleton<GameManager>
     private GameObject[] StarsImage;
     [SerializeField]
     private GameObject[] successPanelStarsImage;
-
+    public GameObject heartFailImage;
     [SerializeField]
     private TextMeshProUGUI heartText;
     public int deadLineBallCount;
@@ -165,10 +165,21 @@ public class GameManager : Singleton<GameManager>
     public void ResetGame()
     {
         if (HeartManager.instance.currentHeart <= 0)
-            return;
-        Time.timeScale = 1;
-        //SoundManager.instance.PlaySound(1, "UiClickSound");
-        SceneFlowManager.ChangeScene("Stage");
+        {
+            StartCoroutine(HeartFailImage());
+        }
+        else
+        {
+            Time.timeScale = 1;
+            //SoundManager.instance.PlaySound(1, "UiClickSound");
+            SceneFlowManager.ChangeScene("Stage");
+        }
+    }
+    private IEnumerator HeartFailImage()
+    {
+        heartFailImage.SetActive(true);
+        yield return new WaitForSecondsRealtime(2f);
+        heartFailImage.SetActive(false);
     }
     public void Awake()
     {
