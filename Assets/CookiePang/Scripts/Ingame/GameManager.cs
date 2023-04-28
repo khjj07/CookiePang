@@ -56,14 +56,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private Block[] blockPrefabs;
     [SerializeField, Range(5.0f, 10.0f)]
-    private float reflectDotLength;
+    public float reflectDotLength;
 
     [SerializeField]
     public StarSlider starSlider;
     private DotLine _dotLine;
-    private float _ballRadius;
+    public float _ballRadius;
     [SerializeField]
-    private GameObject _dummyBall;
+    public GameObject _dummyBall;
 
     [Header("추가")]
     public GameObject ballCollectButton;
@@ -252,15 +252,23 @@ public class GameManager : Singleton<GameManager>
                  _dotLine.points.Add(ball.transform.position);
                  _dotLine.points.Add(hit.centroid);
                  var direction = Vector3.Normalize(new Vector3(hit.centroid.x, hit.centroid.y, 0) - ball.transform.position);
-                 var endPos = Vector3.Reflect(direction, hit.normal) * reflectDotLength;
-                 _dotLine.points.Add(new Vector3(hit.centroid.x, hit.centroid.y, 0) + endPos);
+                 if (!hit.collider.GetComponent<TeleportationBlock>())
+                 { 
+                     var endPos = Vector3.Reflect(direction, hit.normal) * reflectDotLength;
+                     _dotLine.points.Add(new Vector3(hit.centroid.x, hit.centroid.y, 0) + endPos);
+                     _dummyBall.transform.position = hit.centroid;
+                 }
+                 else
+                 {
+                     hit.collider.GetComponent<TeleportationBlock>().DrawDotLineFromDestination(direction);
+                 }
+               
 
                  //투명하게 공표시
                  if (EventSystem.current.IsPointerOverGameObject() == false)
                  {
                      _dotLine.DrawDotLine();
                      _dummyBall.SetActive(true);
-                     _dummyBall.transform.position = hit.centroid;
                  }
                  else
                  {

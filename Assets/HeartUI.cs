@@ -23,7 +23,14 @@ public class HeartUI : MonoBehaviour
         {
             int minute = (int)HeartManager.instance.GetRechargingTime() / 60;
             int second = (int)HeartManager.instance.GetRechargingTime()-minute*60;
-            rechargingTime.text = minute + " : " + second;
+            if(second>9)
+            {
+                 rechargingTime.text = minute + " : " + second;
+            }
+            else
+            {
+                rechargingTime.text = minute + " : 0" + second;
+            }
         }
         else
         {

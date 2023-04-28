@@ -57,6 +57,6 @@ public class HoleInStageAsset : StageAsset
                           where hole.holeIn
                           select hole;
         
-        return "<size=150%><voffset=0.2em>" + "<sprite=14>" + "</voffset></size>" + " 공넣기";
+        return "<size=150%><voffset=0.25em>" + "<sprite=14>" + "</voffset></size>" + " 공넣기";
     }
 }

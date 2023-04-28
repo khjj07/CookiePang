@@ -51,6 +51,6 @@ public class CandyStageAsset : StageAsset
 
     public override string GetGoal()
     {
-        return "<size=150%><voffset=0.2em>" + "<sprite=4>" + "</voffset></size>" + (initailCandyCount - GameManager.instance._candies.Count) + " / " + goalNumber;
+        return "<size=150%><voffset=0.25em>" + "<sprite=4>" + "</voffset></size>" + (initailCandyCount - GameManager.instance._candies.Count) + " / " + goalNumber;
     }
 }

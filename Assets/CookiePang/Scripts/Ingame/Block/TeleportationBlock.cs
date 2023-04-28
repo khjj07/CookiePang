@@ -9,12 +9,14 @@ using System.Threading;
 
 public class TeleportationBlock : Block
 {
+    private DotLine _dotLine;
     public TeleportationBlock destination;
     private bool _ballEntered = false;
     public Sprite[] sprite;
     public Vector2 savedVelocity;
     protected override void Start()
     {
+        _dotLine = GetComponent<DotLine>();
         base.Start();
         foreach (var block in GameManager.instance.blocks)
         {
@@ -69,6 +71,21 @@ public class TeleportationBlock : Block
     public override void Shock(int damage)
     {
 
+    }
+
+    public void DrawDotLineFromDestination(Vector2 direction)
+    {
+        destination.gameObject.layer = 2;
+        var hit = Physics2D.CircleCast(destination.transform.position, GameManager.instance._ballRadius, direction);
+        destination.gameObject.layer = 0;
+        _dotLine.points.Clear();
+        _dotLine.points.Add(destination.transform.position);
+        _dotLine.points.Add(hit.centroid);
+
+        var endPos = Vector3.Reflect(direction, hit.normal) * GameManager.instance.reflectDotLength;
+        _dotLine.points.Add(new Vector3(hit.centroid.x, hit.centroid.y, 0) + endPos);
+        GameManager.instance._dummyBall.transform.position = hit.centroid;
+        _dotLine.DrawDotLine();
     }
 
     public override BlockData ToData(int row, int column)
