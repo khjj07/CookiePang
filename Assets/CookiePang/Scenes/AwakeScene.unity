@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -678,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[1].ClipList.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[2].ClipList.Array.size
@@ -855,6 +855,14 @@ PrefabInstance:
     - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Player.Array.data[1].ClipList.Array.data[14].Name
       value: PowerUpBlockSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[15].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 30bd69626b58f444588fc85def755cc3, type: 3}
+    - target: {fileID: 7061285088888760732, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
+      propertyPath: Player.Array.data[1].ClipList.Array.data[15].Name
+      value: MacaroonBlockSound
       objectReference: {fileID: 0}
     - target: {fileID: 7061285088888760735, guid: d9f65fb9dfac56a4992ca569847ea1af, type: 3}
       propertyPath: Loop
