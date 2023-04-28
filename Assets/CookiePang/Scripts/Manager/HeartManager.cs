@@ -8,7 +8,7 @@ public class HeartManager : Singleton<HeartManager>
     private const string HEART_KEY = "HEART";
     private const string LAST_RECHARGE_TIME_KEY = "LAST_RECHARGE_TIME";
 
-    private int maxHeart = 5;  //최대 하트 개수
+    public int maxHeart = 5;  //최대 하트 개수
     public int currentHeart;  //현재 하트 개수
     private float rechargeInterval = 10f * 60f;  //하트 자동 충전 주기 (초단위)
     public TimeSpan timeSinceLastRecharge;
@@ -25,6 +25,7 @@ public class HeartManager : Singleton<HeartManager>
 
     private void Update()
     {
+        Debug.Log(timeSinceLastRecharge.TotalSeconds);
         if (currentHeart < maxHeart)
         {
             // 마지막 하트 충전 시간이 지난 시간을 구한다.
@@ -42,6 +43,26 @@ public class HeartManager : Singleton<HeartManager>
                 PlayerPrefs.SetString(LAST_RECHARGE_TIME_KEY, DateTime.Now.ToString());
             }
         }
+    }
+
+    public bool UseHeartNoReset()
+    {
+        if (currentHeart > 0)
+        {
+            currentHeart--;
+            PlayerPrefs.SetInt(HEART_KEY, currentHeart);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void AddHeartNoReset(int amount)
+    {
+        currentHeart = Mathf.Min(currentHeart + amount, maxHeart);
+        PlayerPrefs.SetInt(HEART_KEY, currentHeart);
     }
 
     public bool UseHeart()
@@ -63,7 +84,7 @@ public class HeartManager : Singleton<HeartManager>
     {
         currentHeart = Mathf.Min(currentHeart + amount, maxHeart);
         PlayerPrefs.SetInt(HEART_KEY, currentHeart);
-        //PlayerPrefs.SetString(LAST_RECHARGE_TIME_KEY, DateTime.Now.ToString());
+        PlayerPrefs.SetString(LAST_RECHARGE_TIME_KEY, DateTime.Now.ToString());
     }
 
     public float GetRechargingTime()
