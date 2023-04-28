@@ -11,6 +11,7 @@ public class HeartManager : Singleton<HeartManager>
     public int maxHeart = 5;  //최대 하트 개수
     public int currentHeart;  //현재 하트 개수
     private float rechargeInterval = 10f * 60f;  //하트 자동 충전 주기 (초단위)
+    public int addMobCount = 2;
     public TimeSpan timeSinceLastRecharge;
     private void Awake()
     {
@@ -54,6 +55,7 @@ public class HeartManager : Singleton<HeartManager>
         if (currentHeart > 0)
         {
             currentHeart--;
+            addMobCount--;
             PlayerPrefs.SetInt(HEART_KEY, currentHeart);
             return true;
         }

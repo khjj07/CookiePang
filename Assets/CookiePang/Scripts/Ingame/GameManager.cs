@@ -94,7 +94,7 @@ public class GameManager : Singleton<GameManager>
     private TextMeshProUGUI heartText;
     public int deadLineBallCount;
     public int deadLineMaxBallCount;
-    
+    public FailAddMob FailaddMob;
 
     public List<Block> _breakableBlocks;
     public List<HoleBlock> _holes;
@@ -151,6 +151,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void NextGame()
     {
+
         Time.timeScale = 1;
         StageManager.instance.currentIndex++;
         SceneFlowManager.ChangeScene("Stage");
