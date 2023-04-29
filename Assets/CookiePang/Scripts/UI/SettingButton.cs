@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SettingButton : Button
+public class SettingButton : MonoBehaviour
 {
     [SerializeField] private GameObject settingPanel;
     public Sprite[] sprites;
     public GameObject particleOnOffButton;
-    public override void OnPointerClick(PointerEventData pointerEventData)
+    public void Click()
     {
-        base.OnPointerClick(pointerEventData);
         ClickSound();
+        OpenPanelButton();
     }
     public void OpenPanelButton()
     {

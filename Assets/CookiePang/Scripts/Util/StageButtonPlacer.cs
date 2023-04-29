@@ -19,7 +19,7 @@ namespace PathCreation.Examples
 
         const float minSpacing = .1f;
         const float minHeight = -30000.0f;
-        const float tick = 300.0f;
+        const float tick = 50.0f;
 
         void Generate()
         {
@@ -74,7 +74,7 @@ namespace PathCreation.Examples
                 .RepeatUntilDestroy(this);
 
            var dragUpStream = dragStream
-                .Buffer(2,10)
+                .Buffer(2,1)
                 .Where(_ => EventSystem.current.IsPointerOverGameObject() == false)
                 .Where(g => { return g[0].y > g[1].y; })
                 .Subscribe(_ =>
@@ -92,7 +92,7 @@ namespace PathCreation.Examples
 
 
             var dragDownStream = dragStream
-                  .Buffer(2,10)
+                  .Buffer(2,1)
                   .Where(_ => EventSystem.current.IsPointerOverGameObject() == false)
                   .Where(g => { return g[0].y < g[1].y; })
                   .Subscribe(_ =>

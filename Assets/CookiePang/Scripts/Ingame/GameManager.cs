@@ -141,7 +141,30 @@ public class GameManager : Singleton<GameManager>
         SoundManager.instance.PlaySound(1, "UiClickSound");
         heartText.SetText(HeartManager.instance.currentHeart.ToString());
         HeartManager.instance.UseHeartNoReset();
+
     }
+
+    public void SetResolution()
+    {
+        int setWidth = 1080; // 사용자 설정 너비
+        int setHeight = 1920; // 사용자 설정 높이
+
+        int deviceWidth = Screen.width; // 기기 너비 저장
+        int deviceHeight = Screen.height; // 기기 높이 저장
+
+        Screen.SetResolution(setWidth, (int)(((float)deviceHeight / deviceWidth) * setWidth), true); // SetResolution 함수 제대로 사용하기
+        if ((float)setWidth / setHeight < (float)deviceWidth / deviceHeight) // 기기의 해상도 비가 더 큰 경우
+        {
+            float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight); // 새로운 너비
+            Camera.main.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f); // 새로운 Rect 적용
+        }
+        else // 게임의 해상도 비가 더 큰 경우
+        {
+            float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight); // 새로운 높이
+            Camera.main.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // 새로운 Rect 적용
+        }
+    }
+
     public void PauseGame()
     {
         isPlay = false;
@@ -152,7 +175,7 @@ public class GameManager : Singleton<GameManager>
     {
 
         Time.timeScale = 1;
-        StageManager.instance.currentIndex++;
+        StageManager.instance.SetCurrent(++StageManager.instance.currentIndex);
         SceneFlowManager.ChangeScene("Stage");
     }
     public void BackToMenu()
@@ -190,12 +213,15 @@ public class GameManager : Singleton<GameManager>
         {
             for (int j = 0; j < _column; j++)
             {
-                gridPosition[i, j] = new Vector3(marginLeft + (j + 1) * offset - Screen.width / 2, -marginTop + Screen.height / 2 - (i + 1) * offset, 0);
+                gridPosition[i, j] = new Vector3(marginLeft + (j + 1) * offset - Screen.width / 2, -marginTop - (Screen.height-1920)/2 + Screen.height / 2 - (i + 1) * offset, 0);
             }
         }//블록생성
     }
     public void Start()
     {
+        
+
+        //SetResolution();
         if (EffectManager.instance.isParticle)
             onOffParticleButton.GetComponent<Image>().sprite = onOffParticleImage[0];
         else

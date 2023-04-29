@@ -7,7 +7,7 @@ using UnityEngine.UIElements.Experimental;
 using UnityEngine.UI;
 using TMPro;
 
-public class StageSelectButton : Button
+public class StageSelectButton : MonoBehaviour
 {
     public Sprite onSprite;
     public Sprite offSprite;
@@ -18,9 +18,8 @@ public class StageSelectButton : Button
     private Image _image;
     public GameObject[] stars = new GameObject[3];
 
-    public override void Start()
+    public void Start()
     {
-        base.Start();
         _text = GetComponentInChildren<TextMeshProUGUI>();
         _image = GetComponent<Image>();
         if (isLocked)
@@ -48,13 +47,13 @@ public class StageSelectButton : Button
         _text.SetText(myIndex.ToString());
     }
 
-    public override void OnPointerClick(PointerEventData pointerEventData)
+    public void Click()
     {
         if (!isLocked && HeartManager.instance.currentHeart>0)
         {
-            base.OnPointerClick(pointerEventData);
+            GameObject.Find("Panel").GetComponent<Image>().color=new Vector4(0,0,0,1);
             StageManager.instance.SetCurrent(myIndex);
-            SceneFlowManager.ChangeScene("Stage");
+            SceneFlowManager.ChangeSceneNotAsync("Stage");
         }
     }
 }

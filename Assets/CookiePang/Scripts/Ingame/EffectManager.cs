@@ -22,7 +22,7 @@ public class EffectManager : Singleton<EffectManager>
     public List<EffectStruct> effectList = new List<EffectStruct>();
     public List<UIStruct> uiList = new List<UIStruct>();
 
-    public List<ObjectPool<GameObject>> effectPools = new List<ObjectPool<GameObject>>();
+    //public List<ObjectPool<GameObject>> effectPools = new List<ObjectPool<GameObject>>();
 
     private bool DontDestroy = true;
     public bool isParticle = true;
@@ -31,8 +31,8 @@ public class EffectManager : Singleton<EffectManager>
     {
         if (DontDestroy)
             DontDestroyOnLoad(this.gameObject);
-        foreach (var e in effectList)
-            effectPools.Add(new ObjectPool<GameObject>(LoadEffectInListStep, OnGet, OnRelease, OnDestory, maxSize: 5));
+        //foreach (var e in effectList)
+           // effectPools.Add(new ObjectPool<GameObject>(LoadEffectInListStep, OnGet, OnRelease, OnDestory, maxSize: 5));
     }
     public GameObject LoadEffectInListStep()
     {
@@ -50,14 +50,13 @@ public class EffectManager : Singleton<EffectManager>
         if (!isParticle)
             return;
         effectIndex=index;
-        var effect = effectPools[index].Get();
+        //var effect = effectPools[index].Get();
+        var effect = Instantiate(effectList[effectIndex].effect); 
         effect.transform.position = obj.transform.position;
         effect.transform.rotation = obj.transform.rotation;
-        Task.Run(() =>
-        {
-            Task.Delay((int)time * 1000);
-            effectPools[index].Release(effect);
-        });
+        Destroy(effect,time);
+           // effectPools[index].Release(effect);
+        
     }
 
     //=> Release가 실행될 때 실행되는 함수 element가 실행함.

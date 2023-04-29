@@ -26,6 +26,7 @@ public class StageManager : Singleton<StageManager>
     {
         stageAssets = new List<StageAsset>();
         DontDestroyOnLoad(this);
+        
     }
 
     private void Start()
