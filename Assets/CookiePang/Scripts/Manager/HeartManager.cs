@@ -12,6 +12,7 @@ public class HeartManager : Singleton<HeartManager>
     public int currentHeart;  //현재 하트 개수
     private float rechargeInterval = 10f * 60f;  //하트 자동 충전 주기 (초단위)
     public int addMobCount = 2;
+    public bool isAdd = true;
     public TimeSpan timeSinceLastRecharge;
     private void Awake()
     {

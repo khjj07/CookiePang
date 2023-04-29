@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using GoogleMobileAds.Api;
 using GoogleMobileAds;
-public class NextStageButton : Button
+public class NextStageButton : MonoBehaviour
 {
     private InterstitialAd interstitialAd;
     public void Start()
@@ -77,9 +77,8 @@ public class NextStageButton : Button
 
         }
     }
-    public override void OnPointerClick(PointerEventData pointerEventData)
+    public void NextStageClick()
     {
-        base.OnPointerClick(pointerEventData);
         if (HeartManager.instance.addMobCount <= 0)
         {
             ShowAd();//±¤°í¸¦ ½ÃÀÛÇØ¾ß ÇÒ ¶§ ÇÔ¼ö
@@ -89,6 +88,7 @@ public class NextStageButton : Button
         {
             StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //±¤°í°¡ ´ÝÇûÀ»¶§ ½ºÅ×ÀÌÁö ³Ñ¾î°¨
             SceneFlowManager.ChangeScene("Stage");
+            Time.timeScale = 1;
         }
 
         //StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //±¤°í°¡ ´ÝÇûÀ»¶§ ½ºÅ×ÀÌÁö ³Ñ¾î°¨
@@ -124,6 +124,7 @@ public class NextStageButton : Button
             Debug.Log("Interstitial ad full screen content closed.");
             StageManager.instance.SetCurrent(++StageManager.instance.currentIndex); //±¤°í°¡ ´ÝÇûÀ»¶§ ½ºÅ×ÀÌÁö ³Ñ¾î°¨
             SceneFlowManager.ChangeScene("Stage");
+            Time.timeScale = 1;
         };
         // Raised when the ad failed to open full screen content.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
