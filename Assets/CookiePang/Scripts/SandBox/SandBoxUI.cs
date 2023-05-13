@@ -197,6 +197,7 @@ public class SandBoxUI : Singleton<SandBoxUI>
             {
 
                 var instance = GameManager.instance.CreateBlock(block.type, block.row, block.col);
+                instance.transform.localScale = instance.transform.localScale * (1080 / (float)Screen.width);
                 instance.GetData(block);
                 _sandBoxGrids[block.row, block.col].target = instance;
             }

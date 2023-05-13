@@ -106,7 +106,7 @@ public class GameManager : Singleton<GameManager>
     private float _currentTimeScale = 1.0f;
 
     [SerializeField] private Slider[] slider; //Setting Panel volume //추후에 title에 있는걸로 슬라이더 다 쓸거임 (임시)
-    
+
     public void ReturnBall()
     {
         ball.transform.position = lastBallPos;
@@ -115,13 +115,13 @@ public class GameManager : Singleton<GameManager>
     }
     public void ReturnBallActive()
     {
-        
-            ballCollectActiveTime -= Time.deltaTime;
-            if(ballCollectActiveTime < 0)
-            {
-                isBallCollect = true;
-            }
-        
+
+        ballCollectActiveTime -= Time.deltaTime;
+        if (ballCollectActiveTime < 0)
+        {
+            isBallCollect = true;
+        }
+
     }
     public void TimeScaleUp()
     {
@@ -142,27 +142,6 @@ public class GameManager : Singleton<GameManager>
         heartText.SetText(HeartManager.instance.currentHeart.ToString());
         HeartManager.instance.UseHeartNoReset();
 
-    }
-
-    public void SetResolution()
-    {
-        int setWidth = 1080; // 사용자 설정 너비
-        int setHeight = 1920; // 사용자 설정 높이
-
-        int deviceWidth = Screen.width; // 기기 너비 저장
-        int deviceHeight = Screen.height; // 기기 높이 저장
-
-        Screen.SetResolution(setWidth, (int)(((float)deviceHeight / deviceWidth) * setWidth), true); // SetResolution 함수 제대로 사용하기
-        if ((float)setWidth / setHeight < (float)deviceWidth / deviceHeight) // 기기의 해상도 비가 더 큰 경우
-        {
-            float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight); // 새로운 너비
-            Camera.main.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f); // 새로운 Rect 적용
-        }
-        else // 게임의 해상도 비가 더 큰 경우
-        {
-            float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight); // 새로운 높이
-            Camera.main.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // 새로운 Rect 적용
-        }
     }
 
     public void PauseGame()
@@ -213,13 +192,13 @@ public class GameManager : Singleton<GameManager>
         {
             for (int j = 0; j < _column; j++)
             {
-                gridPosition[i, j] = new Vector3(marginLeft + (j + 1) * offset - Screen.width / 2, -marginTop - (Screen.height-1920)/2 + Screen.height / 2 - (i + 1) * offset, 0);
+                gridPosition[i, j] = new Vector3(marginLeft + (j + 1) * offset - Screen.width / 2, -marginTop - (Screen.height - 1920) / 2 + Screen.height / 2 - (i + 1) * offset, 0);
             }
         }//블록생성
     }
     public void Start()
     {
-        
+
 
         //SetResolution();
         if (EffectManager.instance.isParticle)
@@ -255,12 +234,13 @@ public class GameManager : Singleton<GameManager>
                     starSlider.SetStar(i, stars[i]);
                 }
             });//별 표시
+
         this.UpdateAsObservable()
             .Where(_ => isPlay)
-             .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > ball.transform.position.y + minHeight)
              .Where(_ =>
              {
                  var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                  mousePos.y = mousePos.y < ball.transform.position.y + minHeight ? ball.transform.position.y + minHeight : mousePos.y;
                  mousePos.z = 0;
                  var ballPos = ball.transform.position;
                  var direction = Vector3.Normalize(mousePos - ballPos);
@@ -268,6 +248,7 @@ public class GameManager : Singleton<GameManager>
              }).Select(_ =>
              {
                  var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                 mousePos.y = mousePos.y < ball.transform.position.y + minHeight ? ball.transform.position.y + minHeight : mousePos.y;
                  mousePos.z = 0;
                  var ballPos = ball.transform.position;
                  var direction = Vector3.Normalize(mousePos - ballPos);
@@ -279,7 +260,7 @@ public class GameManager : Singleton<GameManager>
                  _dotLine.points.Add(hit.centroid);
                  var direction = Vector3.Normalize(new Vector3(hit.centroid.x, hit.centroid.y, 0) - ball.transform.position);
                  if (!hit.collider.GetComponent<TeleportationBlock>())
-                 { 
+                 {
                      var endPos = Vector3.Reflect(direction, hit.normal) * reflectDotLength;
                      _dotLine.points.Add(new Vector3(hit.centroid.x, hit.centroid.y, 0) + endPos);
                      _dummyBall.transform.position = hit.centroid;
@@ -288,7 +269,7 @@ public class GameManager : Singleton<GameManager>
                  {
                      hit.collider.GetComponent<TeleportationBlock>().DrawDotLineFromDestination(direction);
                  }
-               
+
 
                  //투명하게 공표시
                  if (EventSystem.current.IsPointerOverGameObject() == false)
@@ -308,7 +289,6 @@ public class GameManager : Singleton<GameManager>
             .Where(_ => isPlay)
             .Where(_ => ballCount > 0)
             .Where(_ => Input.GetMouseButtonUp(0) && ball.isFloor) //마우스 업 && ball이 땅에 있다면
-            .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y > ball.transform.position.y + minHeight)
             .Where(_ => EventSystem.current.IsPointerOverGameObject() == false) //ui위에 있으면 슈팅못하게
             .Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition)); //마우스 위치를 필터링
 
@@ -316,10 +296,11 @@ public class GameManager : Singleton<GameManager>
             {
                 _dummyBall.SetActive(false);
                 mousePos.z = 0;
+                mousePos.y = mousePos.y < ball.transform.position.y + minHeight ? ball.transform.position.y + minHeight : mousePos.y;
                 var direction = Vector3.Normalize(mousePos - ball.transform.position);
                 ball.Shoot(direction * shootPower);//Shoot
                 ballCount--;
-               
+
                 DeadLineCount();
                 isBallCollect = false;
                 ballCollectActiveTime = resetballCollectActiveTime;
@@ -335,14 +316,6 @@ public class GameManager : Singleton<GameManager>
               _dummyBall.SetActive(false);
           });
 
-        this.UpdateAsObservable()
-           .Where(_ => isPlay)
-            .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y <= ball.transform.position.y + minHeight)
-            .Subscribe(_ =>
-            {
-                _dummyBall.SetActive(false);
-            });
-      
 
         //this.UpdateAsObservable()
         //     .Where(_ => ball.isFloor)
@@ -359,7 +332,7 @@ public class GameManager : Singleton<GameManager>
             .Where(x => x == true)
             .Subscribe(_ =>
             {
-                
+
                 ballCollectButton.SetActive(false);  //공버튼 안보이게
                 StarsCountImage();
                 DeadLineCount();
@@ -377,7 +350,8 @@ public class GameManager : Singleton<GameManager>
         this.UpdateAsObservable()
             .Where(_ => isPlay)
             .Where(_ => isOver)
-            .Subscribe(_ => {
+            .Subscribe(_ =>
+            {
                 GameOver();
             });
 
@@ -392,7 +366,7 @@ public class GameManager : Singleton<GameManager>
             });
 
 
-       
+
         this.UpdateAsObservable()
             .Where(_ => !ball.isFloor)
             .Subscribe(_ =>
@@ -413,13 +387,13 @@ public class GameManager : Singleton<GameManager>
         StageManager.instance.SetCurrentStageAchievementRate(starCount);
         HeartManager.instance.AddHeartNoReset(1);
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Effect");
-        for(int i=0; i<temp.Length; i++)
+        for (int i = 0; i < temp.Length; i++)
         {
             temp[i].SetActive(false);
         }
-            
-        
-        EffectManager.instance.UiEffect(0, successPanel.transform.position + new Vector3(0,15));
+
+
+        EffectManager.instance.UiEffect(0, successPanel.transform.position + new Vector3(0, 15));
         foreach (GameObject clearStars in successPanelStarsImage)
         {
             clearStars.transform.DOShakeScale(0.3f, 3).SetUpdate(true);
@@ -427,20 +401,20 @@ public class GameManager : Singleton<GameManager>
         }
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageClearSound");
-      
-          
-    
+
+
+
     }
 
     public void GameOver()
     {
         deadLineBallCount = 0;
         failPanel.SetActive(true);
-        if(failPanel.active && HeartManager.instance.addMobCount <= 0)
+        if (failPanel.active && HeartManager.instance.addMobCount <= 0)
         {
             FailaddMob.ShowAd();//광고를 시작해야 할 때 함수
             HeartManager.instance.addMobCount = 2;
-        }      
+        }
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageFailSound");
     }
@@ -450,6 +424,8 @@ public class GameManager : Singleton<GameManager>
         var instance = Instantiate(blockPrefabs[(int)x]);
         instance.transform.parent = screenCordinate;
         instance.transform.localPosition = gridPosition[r, c];
+        instance.transform.localScale = instance.transform.localScale * (( (float)Screen.width/ 1080.0f) / ((float)Screen.height / 2160.0f));
+
         blocks[r, c] = instance;
         if (x == BlockType.DEFAULT)
         {
@@ -470,7 +446,7 @@ public class GameManager : Singleton<GameManager>
         else if (x == BlockType.MACAROON)
         {
             _macaroon.Add(instance as MacaroonBlock);
-            
+
             blocks[Math.Clamp(r + 1, 0, _row), c] = instance;
             blocks[r, Math.Clamp(c + 1, 0, _column)] = instance;
             blocks[Math.Clamp(r + 1, 0, _row), Math.Clamp(c + 1, 0, _column)] = instance;

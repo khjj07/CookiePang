@@ -32,7 +32,6 @@ public class HeartManager : Singleton<HeartManager>
 
     private void Update()
     {
-        currentHeart = 5;
         if (currentHeart < maxHeart)
         {
             // 마지막 하트 충전 시간이 지난 시간을 구한다.

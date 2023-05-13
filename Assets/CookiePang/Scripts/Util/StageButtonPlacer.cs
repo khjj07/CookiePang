@@ -21,6 +21,8 @@ namespace PathCreation.Examples
         const float minHeight = -30000.0f;
         const float tick = 50.0f;
 
+        private float downPosY;
+
         void Generate()
         {
             if (pathCreator != null && holder != null)
@@ -65,18 +67,21 @@ namespace PathCreation.Examples
 
             ;
 
-            var downStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonDown(0));
+            var downStream = this.UpdateAsObservable()
+                 .Where(_ => Input.GetMouseButtonDown(0));
+
+
+            downStream.Subscribe(_ => downPosY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+
             var upStream = this.UpdateAsObservable().Where(_ => Input.GetMouseButtonUp(0));
             var dragStream = this.UpdateAsObservable()
                 .SkipUntil(downStream)
-                .TakeUntil(upStream)
                 .Select(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition))
+                .TakeUntil(upStream)
                 .RepeatUntilDestroy(this);
 
            var dragUpStream = dragStream
-                .Buffer(2,1)
-                .Where(_ => EventSystem.current.IsPointerOverGameObject() == false)
-                .Where(g => { return g[0].y > g[1].y; })
+                .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y>downPosY)
                 .Subscribe(_ =>
                 {
                     Mover.transform.DORewind();
@@ -88,13 +93,12 @@ namespace PathCreation.Examples
                     {
                         Mover.transform.DOLocalMoveY(tick, 0.01f).SetRelative(true);
                     }
+                    downPosY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
                 });
 
 
             var dragDownStream = dragStream
-                  .Buffer(2,1)
-                  .Where(_ => EventSystem.current.IsPointerOverGameObject() == false)
-                  .Where(g => { return g[0].y < g[1].y; })
+                   .Where(_ => Camera.main.ScreenToWorldPoint(Input.mousePosition).y < downPosY)
                   .Subscribe(_ =>
                   {
                       Mover.transform.DORewind();
@@ -107,6 +111,7 @@ namespace PathCreation.Examples
                       {
                           Mover.transform.DOLocalMoveY(-tick, 0.01f).SetRelative(true);
                       }
+                      downPosY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
                   });
 
         }
