@@ -531,6 +531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHeart: 5
   currentHeart: 0
+  addMobCount: 2
+  isAdd: 1
 --- !u!4 &1582620347
 Transform:
   m_ObjectHideFlags: 0
