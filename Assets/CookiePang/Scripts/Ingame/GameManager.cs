@@ -391,7 +391,7 @@ public class GameManager : Singleton<GameManager>
         {
             temp[i].SetActive(false);
         }
-
+        
 
         EffectManager.instance.UiEffect(0, successPanel.transform.position + new Vector3(0, 15));
         foreach (GameObject clearStars in successPanelStarsImage)
@@ -401,11 +401,7 @@ public class GameManager : Singleton<GameManager>
         }
         PauseGame();
         SoundManager.instance.PlaySound(1, "StageClearSound");
-
-
-
     }
-
     public void GameOver()
     {
         deadLineBallCount = 0;
